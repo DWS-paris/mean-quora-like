@@ -100,4 +100,15 @@ Questions
         border-left: 1rem solid var(--main-color);
         padding-left: 1rem;
     }
+
+    .userResponse li p{
+        margin: 0;
+    }
+
+    .userResponse li p span{
+        display: block;
+        color: var(--main-color);
+        font-weight: 900;
+        font-size: .7em;
+    }
 /**/
