@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="http://localhost:7659/css/reset.css">
         <link rel="stylesheet" href="http://localhost:7659/css/main.css">
         <script src="http://localhost:7659/js/common.js"></script>
+        <script src="http://localhost:7659/js/header.js"></script>
     </head>
     <body>
 
@@ -34,33 +35,3 @@
             <% } %>
         </header>
         <main>
-
-        <script>
-            let askQuestionFormIsOpen = false;
-            
-            // Wait for DOM content
-            document.addEventListener('DOMContentLoaded', () => {
-        
-                // Definition
-                const askQuestionBtn = document.querySelector('#askQuestionBtn');
-                const headerForm = document.querySelector('#headerForm');
-        
-                // Methods
-                const toggleAskQuestionForm = () => {
-                    askQuestionBtn.addEventListener('click', () => {
-                        if(askQuestionFormIsOpen){
-                            headerForm.classList.remove('open');
-                            askQuestionFormIsOpen = false;
-                        }
-                        else{
-                            headerForm.classList.add('open');
-                            askQuestionFormIsOpen = true
-                        }
-                    })
-                }
-                
-        
-                // Start interface
-                toggleAskQuestionForm();
-            })
-        </script>

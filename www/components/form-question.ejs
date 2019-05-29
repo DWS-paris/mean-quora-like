@@ -13,7 +13,6 @@
         // Definition
         const myForm = document.querySelector('#questionForm');
         const headline = document.querySelector('#headline');
-        const closeButtonFormQuestion = document.querySelector('#closeButtonFormQuestion');
         const formResponse = document.querySelector('#formResponse');
 
         // Methods
@@ -48,15 +47,7 @@
             })
         }
 
-        const closePopIn = () => {
-            closeButtonFormQuestion.addEventListener('click', () => {
-                headerForm.classList.remove('open');
-                askQuestionFormIsOpen = false;
-            })
-        }
-
         // Start interface
         getFormSubmit();
-        closePopIn();
     })
 </script>
