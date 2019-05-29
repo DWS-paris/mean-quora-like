@@ -1,7 +1,6 @@
 /*
 Import
 */
-    const Vocabulary = require('../../services/vocabulary.service');
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll } = require('../main.controller');
 //
 
@@ -24,7 +23,7 @@ Methods
              * @param model: String => The document model
              * @param requestOptions: Object => The option to check if exist
              */
-                findOneRejectOrCreate(req, 'question', { headline: req.body.headline } )
+                findOneRejectOrCreate(req, 'comment', { headline: req.body.headline } )
                 .then( item => resolve( item ))
                 .catch( error => reject( error ));
             //
@@ -38,7 +37,7 @@ Methods
              * Call findAll method
              * @param model: String => The document model
              */
-                findAll('question')
+                findAll('comment')
                 .then( items => resolve( items ))
                 .catch( error => reject( error ));
             //
@@ -47,7 +46,7 @@ Methods
     
     const readItem = () => {
         return new Promise( (resolve, reject) => {
-            findAll('question')
+            findAll('comment')
             .then( items => resolve( items ))
             .catch( error => reject( error ));
         })

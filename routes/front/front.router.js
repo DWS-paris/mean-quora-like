@@ -31,10 +31,6 @@ Routes definition
                     // Render view and check if user is logged
                     res.render('index', { isLogged: jwtDecoder(req), questions: [] })
                 })
-
-                // Render view and check if user is logged
-                res.render('index', { isLogged: jwtDecoder(req), questions: [] })
-                
             });
 
             frontRouter.get( '/register', (req, res) => {

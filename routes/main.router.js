@@ -13,6 +13,7 @@ Imports
     const AuthRouterClass = require('./auth/auth.router');
     const FrontRouterClass = require('./front/front.router');
     const QuestionRouterClass = require('./question/question.router');
+    const CommentRouterClass = require('./comment/comment.router');
 //
 
 /*
@@ -28,8 +29,7 @@ Define routers
     const authRouter = new AuthRouterClass({ passport });
     const frontRouter = new FrontRouterClass({ passport });
     const questionRouter = new QuestionRouterClass({ passport });
-    
-    
+    const commentRouter = new CommentRouterClass({ passport });
 //
 
 /*
@@ -38,6 +38,7 @@ Configure routes
     // Set API routers
     apiRouter.use('/auth', authRouter.init());
     apiRouter.use('/question', questionRouter.init());
+    apiRouter.use('/comment', commentRouter.init());
 
     // Set front router
     mainRouter.use('/', frontRouter.init());
