@@ -16,18 +16,51 @@
     <body>
 
         <header>
-            <h1>Kora: what do you MEAN?</h1>
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><h1><a href="/">Kora: what do you MEAN?</a></h1></li>
                     <% if(!isLogged){  %>
                         <li><a href="/register">Inscription</a></li>
                         <li><a href="/login">Connexion</a></li>
                     <% } %>
                     <% if(isLogged){  %>
+                        <li><a href="#" id="askQuestionBtn">Poser une question</a></li>
                         <li><a href="/logout">Déconnexion</a></li>
                     <% } %>
                 </ul>
             </nav>
+            <% if(isLogged) { %>
+                <% include ../components/form-question.ejs %>
+            <% } %>
         </header>
         <main>
+
+        <script>
+            let askQuestionFormIsOpen = false;
+            
+            // Wait for DOM content
+            document.addEventListener('DOMContentLoaded', () => {
+        
+                // Definition
+                const askQuestionBtn = document.querySelector('#askQuestionBtn');
+                const headerForm = document.querySelector('#headerForm');
+        
+                // Methods
+                const toggleAskQuestionForm = () => {
+                    askQuestionBtn.addEventListener('click', () => {
+                        if(askQuestionFormIsOpen){
+                            headerForm.classList.remove('open');
+                            askQuestionFormIsOpen = false;
+                        }
+                        else{
+                            headerForm.classList.add('open');
+                            askQuestionFormIsOpen = true
+                        }
+                    })
+                }
+                
+        
+                // Start interface
+                toggleAskQuestionForm();
+            })
+        </script>

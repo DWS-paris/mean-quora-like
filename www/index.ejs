@@ -1,9 +1,5 @@
 <% include ./static/header.ejs %>
 
-<% if(isLogged) { %>
-    <% include ./components/form-question.ejs %>
-<% } %>
-
 <% data.map(item => { %>
     <section class="questionSection">
         <article>

@@ -1,7 +1,8 @@
-<section>
+<section id="headerForm">
     <form action="#" id="questionForm">
-        <textarea name="headline" id="headline" required minlength="20" placeholder="Min. 20 caractères"></textarea>
-        <button type="submit">Poser ma question</button> <span id="formResponse"></span>
+        <button type="button" id="closeButtonFormQuestion"><i class="fas fa-times"></i></button>
+        <textarea name="headline" id="headline" required minlength="20" placeholder="C'est quoi ta question ?"></textarea>
+        <button type="submit"><i class="fas fa-check"></i></button> <span id="formResponse"></span>
     </form>
 </section>
 
@@ -12,6 +13,7 @@
         // Definition
         const myForm = document.querySelector('#questionForm');
         const headline = document.querySelector('#headline');
+        const closeButtonFormQuestion = document.querySelector('#closeButtonFormQuestion');
         const formResponse = document.querySelector('#formResponse');
 
         // Methods
@@ -46,7 +48,15 @@
             })
         }
 
+        const closePopIn = () => {
+            closeButtonFormQuestion.addEventListener('click', () => {
+                headerForm.classList.remove('open');
+                askQuestionFormIsOpen = false;
+            })
+        }
+
         // Start interface
         getFormSubmit();
+        closePopIn();
     })
 </script>

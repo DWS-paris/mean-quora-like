@@ -32,7 +32,12 @@ Header
         padding: 0;
     }
 
-    nav a, .userResponse h3{
+    nav li:first-child{
+        display: block;
+        margin: 0;
+    }
+
+    nav li > a, .userResponse h3{
         border: 0.1rem solid var(--main-color);
         padding: .5rem;
         border-radius: .5rem;
@@ -113,6 +118,56 @@ Questions
         color: var(--main-color);
         font-weight: 900;
         font-size: .7em;
+    }
+
+    #headerForm {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--main-color-light);
+        z-index: 1000;
+
+        display: none;
+    }
+
+    #headerForm.open{
+        display: flex;
+    }
+
+    #questionForm {
+        margin: auto;
+        width: 70%;
+    }
+
+    #questionForm textarea {
+        font-size: 3rem;
+        min-height: 25rem;
+        padding: 2rem;
+        margin-bottom: .5rem;
+    }
+
+    #closeButtonFormQuestion {
+        float: right;
+        width: auto;
+        padding: 0 1.5rem;
+        background: black;
+        border: none;
+        margin-bottom: -1rem;
+        margin-right: -1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    #questionForm button[type="submit"] {
+        position: relative;
+        top: -3rem;
+        left: -1rem;
+    }
+
+    #questionForm textarea:focus{
+        background-color: white;
     }
 /**/
 
