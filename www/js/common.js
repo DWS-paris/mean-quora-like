@@ -40,3 +40,27 @@ Methode to use fetch reequests
         })
     }
 //
+
+/* 
+Methode to open a popin
+*/
+const openPopinUX =  ( htmlTag ) => {
+    htmlTag.classList.add('display');
+
+    setTimeout( () => {
+        htmlTag.classList.add('open');
+    }, 10)
+}
+//
+
+/* 
+Methode to close a popin
+*/
+const closePopinUX =  ( htmlTag ) => {
+    htmlTag.classList.remove('open');
+
+    setTimeout( () => {
+        htmlTag.classList.remove('display');
+    }, 300)
+}
+//

@@ -11,13 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Methods
     const toggleAskQuestionForm = () => {
+        
         askQuestionBtn.addEventListener('click', () => {
             if(askQuestionFormIsOpen){
-                headerForm.classList.remove('open');
+                closePopinUX(headerForm)
                 askQuestionFormIsOpen = false;
             }
             else{
-                headerForm.classList.add('open');
+                openPopinUX(headerForm)
                 askQuestionFormIsOpen = true
             }
         })
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closePopIn = () => {
         closeButtonFormQuestion.addEventListener('click', () => {
-            headerForm.classList.remove('open');
+            closePopinUX(headerForm)
             askQuestionFormIsOpen = false;
         })
     }

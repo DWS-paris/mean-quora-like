@@ -128,12 +128,22 @@ Questions
         height: 100vh;
         background: var(--main-color-light);
         z-index: 1000;
-
+        opacity: 0;
         display: none;
+
+        transition:  opacity .3s   ;
+        -webkit-transition:  opacity .3s   ;
+        -moz-transition:  opacity .3s   ;
+        -ms-transition:  opacity .3s   ;
+        -o-transition:  opacity .3s   ;
+}
+
+    #headerForm.display{
+        display: flex;
     }
 
     #headerForm.open{
-        display: flex;
+        opacity: 1;
     }
 
     #questionForm {
