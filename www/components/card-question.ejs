@@ -1,3 +1,8 @@
 <section>
     <h2><%= data.question.headline %></h2>
+    <ul>
+        <% data.comments.map(item => { %>
+            <li><%- include('./card-comment.ejs', { item: item }); %></li>
+        <% }) %>
+    </ul>
 </section>
