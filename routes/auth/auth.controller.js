@@ -3,7 +3,7 @@ Import
 */
     const IdentityModel = require('../../models/identity.model')
     const bcrypt = require('bcryptjs');
-    const { sendEmail } = require('../../services/mailer.service');
+    const jwt = require('jsonwebtoken');
 //
 
 /*
@@ -121,6 +121,20 @@ Methods
     };
 
     /**
+     * Login user
+     * @param body: Object => email: String, password: String
+    */
+    const jwtDecoder = (req) => {
+            if (req.cookies[process.env.COOKIE_NAME] != undefined){
+                const decoded = jwt.verify(req.cookies[process.env.COOKIE_NAME], process.env.JWT_SECRET)
+                return { isLogged: true }
+            }
+            else {
+                return { isLogged: false }
+            }
+    };
+
+    /**
      * Set user password
      * @param body: Object => password: String, newPassword: String
     */
@@ -169,6 +183,7 @@ Export
         register,
         confirmIdentity,
         login,
-        setPassword
+        setPassword,
+        jwtDecoder
     }
 //

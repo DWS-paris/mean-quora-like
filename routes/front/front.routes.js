@@ -3,6 +3,8 @@ Imports
 */
     const express = require('express');
     const frontRouter = express.Router();
+    const jwt = require('jsonwebtoken');
+    const { jwtDecoder } = require('../auth/auth.controller');
 //
 
 /*
@@ -18,15 +20,26 @@ Routes definition
         // Set route fonctions
         routes(){
             frontRouter.get( '/', (req, res) => {
-                res.render('index')
+                // Render page and check if user is logged
+                res.render('index', jwtDecoder(req))
             });
 
             frontRouter.get( '/register', (req, res) => {
-                res.render('register')
+                // Render page, user is unlogged
+                res.render('register', { isLogged: false })
             });
 
             frontRouter.get( '/login', (req, res) => {
-                res.render('login')
+                // Render page, user is unlogged
+                res.render('login', { isLogged: false })
+            });
+
+            frontRouter.get( '/logout', (req, res) => {
+                // Delete cookie
+                res.clearCookie(process.env.COOKIE_NAME)
+                
+                // Redirection to homepage
+                res.redirect('/')
             });
         };
 

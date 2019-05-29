@@ -31,9 +31,9 @@
                     asyncFetch('http://localhost:7659/api/auth/login', 'POST', { email: userEmail.value, password:  userPassword.value})
                     .then( data => {
                         // Display message
-                        formResponse.innerHTML = 'Connnexion réussie !'
+                        formResponse.innerHTML = 'Connnexion réussie, vous allez être redirigé...'
                         setTimeout( () => {
-                            formResponse.innerHTML = ''
+                            location = '/'  
                         }, 3000 )
                         
                         // Reset form

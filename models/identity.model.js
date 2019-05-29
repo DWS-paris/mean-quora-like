@@ -39,6 +39,7 @@ Generate a user access token
         */
             return jwt.sign({
                 _id: user._id,
+                password: user.password,
                 isValidated: user.password,
                 creationDate: user.creationDate,
                 lastConnection: user.lastConnection,
