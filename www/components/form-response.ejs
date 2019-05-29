@@ -1,8 +1,8 @@
+<button id="addResponseBtn">Proposer une réponse</button>
 <form action="#" id="reponseForm">
     <input type="text" id="parentItem" name="parentItem" required hidden minlength="5" value="<%- parentItem %>">
-    <label for="headlineResponse">Proposer une réponse</label>
     <textarea name="headlineResponse" id="headlineResponse" required minlength="20" placeholder="Min. 20 caractères"></textarea>
-    <button type="submit">Répondre à la question</button> <span id="formResponse"></span>
+    <button type="submit">Répondre à la question</button> <span id="responseFormResponse"></span>
 </form>
 
 <script>
@@ -10,14 +10,16 @@
     document.addEventListener('DOMContentLoaded', () => {
 
         // Definition
-        const myForm = document.querySelector('#reponseForm');
+        const addResponseBtn = document.querySelector('#addResponseBtn');
+        let responseFormIsOpen = false;
+        const reponseForm = document.querySelector('#reponseForm');
         const headline = document.querySelector('#headlineResponse');
         const parentItem = document.querySelector('#parentItem');
-        const formResponse = document.querySelector('#formResponse');
+        const responseFormResponse = document.querySelector('#responseFormResponse');
 
         // Methods
         const getFormSubmit = () => {
-            myForm.addEventListener('submit', event => {
+            reponseForm.addEventListener('submit', event => {
                 // Stop default to use Javascript
                 event.preventDefault();
 
@@ -28,9 +30,9 @@
                     asyncFetch('http://localhost:7659/api/comment', 'POST', { headline:  headline.value, parentItem: parentItem.value })
                     .then( data => {
                         // Display message
-                        formResponse.innerHTML = data.message
+                        responseFormResponse.innerHTML = data.message
                         setTimeout( () => {
-                            formResponse.innerHTML = ''
+                            responseFormResponse.innerHTML = ''
                         }, 3000 )
 
                         // Reset form
@@ -38,16 +40,32 @@
                     })
                     .catch( err => {
                         // Display message
-                        formResponse.innerHTML = err.error || err.message
+                        responseFormResponse.innerHTML = err.error || err.message
                         setTimeout( () => {
-                            formResponse.innerHTML = ''
+                            responseFormResponse.innerHTML = ''
                         }, 3000 )
                     } )
                 }
             })
         }
 
+        const toggleOpenForm = () => {
+            addResponseBtn.addEventListener('click', () => {
+                if(responseFormIsOpen){
+                    addResponseBtn.textContent = 'Proposer une réponse';
+                    reponseForm.classList.remove('open');
+                    responseFormIsOpen = false
+                }
+                else{
+                    addResponseBtn.textContent = 'Fermer';
+                    reponseForm.classList.add('open');
+                    responseFormIsOpen = true
+                }
+            });
+        }
+
         // Start interface
+        toggleOpenForm();
         getFormSubmit();
     })
 </script>

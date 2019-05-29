@@ -66,6 +66,9 @@ Footer
 /* 
 Questions
 */
+    .questionSection{
+        margin-bottom: 8rem;
+    }
     .userQuestion {
         background: var(--main-color-alpha);
         padding: 2rem;
@@ -92,7 +95,7 @@ Questions
     }
 
     .userResponse{
-        padding: 2rem;
+        padding: 2rem 0;
     }
 
     .userResponse li {
@@ -110,5 +113,38 @@ Questions
         color: var(--main-color);
         font-weight: 900;
         font-size: .7em;
+    }
+/**/
+
+/* 
+Response
+*/
+    #addResponseBtn {
+        font-size: 1rem;
+        color: var(--main-color);
+        margin-bottom: 0;
+        background: var(--main-color-alpha);
+        padding: .5rem 1rem;
+        line-height: 1;
+        height: auto;
+    }
+
+    #reponseForm {
+        border: .1rem solid var(--main-color-alpha);
+        padding: 2rem;
+        margin-top: -.1rem;
+        display: none;
+    }
+    
+    #reponseForm button {
+        margin: 0;
+    }
+
+    .userResponse ul {
+        margin: 0;
+    }
+
+    #reponseForm.open{
+        display: block;
     }
 /**/
