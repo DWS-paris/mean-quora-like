@@ -17,8 +17,12 @@ Routes definition
         
         // Set route fonctions
         routes(){
-            frontRouter.get( '/*', (req, res) => {
+            frontRouter.get( '/', (req, res) => {
                 res.render('index')
+            });
+
+            frontRouter.get( '/register', (req, res) => {
+                res.render('register')
             });
         };
 

@@ -1,0 +1,58 @@
+<form action="#">
+    <label for="email">email</label>
+    <input type="email" id="email" name="email" required minlength="5">
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="password" required minlength="5">
+
+    <button type="submit">Inscription</button> <span id="formResponse"></span>
+</form>
+
+<script>
+    // Wait for DOM content
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Definition
+        const myForm = document.querySelector('form');
+        const userEmail = document.querySelector('#email');
+        const userPassword = document.querySelector('#password');
+        const formResponse = document.querySelector('#formResponse');
+
+        // Methods
+        const getFormSubmit = () => {
+            myForm.addEventListener('submit', event => {
+                // Stop default to use Javascript
+                event.preventDefault();
+
+                // Check form values
+                if( userEmail.value.length > 4 && userPassword.value.length > 4){
+
+                    // Use asyncFetch method to save data
+                    asyncFetch('http://localhost:7659/api/auth/register', 'POST', { email: userEmail.value, password:  userPassword.value})
+                    .then( data => {
+                        // Display message
+                        formResponse.innerHTML = 'Inscription réussie !'
+                        setTimeout( () => {
+                            formResponse.innerHTML = ''
+                        }, 3000 )
+                        
+                        // Reset form
+                        userEmail.value = '';
+                        userPassword.value = '';
+                    })
+                    .catch( err => {
+                        // Display message
+                        formResponse.innerHTML = err.error
+                        setTimeout( () => {
+                            formResponse.innerHTML = ''
+                        }, 3000 )
+                    } )
+                }
+            })
+        }
+
+        // Start interface
+        getFormSubmit();
+    })
+
+</script>

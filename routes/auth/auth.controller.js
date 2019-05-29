@@ -14,12 +14,18 @@ Methods
      * @param body => email: String (unique), password: String
     */
     const register = body => {
+        
         return new Promise( (resolve, reject) => {
             // Search user by email
             IdentityModel.findOne( { email: body.email }, (error, user) => {
-                if(error) return reject(error) // Mongo Error
-                else if(user) return reject('Identity already exist')
+                if(error) {
+                    return reject(error) // Mongo Error
+                }
+                else if(user){
+                    return reject('Identity already exist')
+                }
                 else{
+                    console.log(body)
                     // Encrypt user password
                     bcrypt.hash( body.password, 10 )
                     .then( hashedPassword => {
@@ -30,20 +36,11 @@ Methods
                         // Set creation and connection date
                         body.creationDate = new Date();
                         body.lastConnection = null;
-                        body.isValidated = false;
+                        body.isValidated = true;
 
                         // Register new user
                         IdentityModel.create(body)
-                        .then( mongoResponse => {
-                            sendEmail(mongoResponse, clearPassword)
-                            .then( mailerResponse => {
-                                resolve({ _id: mongoResponse._id, creationDate: mongoResponse.creationDate })
-                            })
-                            .catch( mailerResponse => {
-                                reject(mailerResponse)
-                            })
-                            
-                        })
+                        .then( mongoResponse => resolve({ _id: mongoResponse._id, creationDate: mongoResponse.creationDate }))
                         .catch( mongoResponse => reject(mongoResponse) )
                     })
                     .catch( hashError => reject(hashError) );
@@ -101,7 +98,7 @@ Methods
                         if( !validPassword ) reject('Password is not valid')
                         else {
                             // Set cookie
-                            res.cookie(process.env.COOKIE_NAME, user.generateJwt(), { httpOnly: true });
+                            res.cookie(process.env.COOKIE_NAME, user.generateJwt(user), { httpOnly: true });
                             
                             // Define user last connection
                             const lastConnection = user.lastConnection;
