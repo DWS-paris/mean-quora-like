@@ -5,6 +5,7 @@ Definition
         register: ['email', 'password'],
         idValidation: ['_id', 'password'],
         login: ['email', 'password'],
+        question: ['headline', 'about'],
         changePassword: ['password', 'newPassword'],
     };
 //

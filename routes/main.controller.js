@@ -1,7 +1,7 @@
 /*
 Imports
 */
-    const Models = require('../models/model.index');
+    const Models = require('../models/index');
     const Vocabulary = require('../services/vocabulary.service');
 //
 

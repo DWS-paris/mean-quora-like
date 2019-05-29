@@ -1,5 +1,5 @@
 <form action="#">
-    <textarea name="question" id="question" required minlength="20" placeholder="Min. 20 caractères"></textarea>
+    <textarea name="headline" id="headline" required minlength="20" placeholder="Min. 20 caractères"></textarea>
     <button type="submit">Poser ma question</button> <span id="formResponse"></span>
 </form>
 
@@ -10,7 +10,7 @@
         // Definition
         const myForm = document.querySelector('form');
         const userEmail = document.querySelector('#email');
-        const userQuestion = document.querySelector('#question');
+        const headline = document.querySelector('#headline');
         const formResponse = document.querySelector('#formResponse');
 
         // Methods
@@ -20,16 +20,16 @@
                 event.preventDefault();
 
                 // Check form values
-                if( userQuestion.value.length > 19){
+                if( headline.value.length > 19){
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/question', 'POST', { question:  userQuestion.value})
+                    asyncFetch('http://localhost:7659/api/question', 'POST', { headline:  headline.value, about: '5cee8b348bccd2292091584a'})
                     .then( data => {
                         // Display message
                         formResponse.innerHTML = data.message
 
                         // Reset form
-                        userQuestion.value = '';
+                        headline.value = '';
                     })
                     .catch( err => {
                         // Display message
