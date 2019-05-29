@@ -24,6 +24,10 @@ Routes definition
             frontRouter.get( '/register', (req, res) => {
                 res.render('register')
             });
+
+            frontRouter.get( '/login', (req, res) => {
+                res.render('login')
+            });
         };
 
         // POST api/auth/login

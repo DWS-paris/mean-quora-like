@@ -5,7 +5,7 @@
     <label for="password">Mot de passe</label>
     <input type="password" id="password" name="password" required minlength="5">
 
-    <button type="submit">Inscription</button> <span id="formResponse"></span>
+    <button type="submit">Connnexion</button> <span id="formResponse"></span>
 </form>
 
 <script>
@@ -28,10 +28,10 @@
                 if( userEmail.value.length > 4 && userPassword.value.length > 4){
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/auth/register', 'POST', { email: userEmail.value, password:  userPassword.value})
+                    asyncFetch('http://localhost:7659/api/auth/login', 'POST', { email: userEmail.value, password:  userPassword.value})
                     .then( data => {
                         // Display message
-                        formResponse.innerHTML = 'Inscription réussie !'
+                        formResponse.innerHTML = 'Connnexion réussie !'
                         setTimeout( () => {
                             formResponse.innerHTML = ''
                         }, 3000 )
