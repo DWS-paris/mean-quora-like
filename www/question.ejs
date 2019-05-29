@@ -1,3 +1,14 @@
 <% include ./static/header.ejs %>
+<section>
+    <article>
+        <%- include('./components/card-question.ejs', { data: data }); %>
+    </article>
+
+    <% if(isLogged) { %>
+        <article>
+            <%- include('./components/form-response.ejs', { parentItem: data._id }); %>
+        </article>
+    <% } %>
+</section>
 
 <% include ./static/footer.ejs %>

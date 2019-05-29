@@ -29,21 +29,22 @@ Routes definition
                 })
                 .catch( error => {
                     // Render view and check if user is logged
-                    res.render('index', { isLogged: jwtDecoder(req), questions: [] })
+                    res.render('index', { isLogged: jwtDecoder(req), data: [] })
                 })
             });
 
             frontRouter.get( '/question/:id', (req, res) => {
-                console.log(req.params.id)
+                
                 // Get question list
                 readOneItem(req.params.id)
                 .then( questionData => {
+                    console.log(questionData)
                     // Render view and check if user is logged
-                    res.render('index', { isLogged: jwtDecoder(req), questions: questionData })
+                    res.render('question', { isLogged: jwtDecoder(req), data: questionData })
                 })
                 .catch( error => {
                     // Render view and check if user is logged
-                    res.render('index', { isLogged: jwtDecoder(req), questions: [] })
+                    res.render('question', { isLogged: jwtDecoder(req), data: [] })
                 })
             });
 

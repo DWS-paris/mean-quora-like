@@ -76,7 +76,6 @@ Methods
                 const comments = await CommentModel.find( { parentItem: _id } )
                 
                 // return all data
-                console.log({ question, comments });
                 return resolve({ question, comments });
             })
             .catch( error => reject( error ));
