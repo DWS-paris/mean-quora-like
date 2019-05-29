@@ -18,5 +18,27 @@
   "bugs": {
     "url": "https://github.com/DWS-paris/mean-quora-like/issues"
   },
-  "homepage": "https://github.com/DWS-paris/mean-quora-like#readme"
+  "homepage": "https://github.com/DWS-paris/mean-quora-like#readme",
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "crypto-js": "^3.1.9-1",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.16",
+    "morgan": "^1.9.1",
+    "nodemailer": "^5.1.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "path": "^0.12.7",
+    "winston": "^3.2.1",
+    "winston-loggly-bulk": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
