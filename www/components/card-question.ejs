@@ -11,5 +11,6 @@
             <li><%- include('./card-comment.ejs', { item: item }); %></li>
         <% }) %>
     </ul>
+    <button class="addResponseBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">Proposer une réponse</button>
 </div>
 <% } %>

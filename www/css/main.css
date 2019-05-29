@@ -120,7 +120,7 @@ Questions
         font-size: .7em;
     }
 
-    #headerForm {
+    #headerForm, #headerResponse {
         position: fixed;
         top: 0;
         left: 0;
@@ -128,37 +128,21 @@ Questions
         height: 100vh;
         background: var(--main-color-light);
         z-index: 1000;
-        opacity: 0;
-        display: none;
-
-        transition:  opacity .3s   ;
-        -webkit-transition:  opacity .3s   ;
-        -moz-transition:  opacity .3s   ;
-        -ms-transition:  opacity .3s   ;
-        -o-transition:  opacity .3s   ;
-}
-
-    #headerForm.display{
-        display: flex;
     }
 
-    #headerForm.open{
-        opacity: 1;
-    }
-
-    #questionForm {
+    #questionForm, #reponseForm {
         margin: auto;
         width: 70%;
     }
 
-    #questionForm textarea {
+    #questionForm textarea, #reponseForm textarea {
         font-size: 3rem;
         min-height: 25rem;
         padding: 2rem;
         margin-bottom: .5rem;
     }
 
-    #closeButtonFormQuestion {
+    .closeButtonFormButton {
         float: right;
         width: auto;
         padding: 0 1.5rem;
@@ -170,13 +154,13 @@ Questions
         z-index: 1;
     }
 
-    #questionForm button[type="submit"] {
+    button.submitFomrButton {
         position: relative;
         top: -3rem;
         left: -1rem;
     }
 
-    #questionForm textarea:focus{
+    #questionForm textarea:focus, #headerResponse textarea:focus{
         background-color: white;
     }
 /**/
@@ -194,22 +178,45 @@ Response
         height: auto;
     }
 
-    #reponseForm {
-        border: .1rem solid var(--main-color-alpha);
-        padding: 2rem;
-        margin-top: -.1rem;
-        display: none;
-    }
-    
-    #reponseForm button {
-        margin: 0;
-    }
-
     .userResponse ul {
         margin: 0;
     }
 
     #reponseForm.open{
         display: block;
+    }
+
+    #questionHeadlineInput {
+        padding: 0;
+        border: none;
+        font-weight: 900;
+        font-size: 3rem;
+        line-height: 1;
+        padding-right: 5rem;
+        margin: 0 0 1.5rem 0;
+    }
+/**/
+
+
+/* 
+Animations
+*/
+    #headerForm, #headerResponse {
+        display: none;
+        opacity: 0;
+
+        transition:  opacity .3s   ;
+        -webkit-transition:  opacity .3s   ;
+        -moz-transition:  opacity .3s   ;
+        -ms-transition:  opacity .3s   ;
+        -o-transition:  opacity .3s   ;
+    }
+
+    #headerForm.display, #headerResponse.display{
+        display: flex;
+    }
+
+    #headerForm.open, #headerResponse.open{
+        opacity: 1;
     }
 /**/

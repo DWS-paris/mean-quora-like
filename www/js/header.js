@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Definition
     const askQuestionBtn = document.querySelector('#askQuestionBtn');
     const headerForm = document.querySelector('#headerForm');
-    const closeButtonFormQuestion = document.querySelector('#closeButtonFormQuestion');
+    const headerResponse = document.querySelector('#headerResponse');
+    const closeButtons = document.querySelectorAll('.closeButtonFormButton');
 
     // Methods
     const toggleAskQuestionForm = () => {
@@ -25,10 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const closePopIn = () => {
-        closeButtonFormQuestion.addEventListener('click', () => {
-            closePopinUX(headerForm)
-            askQuestionFormIsOpen = false;
-        })
+        for( let item of closeButtons ){
+            item.addEventListener('click', () => {
+
+                switch(item.getAttribute('id')){
+                    case 'closeFromQuestion':
+                    closePopinUX(headerForm)
+                    askQuestionFormIsOpen = false;
+                    break;
+
+                    case 'closeFromResponse':
+                    closePopinUX(headerResponse)
+                    break;
+
+                    default:
+                    break;
+                }
+            })
+        }
     }
     
     // Start interface

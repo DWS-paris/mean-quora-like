@@ -26,12 +26,13 @@
                     <% } %>
                     <% if(isLogged){  %>
                         <li><a href="#" id="askQuestionBtn">Poser une question</a></li>
-                        <li><a href="/logout">Déconnexion</a></li>
+                        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
                     <% } %>
                 </ul>
             </nav>
             <% if(isLogged) { %>
                 <% include ../components/form-question.ejs %>
+                <% include ../components/form-response.ejs %>
             <% } %>
         </header>
         <main>

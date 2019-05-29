@@ -1,16 +1,18 @@
-<button id="addResponseBtn">Proposer une réponse</button>
-<form action="#" id="reponseForm">
-    <input type="text" id="parentItem" name="parentItem" required hidden minlength="5" value="<%- parentItem %>">
-    <textarea name="headlineResponse" id="headlineResponse" required minlength="20" placeholder="Min. 20 caractères"></textarea>
-    <button type="submit">Répondre à la question</button> <span id="responseFormResponse"></span>
-</form>
+<section id="headerResponse">
+    <form action="#" id="reponseForm">
+        <button type="button" class="closeButtonFormButton" id="closeFromResponse"><i class="fas fa-times"></i></button>
+        <p type="text" id="questionHeadlineInput"></p>
+        <input type="text" id="parentItem" name="parentItem" required hidden minlength="5">
+        <textarea name="headlineResponse" id="headlineResponse" required minlength="20" placeholder="C'est quoi ta réponse ?"></textarea>
+        <button type="submit" class="submitFomrButton"><i class="fas fa-check"></i></button> <span id="responseFormResponse"></span>
+    </form>
+</section>
 
 <script>
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
         // Definition
-        const addResponseBtn = document.querySelector('#addResponseBtn');
         let responseFormIsOpen = false;
         const reponseForm = document.querySelector('#reponseForm');
         const headline = document.querySelector('#headlineResponse');
@@ -48,24 +50,7 @@
                 }
             })
         }
-
-        const toggleOpenForm = () => {
-            addResponseBtn.addEventListener('click', () => {
-                if(responseFormIsOpen){
-                    addResponseBtn.textContent = 'Proposer une réponse';
-                    reponseForm.classList.remove('open');
-                    responseFormIsOpen = false
-                }
-                else{
-                    addResponseBtn.textContent = 'Fermer';
-                    reponseForm.classList.add('open');
-                    responseFormIsOpen = true
-                }
-            });
-        }
-
         // Start interface
-        toggleOpenForm();
         getFormSubmit();
     })
 </script>
