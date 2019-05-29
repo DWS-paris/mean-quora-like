@@ -7,7 +7,6 @@ Imports
     const bodyParser = require('body-parser');
     const cookieParser = require('cookie-parser');
     const path = require('path');
-    const ejs = require('ejs');
     const morgan = require('morgan');
 
     // Inner
@@ -29,8 +28,7 @@ Server configuration
         // Initialization fonction
         init(){
             //=> Use Path to add views
-            server.engine( 'html', ejs.renderFile );
-            server.set( 'view engine', 'html' );
+            server.set( 'view engine', 'ejs' );
             server.set( 'views', __dirname + '/www' );
             server.use( express.static(path.join(__dirname, 'www')) );
 
