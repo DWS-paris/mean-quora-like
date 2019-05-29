@@ -1,6 +1,8 @@
-<form action="#">
-    <textarea name="headline" id="headline" required minlength="20" placeholder="Min. 20 caractères"></textarea>
-    <button type="submit">Poser ma question</button> <span id="formResponse"></span>
+<form action="#" id="reponseForm">
+    <input type="text" id="parentItem" name="parentItem" required hidden minlength="5" value="<%- parentItem %>">
+    <label for="headlineResponse">Proposer une réponse</label>
+    <textarea name="headlineResponse" id="headlineResponse" required minlength="20" placeholder="Min. 20 caractères"></textarea>
+    <button type="submit">Répondre à la question</button> <span id="formResponse"></span>
 </form>
 
 <script>
@@ -8,9 +10,9 @@
     document.addEventListener('DOMContentLoaded', () => {
 
         // Definition
-        const myForm = document.querySelector('form');
-        const userEmail = document.querySelector('#email');
-        const headline = document.querySelector('#headline');
+        const myForm = document.querySelector('#reponseForm');
+        const headline = document.querySelector('#headlineResponse');
+        const parentItem = document.querySelector('#parentItem');
         const formResponse = document.querySelector('#formResponse');
 
         // Methods
@@ -23,7 +25,7 @@
                 if( headline.value.length > 19){
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/question', 'POST', { headline:  headline.value, about: '5cee8b348bccd2292091584a'})
+                    asyncFetch('http://localhost:7659/api/comment', 'POST', { headline:  headline.value, parentItem: parentItem.value })
                     .then( data => {
                         // Display message
                         formResponse.innerHTML = data.message

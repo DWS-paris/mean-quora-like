@@ -1,15 +1,16 @@
-<form action="#">
-    <textarea name="headline" id="headline" required minlength="20" placeholder="Min. 20 caractères"></textarea>
-    <button type="submit">Poser ma question</button> <span id="formResponse"></span>
-</form>
+<section>
+    <form action="#" id="questionForm">
+        <textarea name="headline" id="headline" required minlength="20" placeholder="Min. 20 caractères"></textarea>
+        <button type="submit">Poser ma question</button> <span id="formResponse"></span>
+    </form>
+</section>
 
 <script>
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
         // Definition
-        const myForm = document.querySelector('form');
-        const userEmail = document.querySelector('#email');
+        const myForm = document.querySelector('#questionForm');
         const headline = document.querySelector('#headline');
         const formResponse = document.querySelector('#formResponse');
 
