@@ -1,0 +1,48 @@
+<form action="#">
+    <textarea name="question" id="question" required minlength="20" placeholder="Min. 20 caractères"></textarea>
+    <button type="submit">Poser ma question</button> <span id="formResponse"></span>
+</form>
+
+<script>
+    // Wait for DOM content
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Definition
+        const myForm = document.querySelector('form');
+        const userEmail = document.querySelector('#email');
+        const userQuestion = document.querySelector('#question');
+        const formResponse = document.querySelector('#formResponse');
+
+        // Methods
+        const getFormSubmit = () => {
+            myForm.addEventListener('submit', event => {
+                // Stop default to use Javascript
+                event.preventDefault();
+
+                // Check form values
+                if( userQuestion.value.length > 19){
+
+                    // Use asyncFetch method to save data
+                    asyncFetch('http://localhost:7659/api/question', 'POST', { question:  userQuestion.value})
+                    .then( data => {
+                        // Display message
+                        formResponse.innerHTML = data.message
+
+                        // Reset form
+                        userQuestion.value = '';
+                    })
+                    .catch( err => {
+                        // Display message
+                        formResponse.innerHTML = err.error || err.message
+                        setTimeout( () => {
+                            formResponse.innerHTML = ''
+                        }, 3000 )
+                    } )
+                }
+            })
+        }
+
+        // Start interface
+        getFormSubmit();
+    })
+</script>

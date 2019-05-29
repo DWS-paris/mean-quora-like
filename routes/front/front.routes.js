@@ -20,17 +20,17 @@ Routes definition
         // Set route fonctions
         routes(){
             frontRouter.get( '/', (req, res) => {
-                // Render page and check if user is logged
+                // Render view and check if user is logged
                 res.render('index', jwtDecoder(req))
             });
 
             frontRouter.get( '/register', (req, res) => {
-                // Render page, user is unlogged
+                // Render view, user is unlogged
                 res.render('register', { isLogged: false })
             });
 
             frontRouter.get( '/login', (req, res) => {
-                // Render page, user is unlogged
+                // Render view, user is unlogged
                 res.render('login', { isLogged: false })
             });
 
@@ -38,7 +38,7 @@ Routes definition
                 // Delete cookie
                 res.clearCookie(process.env.COOKIE_NAME)
                 
-                // Redirection to homepage
+                // Redirection to homepage view
                 res.redirect('/')
             });
         };
