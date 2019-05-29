@@ -1,0 +1,22 @@
+{
+  "name": "mean-quora-like",
+  "version": "1.0.0",
+  "description": "Projet développé dans le cadre d'une semaine intensive @HETIC - 2019",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DWS-paris/mean-quora-like.git"
+  },
+  "keywords": [
+    "MEAN"
+  ],
+  "author": "Julien Noyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DWS-paris/mean-quora-like/issues"
+  },
+  "homepage": "https://github.com/DWS-paris/mean-quora-like#readme"
+}
