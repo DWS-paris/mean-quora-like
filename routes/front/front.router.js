@@ -22,7 +22,7 @@ Routes definition
         routes(){
             frontRouter.get( '/', (req, res) => {
                 // Get question list
-                listItems()
+                readItem()
                 .then( questionData => {
                     // Render view and check if user is logged
                     res.render('index', { isLogged: jwtDecoder(req), questions: questionData })

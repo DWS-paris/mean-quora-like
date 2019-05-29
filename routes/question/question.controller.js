@@ -2,7 +2,8 @@
 Import
 */
     const Vocabulary = require('../../services/vocabulary.service');
-    const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll } = require('../main.controller');
+    const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll, getResponseComment } = require('../main.controller');
+    const CommentModel = require('../../models/comment.model');
 //
 
 /*
@@ -48,7 +49,22 @@ Methods
     const readItem = () => {
         return new Promise( (resolve, reject) => {
             findAll('question')
-            .then( items => resolve( items ))
+            .then( questions => {
+                // Set empty collection
+                let dataArray = [];
+
+                // Fetch _id collection
+                ((async function loop() {
+                    for (let i = 0; i < questions.length; ++i) {
+                        const comments = await CommentModel.find( { parentItem: questions[i]._id } )
+                        questions[i].comment = comments;
+
+                        dataArray.push({ question: questions[i], comments : comments })
+                    }
+                    // return all data
+                    return resolve(dataArray);
+                })());
+            })
             .catch( error => reject( error ));
         })
     };

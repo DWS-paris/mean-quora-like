@@ -1,6 +1,7 @@
 /*
 Import
 */
+    const Model = require('../../models/comment.model')
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll } = require('../main.controller');
 //
 
@@ -63,6 +64,16 @@ Methods
             
         })
     };
+
+    const getResponseComment = (parentItem) => {
+        return new Promise( (resolve, reject) => {
+            Model.find({parentItem: parentItem}, (error, items) => {
+                // Request check
+                if(error) { return reject(error) }
+                else { return resolve(items) };
+            });
+        })
+    };
 //
 
 /*
@@ -73,6 +84,7 @@ Export
         listItems,
         readItem,
         updateItem, 
-        deleteItem
+        deleteItem,
+        getResponseComment
     }
 //
