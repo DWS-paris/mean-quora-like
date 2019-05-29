@@ -32,7 +32,7 @@ Header
         padding: 0;
     }
 
-    nav a{
+    nav a, .userResponse h3{
         border: 0.1rem solid var(--main-color);
         padding: .5rem;
         border-radius: .5rem;
@@ -60,5 +60,44 @@ Footer
     footer a{
         font-weight: 900;
         color: white;
+    }
+/**/
+
+/* 
+Questions
+*/
+    .userQuestion {
+        background: var(--main-color-alpha);
+        padding: 2rem;
+        border-radius: .5rem;
+        -webkit-border-radius: .5rem;
+        -moz-border-radius: .5rem;
+        -ms-border-radius: .5rem;
+        -o-border-radius: .5rem;
+    }
+
+    .questionAuthor, .userResponse h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+    }
+
+    .userResponse h3{
+        color: var(--main-color);
+        margin-bottom: 1rem;
+    }
+
+    .userQuestion h2{
+        margin: 0;
+    }
+
+    .userResponse{
+        padding: 2rem;
+    }
+
+    .userResponse li {
+        list-style: none;
+        border-left: 1rem solid var(--main-color);
+        padding-left: 1rem;
     }
 /**/
