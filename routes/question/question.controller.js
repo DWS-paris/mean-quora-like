@@ -69,6 +69,20 @@ Methods
         })
     };
 
+    const readOneItem = (_id) => {
+        return new Promise( (resolve, reject) => {
+            fetchSingle(_id, 'question')
+            .then( async question => {
+                const comments = await CommentModel.find( { parentItem: _id } )
+                
+                // return all data
+                console.log({ question, comments });
+                return resolve({ question, comments });
+            })
+            .catch( error => reject( error ));
+        })
+    };
+
     const updateItem = () => {
         return new Promise( (resolve, reject) => {
             
@@ -89,6 +103,7 @@ Export
         createItem,
         listItems,
         readItem,
+        readOneItem,
         updateItem, 
         deleteItem
     }

@@ -4,7 +4,7 @@
     <% include ./components/form-question.ejs %>
 <% } %>
 
-<% questions.map(item => { %>
+<% data.map(item => { %>
     <section>
         <article>
             <%- include('./components/card-question.ejs', { data: item }); %>
