@@ -4,4 +4,8 @@
     <% include ./components/form-new-question.ejs %>
 <% } %>
 
+<% questions.map(item => { %>
+    <%- include('./components/card-question.ejs', { question: item }); %>
+<% }) %>
+
 <% include ./static/footer.ejs %>

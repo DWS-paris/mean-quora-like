@@ -27,6 +27,9 @@
                     .then( data => {
                         // Display message
                         formResponse.innerHTML = data.message
+                        setTimeout( () => {
+                            formResponse.innerHTML = ''
+                        }, 3000 )
 
                         // Reset form
                         headline.value = '';

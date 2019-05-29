@@ -5,6 +5,7 @@ Imports
     const frontRouter = express.Router();
     const jwt = require('jsonwebtoken');
     const { jwtDecoder } = require('../auth/auth.controller');
+    const { createItem, listItems, readItem, updateItem, deleteItem } = require('../question/question.controller')
 //
 
 /*
@@ -20,8 +21,20 @@ Routes definition
         // Set route fonctions
         routes(){
             frontRouter.get( '/', (req, res) => {
+                // Get question list
+                listItems()
+                .then( questionData => {
+                    // Render view and check if user is logged
+                    res.render('index', { isLogged: jwtDecoder(req), questions: questionData })
+                })
+                .catch( error => {
+                    // Render view and check if user is logged
+                    res.render('index', { isLogged: jwtDecoder(req), questions: [] })
+                })
+
                 // Render view and check if user is logged
-                res.render('index', jwtDecoder(req))
+                res.render('index', { isLogged: jwtDecoder(req), questions: [] })
+                
             });
 
             frontRouter.get( '/register', (req, res) => {
