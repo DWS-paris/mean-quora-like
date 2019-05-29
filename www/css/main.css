@@ -1,0 +1,64 @@
+/* 
+Layout
+*/
+    header, main, footer{
+        padding: 0 4rem;
+    }
+/**/
+
+
+/* 
+Header
+*/
+    header{
+        margin: 0 auto 2rem auto;
+        padding: 2rem 4rem;
+        border-bottom: .1rem dotted var(--main-color);
+    }
+
+    header h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: var(--main-color);
+        margin-bottom: .5rem;
+    }
+    nav ul{
+        margin: 0;
+    }
+
+    nav li{
+        display: inline-block;
+        padding: 0;
+    }
+
+    nav a{
+        border: 0.1rem solid var(--main-color);
+        padding: .5rem;
+        border-radius: .5rem;
+        -webkit-border-radius: .5rem;
+        -moz-border-radius: .5rem;
+        -ms-border-radius: .5rem;
+        -o-border-radius: .5rem;
+    }
+/**/
+
+/* 
+Footer
+*/
+    footer{
+        font-size: 1.1rem;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 4rem;
+        background-color: var(--main-color)
+    }
+
+    footer a{
+        font-weight: 900;
+        color: white;
+    }
+/**/
