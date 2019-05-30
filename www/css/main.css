@@ -108,8 +108,12 @@ Header
         -o-border-radius: 50%;
 }
 
-    .rightLink:last-of-type{
-        right: 5rem;
+    .rightLink.register, .rightLink.logout{
+        right: 5rem !important;
+    }
+
+    .rightLink.login{
+        right: 10rem;
     }
 
     .userResponse h3{

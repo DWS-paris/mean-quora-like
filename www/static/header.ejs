@@ -22,13 +22,14 @@
                 <ul>
                     <li id="logoKora"><img src="./img/logo.png" alt="Logo Kora"> <span>Kora</span></li>
                     <% if(!isLogged){  %>
-                        <li class="rightLink"><a href="/login"><img src="./img/login.png" alt="Connexion"></a></li>
-                        <li class="rightLink"><a href="/register"><img src="./img/register.png" alt="Inscription"></a></li>
+                        <li class="rightLink login"><a href="/login"><img src="./img/login.png" alt="Connexion"></a></li>
+                        <li class="rightLink register"><a href="/register"><img src="./img/register.png" alt="Inscription"></a></li>
                     <% } %>
                     <% if(isLogged){  %>
                         <li><a href="#" id="askQuestionBtn"><img src="./img/question.png" alt="Poser une question"></a></li>
-                        <li id="logoutButton"  class="rightLink"><a href="/logout"><img src="./img/logout.png" alt="Deconnexion"></a></li>
+                        <li id="logoutButton"  class="rightLink logout"><a href="/logout"><img src="./img/logout.png" alt="Deconnexion"></a></li>
                     <% } %>
+                    <li class="rightLink"><a href="/"><img src="./img/home.png" alt="Connexion"></a></li>
                 </ul>
             </nav>
             <% if(isLogged) { %>
