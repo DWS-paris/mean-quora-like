@@ -144,6 +144,25 @@ Header
         -ms-border-radius: .5rem;
         -o-border-radius: .5rem;
     }
+
+    ul#categoryList {
+        display: flex;
+        list-style: none;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        line-height: 1;
+    }
+
+    ul#categoryList li {
+        margin: 0 .5rem .5rem 0;
+        border: .1rem solid var(--main-color-alpha);
+        padding: .5rem;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: var(--main-color);
+        cursor: pointer;
+    }   
 /**/
 
 /* 

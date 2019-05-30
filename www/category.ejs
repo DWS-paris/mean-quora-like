@@ -1,0 +1,49 @@
+<% if(isLogged) { %>
+    <%- include('./static/header.ejs', { 
+        title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
+        subTitle: "Tu es connecté à Agora, que vas-tu partager aujourd'hui ?" 
+    }); %>
+<% } %>
+
+<% if(!isLogged) { %>
+    <%- include('./static/header.ejs', { 
+        title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
+        subTitle: "Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet." 
+    }); %>
+<% } %>
+
+
+<% data.map(item => { %>
+    <section class="questionSection">
+        <article>
+            <%- include('./components/card-question.ejs', { data: item }); %>
+        </article>
+    </section>
+<% }) %>
+
+<% include ./static/footer.ejs %>
+
+
+<script>
+    // Wait for DOM content
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Definition
+        const addResponseBtn = document.querySelectorAll('.addResponseBtn');
+
+        // Methods
+        const getOpenResponseForm = () => {
+
+            for( let item of addResponseBtn ){
+                item.addEventListener('click', () => {
+                    document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
+                    document.querySelector('#questionHeadlineInput').textContent = item.getAttribute('id-question')
+                    openPopinUX(document.querySelector('#headerResponse'))
+                })
+            }
+        }
+
+        // Start interface
+        getOpenResponseForm();
+    })
+</script>

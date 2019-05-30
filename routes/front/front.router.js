@@ -48,6 +48,11 @@ Routes definition
                 })
             });
 
+            frontRouter.get( '/category/:slug', (req, res) => {
+                
+                res.render('category', { isLogged: jwtDecoder(req), data: [] })
+            });
+
             frontRouter.get( '/register', (req, res) => {
                 // Render view, user is unlogged
                 res.render('register', { isLogged: false })

@@ -45,4 +45,7 @@
             <% include ../components/loader.ejs %>
         </header>
         <main>
-            <%- include('./title-page.ejs', { title: title, subTitle: subTitle }); %>
+            <section id="titlePage">
+                <%- include('./title-page.ejs', { title: title, subTitle: subTitle }); %>
+                <% include ./list-category.ejs %>
+            </section>

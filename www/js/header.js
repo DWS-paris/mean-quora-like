@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerResponse = document.querySelector('#headerResponse');
     const closeButtons = document.querySelectorAll('.closeButtonFormButton');
     const hrefLink = document.querySelectorAll('.rightLink a')
+    const categoryLink = document.querySelectorAll('ul#categoryList li')
 
     // Methods
     const toggleAskQuestionForm = () => {
@@ -64,10 +65,19 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     }
+
+    const showCategoryPage = () => {
+        for( let item of categoryLink ){
+            item.addEventListener('click', () => {
+                console.log(item.getAttribute('data-item'))
+            })
+        }
+    }
     
     
     // Start interface
     toggleAskQuestionForm();
     closePopIn();
     changeHrefLocation();
+    showCategoryPage();
 })
