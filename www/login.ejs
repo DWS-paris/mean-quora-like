@@ -1,4 +1,7 @@
-<% include ./static/header.ejs %>
+<%- include('./static/header.ejs', { 
+    title: "Connete-toi sur la plateforme pour participer aux discutions", 
+    subTitle: "Merci d'indiquer ton email et ton mot de passe" 
+}); %>
 
 <% include ./components/form-login.ejs %>
 

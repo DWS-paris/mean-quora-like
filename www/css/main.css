@@ -8,6 +8,16 @@ Layout
     main {
         margin: 11rem -1rem;
     }
+
+    #titlePage {
+        padding-right: 4rem;
+    }
+
+    #formRegisterLogin {
+        background: var(--main-color-light);
+        padding: 2rem;
+        margin: 0;
+    }
 /**/
 
 

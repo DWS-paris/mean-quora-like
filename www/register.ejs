@@ -1,4 +1,7 @@
-<% include ./static/header.ejs %>
+<%- include('./static/header.ejs', { 
+    title: "Inscris-toi sur la plateforme pour participer aux discutions", 
+    subTitle: "Les informations de ce formualire sont nécessaire pour t'identifier" 
+}); %>
 
 <% include ./components/form-register.ejs %>
 

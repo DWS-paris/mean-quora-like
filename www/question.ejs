@@ -1,4 +1,8 @@
-<% include ./static/header.ejs %>
+<%- include('./static/header.ejs', { 
+    title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
+    subTitle: "Kora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Interrnet." 
+}); %>
+
 <section>
     <article>
         <%- include('./components/card-question.ejs', { data: data }); %>
