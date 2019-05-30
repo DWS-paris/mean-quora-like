@@ -1,12 +1,17 @@
 /* 
 Layout
 */
+    body{
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
     header, main, footer{
         padding: 0 4rem;
     }
 
     main {
-        margin: 11rem -1rem;
+        margin: 11rem -2rem 11rem -1rem
     }
 
     #titlePage {
@@ -270,10 +275,11 @@ Footer
 /* 
 Questions
 */
-    .questionSection{
+    .questionSection {
         margin-bottom: 8rem;
-        padding: 0 1rem;
+        padding: 0 2rem 0 0;
     }
+        
     .userQuestion {
         background: var(--main-color-alpha);
         background-attachment: fixed;
