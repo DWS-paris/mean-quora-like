@@ -1,5 +1,8 @@
 <div class="userQuestion" style=" background-image: url(<%= data.question.image %>); ">
-    <p class="questionAuthor"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
+    <p class="questionAuthor">
+        <b><%= data.question.about %></b> 
+        <span class="userId" data-user-id="<%= data.question.author._id %>"><%= data.question.author.additionalName %></span>
+    </p>
     <h2><%= data.question.headline %></h2>
 </div>
 

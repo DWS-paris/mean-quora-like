@@ -11,15 +11,15 @@ Methods
 */
     // Method to create new item
     const createItem = (req) => {
-        
         return new Promise( (resolve, reject) => {
-            console.log(req.user._id)
             /* Define server data */
-                req.body.author = req.user.pseudo;
-                req.body.image = 'http://lorempixel.com/600/300/abstract/' + Math.floor(Math.random() * 10 + 1);
+                req.body.image = 'http://lorempixel.com/800/800/abstract/' + Math.floor(Math.random() * 10 + 1);
                 req.body.datePublished = new Date();
+                let questionData = Object.assign(req.body, {author: { additionalName: req.user.pseudo, _id: req.user._id }})
+                req.body = questionData
+
+                // console.log(req.body)
             //
-            console.log(req.body)
             /**
              * Call findOneRejectOrCreate method
              * @param req: Request => The client request

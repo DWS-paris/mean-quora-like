@@ -22,7 +22,11 @@ Declare each property and type needed for the schema
         headline: String,
         image: String,
         about: String,
-        author: String,
+        author: {
+            '@type' : { type: [ String ], default: ['Person'] },
+            additionalName: String,
+            _id: String
+        },
         isValidated: Boolean,
         datePublished: Date
     })
