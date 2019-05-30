@@ -24,6 +24,7 @@ Header
         box-sizing: border-box;
         display: flex;
         align-items: center;
+        margin-bottom: 0;
     }
 
     #logoKora span {
@@ -58,6 +59,7 @@ Header
         z-index: 900;
         bottom: 3.5rem;
         left: 50%;
+        padding: 1rem;
         transform: translateX(-50%);
         font-size: 4rem;
         display: flex;
@@ -66,7 +68,7 @@ Header
         border-radius: 50%;
         background: white;
         box-shadow: 0 0 2rem 1rem white;
-        border: 0.1rem solid #b2b4b6;
+        border: .2rem solid #0f76bb30;
     }
 
     #askQuestionBtn i{
@@ -83,28 +85,34 @@ Header
         padding: 0;
     }
 
-    nav li:last-child a {
-        border: none;
-        color: var(--main-color-light);
-        font-size: 3rem;
-    }
-
-    nav li:last-child a:hover {
+    #logoutButton a:hover {
         color: var(--main-color);
     }
 
-    nav li:last-child {
+    #logoutButton, .rightLink {
         position: absolute;
         right: 0;
         top: .5rem;
+        border: .1rem solid #0f76bb30;
     }
 
-    nav li:first-child{
-        display: block;
-        margin: 0;
+    .rightLink {
+        width: 4rem;
+        box-shadow: 0 0 2rem 1rem #eaf2f8;
+        padding: .8rem;
+        border-radius: 50%;
+        height: 4rem;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+}
+
+    .rightLink:last-of-type{
+        right: 5rem;
     }
 
-    nav li > a, .userResponse h3{
+    .userResponse h3{
         border: 0.1rem solid var(--main-color);
         padding: .5rem;
         border-radius: .5rem;
@@ -174,7 +182,7 @@ Questions
 
     .userResponse li {
         list-style: none;
-        border-left: 1rem solid var(--main-color);
+        border-left: 1rem solid var(--main-color-light);
         padding-left: 1rem;
     }
 
@@ -248,7 +256,7 @@ Response
     }
 
     .userResponse ul {
-        margin: 0;
+        margin: 0 0 2rem 0;
     }
 
     #reponseForm.open{
