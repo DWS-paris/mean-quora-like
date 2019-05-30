@@ -36,7 +36,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/comment', 'POST', { headline:  headline.value, parentItem: parentItem.value })
+                    asyncFetch('/api/comment', 'POST', { headline:  headline.value, parentItem: parentItem.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(

@@ -34,7 +34,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/auth/login', 'POST', { email: userEmail.value, password:  userPassword.value})
+                    asyncFetch('/api/auth/login', 'POST', { email: userEmail.value, password:  userPassword.value})
                     .then( data => {
                         // Change loader
                         changeLoaderUX(

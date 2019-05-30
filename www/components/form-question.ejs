@@ -47,7 +47,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/question', 'POST', { headline:  headline.value, about: questionCategory.value })
+                    asyncFetch('/api/question', 'POST', { headline:  headline.value, about: questionCategory.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(
