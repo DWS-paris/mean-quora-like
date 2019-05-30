@@ -179,11 +179,12 @@ Questions
     .userQuestion h2 {
         margin: 0;
         background: rgba(255, 255, 255, .7);
-        padding: 2rem;
+        padding: 0 2rem 2rem 2rem;
     }
 
-    .userResponse{
+    .userResponse {
         padding: 2rem 0;
+        line-height: 1.3;
     }
 
     .userResponse li {
@@ -302,5 +303,36 @@ Animations
 
     #headerForm.open, #headerResponse.open{
         opacity: 1;
+    }
+/**/
+
+/* 
+Media queries
+*/
+    @media screen and (min-width: 700px){
+        main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        main > section{
+            width: calc(50% - 1rem)
+        }
+    }
+
+    @media screen and (min-width: 950px){
+
+        main {
+            display: flex;
+            justify-content: start;
+        }
+
+        main > section{
+            width: calc(25% - 1rem)
+        }
+
+        main > section:not(:last-of-type){
+            margin-right: 2rem;
+        }
     }
 /**/
