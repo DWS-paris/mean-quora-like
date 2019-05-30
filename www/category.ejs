@@ -12,14 +12,22 @@
     }); %>
 <% } %>
 
-
-<% data.map(item => { %>
+<% if(data.length > 0) { %>
+    <% data.map(item => { %>
+        <section class="questionSection">
+            <article>
+                <%- include('./components/card-question.ejs', { data: item }); %>
+            </article>
+        </section>
+    <% }) %>
+<% } %>
+<% if(data.length === 0) { %>
     <section class="questionSection">
         <article>
-            <%- include('./components/card-question.ejs', { data: item }); %>
+            <p>Tiens, pas de questions par ici...</p>
         </article>
     </section>
-<% }) %>
+<% } %>
 
 <% include ./static/footer.ejs %>
 

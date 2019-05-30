@@ -26,11 +26,11 @@ Routes definition
                 readItem()
                 .then( questionData => {
                     // Render view and check if user is logged
-                    res.render('index', { isLogged: jwtDecoder(req), data: questionData })
+                    res.render('index', { isLogged: jwtDecoder(req), data: questionData, slug: '/' })
                 })
                 .catch( error => {
                     // Render view and check if user is logged
-                    res.render('index', { isLogged: jwtDecoder(req), data: [] })
+                    res.render('index', { isLogged: jwtDecoder(req), data: [], slug: '/' })
                 })
             });
 

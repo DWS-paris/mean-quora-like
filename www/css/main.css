@@ -61,7 +61,7 @@ Header
 
     header {
         margin: 0 auto;
-        padding: 2rem 4rem 0 4rem;
+        padding: 2rem 4rem 0 3rem;
         position: fixed;
         top: 0;
         left: 0;
@@ -162,7 +162,16 @@ Header
         font-weight: 900;
         color: var(--main-color);
         cursor: pointer;
+        transition:  all .3s   ;
+        -webkit-transition:  all .3s   ;
+        -moz-transition:  all .3s   ;
+        -ms-transition:  all .3s   ;
+        -o-transition:  all .3s   ;
     }   
+    ul#categoryList li:hover, ul#categoryList li.active{
+        color: white;
+        background-color: var(--main-color);
+    }
 /**/
 
 /* 

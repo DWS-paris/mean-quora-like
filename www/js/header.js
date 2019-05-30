@@ -69,7 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const showCategoryPage = () => {
         for( let item of categoryLink ){
             item.addEventListener('click', () => {
-                console.log(item.getAttribute('data-item'))
+                // Change loader
+                openLoaderUX(
+                    '#loaderMessage', 
+                    '#loader', 
+                    'Redirection...',
+                    item.getAttribute('data-item') === '/' ? `/` : `/category/${item.getAttribute('data-item')}`
+                )
             })
         }
     }

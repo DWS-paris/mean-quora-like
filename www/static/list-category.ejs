@@ -1,11 +1,71 @@
 <ul id="categoryList">
-    <li data-item="html">HTML</li>
-    <li data-item="css">CSS</li>
-    <li data-item="javascript">Javascript</li>
-    <li data-item="php">PHP</li>
-    <li data-item="backend">Technologie Serveur</li>
-    <li data-item="frontend">Technologie Client</li>
-    <li data-item="pwa">PWA</li>
-    <li data-item="git">Git/Gihub</li>
-    <li data-item="technique">Bonnes pratiques</li>
+    <% if( slug === "/" ){ %>
+        <li data-item="/" class="active">Toutes les catégories</li>
+    <% } %>
+    <% if( slug !== "/" ){ %>
+        <li data-item="/">Toutes les catégories</li>
+    <% } %>
+
+    <% if( slug === "HTML" ){ %>
+        <li data-item="html" class="active">HTML</li>
+    <% } %>
+    <% if( slug !== "HTML" ){ %>
+        <li data-item="html">HTML</li>
+    <% } %>
+
+    <% if( slug === "CSS" ){ %>
+        <li data-item="css" class="active">CSS</li>
+    <% } %>
+    <% if( slug !== "CSS" ){ %>
+        <li data-item="css">CSS</li>
+    <% } %>
+    
+    <% if( slug === "JAVASCRIPT" ){ %>
+        <li data-item="javascript" class="active">Javascript</li>
+    <% } %>
+    <% if( slug !== "JAVASCRIPT" ){ %>
+        <li data-item="javascript">Javascript</li>
+    <% } %>
+    
+    <% if( slug === "PHP" ){ %>
+        <li data-item="php" class="active">PHP</li>
+    <% } %>
+    <% if( slug !== "PHP" ){ %>
+        <li data-item="php">PHP</li>
+    <% } %>
+    
+    <% if( slug === "BACKEND" ){ %>
+        <li data-item="backend" class="active">Technologie Serveur</li>
+    <% } %>
+    <% if( slug !== "BACKEND" ){ %>
+        <li data-item="backend">Technologie Serveur</li>
+    <% } %>
+    
+    <% if( slug === "FRONTEND" ){ %>
+        <li data-item="frontend" class="active">Technologie Client</li>
+    <% } %>
+    <% if( slug !== "FRONTEND" ){ %>
+        <li data-item="frontend">Technologie Client</li>
+    <% } %>
+    
+    <% if( slug === "PWA" ){ %>
+        <li data-item="pwa" class="active">PWA</li>
+    <% } %>
+    <% if( slug !== "PWA" ){ %>
+        <li data-item="pwa">PWA</li>
+    <% } %>
+    
+    <% if( slug === "GIT" ){ %>
+        <li data-item="git" class="active">Git/Gihub</li>
+    <% } %>
+    <% if( slug !== "GIT" ){ %>
+        <li data-item="git">Git/Gihub</li>
+    <% } %>
+    
+    <% if( slug === "TECHNIQUE" ){ %>
+        <li data-item="technique" class="active">Bonnes pratiques</li>
+    <% } %>
+    <% if( slug !== "TECHNIQUE" ){ %>
+        <li data-item="technique">Bonnes pratiques</li>
+    <% } %>
 </ul>
