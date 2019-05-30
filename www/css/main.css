@@ -234,7 +234,7 @@ Loader
     }
 
     #loaderLogo::before {
-        content: "Kora";
+        content: "Agora";
         font-family: 'Pacifico', cursive;
         font-size: 3rem;
         color: var(--main-color);
