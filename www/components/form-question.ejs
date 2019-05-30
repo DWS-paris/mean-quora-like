@@ -24,24 +24,33 @@
                 // Check form values
                 if( headline.value.length > 19){
 
+                    // Display loader
+                    openLoaderUX(
+                        '#loaderMessage', 
+                        '#loader', 
+                        'Enregistrement du message...'
+                    )
+
                     // Use asyncFetch method to save data
                     asyncFetch('http://localhost:7659/api/question', 'POST', { headline:  headline.value, about: '5cee8b348bccd2292091584a'})
                     .then( data => {
-                        // Display message
-                        formResponse.innerHTML = data.message
-                        setTimeout( () => {
-                            formResponse.innerHTML = ''
-                        }, 3000 )
-
-                        // Reset form
-                        headline.value = '';
+                        // Change loader
+                        openLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Question enregistrée !',
+                            '/'
+                        )
                     })
                     .catch( err => {
-                        // Display message
-                        formResponse.innerHTML = err.error || err.message
-                        setTimeout( () => {
-                            formResponse.innerHTML = ''
-                        }, 3000 )
+                        console.log(err)
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            err.status === 500 ? 'La questionn à déjà été posée...' : 'Problème réseeau merci de recommencer',
+                            null
+                        )
                     } )
                 }
             })
