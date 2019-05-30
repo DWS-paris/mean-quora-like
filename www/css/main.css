@@ -231,7 +231,7 @@ Questions
         background-attachment: fixed;
         background-size: auto 100%;
         padding: 0;
-        word-break: break-all;
+        word-break: break-word;
         border-radius: .5rem;
         -webkit-border-radius: .5rem;
         -moz-border-radius: .5rem;
@@ -293,6 +293,7 @@ Questions
     #questionForm, #reponseForm {
         margin: auto;
         width: 70%;
+        position: relative;
     }
 
     #questionForm textarea, #reponseForm textarea {
@@ -323,6 +324,45 @@ Questions
 
     #questionForm textarea:focus, #headerResponse textarea:focus{
         background-color: white;
+    }
+
+    .box {
+        position: absolute;
+        top: -5rem;
+        left: 0;
+    }
+    
+    .box select {
+        background-color: var(--main-color);
+        color: white;
+        width: 35rem;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        -webkit-appearance: button;
+        appearance: button;
+        outline: none;
+    }
+    
+    
+    .box select option {
+        padding: 30px;
+    }
+
+    button.addResponseBtn span {
+        display: block;
+        font-size: 1rem;
+        font-weight: 100;
+        text-transform: none;
+    }
+
+    button.addResponseBtn {
+        height: auto;
+        line-height: 1.2;
+        text-align: left;
+        padding: .5rem 1rem;
+        color: var(--main-color);
+        background: transparent;
     }
 /**/
 

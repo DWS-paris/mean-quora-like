@@ -1,5 +1,19 @@
 <section id="headerForm">
     <form action="#" id="questionForm">
+        <div class="box">
+            <select name="questionCategory" id="questionCategory" required>
+                <option value="NULL">Selectonner une catégorie</option>
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="Javascript">Javascript</option>
+                <option value="PHP">PHP</option>
+                <option value="Tech. Server">Technologie Serveur</option>
+                <option value="Tech. Client">Technologie Client</option>
+                <option value="PWA">PWA</option>
+                <option value="Git">Git/Gihub</option>
+                <option value="BP.">Bonnes pratiques</option>
+            </select>
+        </div>
         <textarea name="headline" id="headline" required minlength="20" placeholder="C'est quoi ta question ?"></textarea>
         <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button> <span id="formResponse"></span>
         <button type="button" class="closeButtonFormButton" id="closeFromQuestion"><img src="./img/close.png" alt="Ferme"></button>
@@ -13,6 +27,7 @@
         // Definition
         const myFormQuestion = document.querySelector('#questionForm');
         const headline = document.querySelector('#headline');
+        const questionCategory = document.querySelector('#questionCategory');
         const formResponse = document.querySelector('#formResponse');
 
         // Methods
@@ -22,7 +37,7 @@
                 event.preventDefault();
 
                 // Check form values
-                if( headline.value.length > 19){
+                if( headline.value.length > 19 && questionCategory.value !== 'NULL'){
 
                     // Display loader
                     openLoaderUX(
@@ -32,7 +47,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('http://localhost:7659/api/question', 'POST', { headline:  headline.value, about: '5cee8b348bccd2292091584a'})
+                    asyncFetch('http://localhost:7659/api/question', 'POST', { headline:  headline.value, about: questionCategory.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(
