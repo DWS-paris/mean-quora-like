@@ -20,7 +20,7 @@
         const responseFormResponse = document.querySelector('#responseFormResponse');
 
         // Methods
-        const getFormSubmit = () => {
+        const getFormSubmitResponse = () => {
             reponseForm.addEventListener('submit', event => {
                 // Stop default to use Javascript
                 event.preventDefault();
@@ -28,29 +28,38 @@
                 // Check form values
                 if( headline.value.length > 19){
 
+                    // Display loader
+                    openLoaderUX(
+                        '#loaderMessage', 
+                        '#loader', 
+                        'Enregistrement de ta réponse...'
+                    )
+
                     // Use asyncFetch method to save data
                     asyncFetch('http://localhost:7659/api/comment', 'POST', { headline:  headline.value, parentItem: parentItem.value })
                     .then( data => {
-                        // Display message
-                        responseFormResponse.innerHTML = data.message
-                        setTimeout( () => {
-                            responseFormResponse.innerHTML = ''
-                        }, 3000 )
-
-                        // Reset form
-                        headline.value = '';
+                        // Change loader
+                        openLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Réponse enregistrée !',
+                            '/'
+                        )
                     })
                     .catch( err => {
-                        // Display message
-                        responseFormResponse.innerHTML = err.error || err.message
-                        setTimeout( () => {
-                            responseFormResponse.innerHTML = ''
-                        }, 3000 )
+                        console.log(err)
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            err.status === 500 ? 'La réponse à déjà été donnée...' : 'Problème réseeau merci de recommencer',
+                            null
+                        )
                     } )
                 }
             })
         }
         // Start interface
-        getFormSubmit();
+        getFormSubmitResponse();
     })
 </script>

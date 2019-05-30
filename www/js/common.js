@@ -2,7 +2,7 @@
 Methode to use fetch reequests
 */
     const asyncFetch =  ( url, type = 'GET', data = undefined ) => {
-
+        console.log('asyncFetch')
         return new Promise( async (resolve, reject) => {
             if( type === 'GET' ){
                 // Define request

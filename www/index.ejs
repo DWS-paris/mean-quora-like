@@ -5,11 +5,6 @@
         <article>
             <%- include('./components/card-question.ejs', { data: item }); %>
         </article>
-        <% if(isLogged) { %>
-            <article>
-                <%- include('./components/form-response.ejs', { parentItem: item.question._id }); %>
-            </article>
-        <% } %>
     </section>
 <% }) %>
 
@@ -37,6 +32,5 @@
 
         // Start interface
         getOpenResponseForm();
-        
     })
 </script>
