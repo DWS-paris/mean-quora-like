@@ -39,13 +39,12 @@ Routes definition
                 // Get question list
                 readOneItem(req.params.id)
                 .then( questionData => {
-                    console.log(questionData)
                     // Render view and check if user is logged
-                    res.render('question', { isLogged: jwtDecoder(req), data: questionData })
+                    res.render('question', { isLogged: jwtDecoder(req), data: questionData, slug: '/question/' + req.params.id })
                 })
                 .catch( error => {
                     // Render view and check if user is logged
-                    res.render('question', { isLogged: jwtDecoder(req), data: [] })
+                    res.render('question', { isLogged: jwtDecoder(req), data: [], slug: '/question/' + req.params.id })
                 })
             });
 
@@ -77,12 +76,12 @@ Routes definition
 
             frontRouter.get( '/register', (req, res) => {
                 // Render view, user is unlogged
-                res.render('register', { isLogged: false })
+                res.render('register', { isLogged: false, slug: 'register' })
             });
 
             frontRouter.get( '/login', (req, res) => {
                 // Render view, user is unlogged
-                res.render('login', { isLogged: false })
+                res.render('login', { isLogged: false, slug: 'login' })
             });
 
             frontRouter.get( '/logout', (req, res) => {
