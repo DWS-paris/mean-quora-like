@@ -25,31 +25,43 @@ Layout
 Header
 */
     #logoKora {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        background: white;
-        box-shadow: 0 0 2rem 1rem #eaf2f8;
-        padding: .8rem;
         box-sizing: border-box;
         display: flex;
         align-items: center;
         margin-bottom: 0;
     }
 
+    #logoKora img{
+        width: 6.5rem;
+        height: 6.5rem;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 0 2rem 1rem #eaf2f8;
+        padding: .2rem;
+    }
+
     #logoKora span {
-        padding-left: 2rem;
+        padding-left: 1rem;
         font-size: 3rem;
         font-family: 'Pacifico', cursive;
-        color: #ffffff;
-        text-shadow: 0 0 1rem #0f76bb66;
+        color: black;
+        text-shadow: 0 0 1rem #ffffff;
+        display: block;
+        line-height: 1;
+    }
+
+    #logoKora span strong {
+        font-size: 1rem;
+        font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+        font-weight: 100;
+        display: block;
+        color: var(--main-color);
+        padding-left: 4rem;
     }
 
     header {
-        margin: 0 auto 2rem auto;
+        margin: 0 auto;
         padding: 2rem 4rem 0 4rem;
-        background-color: white;
-        box-shadow: 0 0 2rem 1rem white;
         position: fixed;
         top: 0;
         left: 0;
@@ -67,17 +79,16 @@ Header
     #askQuestionBtn {
         position: fixed;
         z-index: 900;
-        bottom: 3.5rem;
+        bottom: 4.5rem;
         left: 50%;
-        padding: 1rem;
+        padding: 0;
         transform: translateX(-50%);
-        font-size: 4rem;
         display: flex;
-        height: 8rem;
-        width: 8rem;
+        height: 10rem;
+        width: 10rem;
         border-radius: 50%;
         background: white;
-        box-shadow: 0 0 2rem 1rem white;
+        box-shadow: 0 0 2rem 1rem var(--main-color-light);
         border: .2rem solid #0f76bb30;
     }
 
@@ -93,37 +104,35 @@ Header
     nav li{
         display: inline-block;
         padding: 0;
+        margin: 0;
     }
 
     #logoutButton a:hover {
         color: var(--main-color);
     }
 
-    #logoutButton, .rightLink {
+    #logoutButton, .rightLink:not(:first-child) {
         position: absolute;
         right: 0;
         top: .5rem;
-        border: .1rem solid #0f76bb30;
+        border: .1rem solid var(--main-color-alpha);
+        background: white;
     }
 
-    .rightLink {
-        width: 4rem;
+    .rightLink:not(:first-child) {
+        width: 5.5rem;
+        height: 5.5rem;
         box-shadow: 0 0 2rem 1rem #eaf2f8;
         padding: .8rem;
         border-radius: 50%;
-        height: 4rem;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
-}
-
-    .rightLink.register, .rightLink.logout{
-        right: 5rem !important;
     }
 
     .rightLink.login{
-        right: 10rem;
+        right: 6rem;
     }
 
     .userResponse h3{

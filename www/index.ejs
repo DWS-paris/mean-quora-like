@@ -1,14 +1,14 @@
 <% if(isLogged) { %>
     <%- include('./static/header.ejs', { 
         title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
-        subTitle: "Tu es connecté à Kora, la plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet." 
+        subTitle: "Tu es connecté à Agora, que vas-tu partager aujourd'hui ?" 
     }); %>
 <% } %>
 
 <% if(!isLogged) { %>
     <%- include('./static/header.ejs', { 
         title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
-        subTitle: "Kora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet, inscri-toi pour participer aux discutions." 
+        subTitle: "Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet." 
     }); %>
 <% } %>
 
