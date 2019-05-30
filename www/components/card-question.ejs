@@ -15,7 +15,7 @@
 
     <% if(isLogged) { %>
         <button class="addResponseBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">
-            <span>Tu t'y connais en <%= data.question.about %> ?</span>
+            <span>Tu t'y connais en <b><%= data.question.about %></b> ?</span>
             Propose une réponse
         </button>
     <% } %>
