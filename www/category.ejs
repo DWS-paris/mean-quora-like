@@ -1,14 +1,14 @@
 <% if(isLogged) { %>
     <%- include('./static/header.ejs', { 
-        title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
-        subTitle: "Tu es connecté à Agora, que vas-tu partager aujourd'hui ?" 
+        title: "Dans l'Agora, les experts en " + slug + " sont les bienvenues !", 
+        subTitle: "Mais ici on aime surtout les novices, n'hésites pas à poser une question." 
     }); %>
 <% } %>
 
 <% if(!isLogged) { %>
     <%- include('./static/header.ejs', { 
-        title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
-        subTitle: "Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet." 
+        title: "Dans l'Agora, les experts en " + slug + " sont les bienvenues !", 
+        subTitle: "N'hésites pas à créer un compte pour répondre ou poser des questions."
     }); %>
 <% } %>
 

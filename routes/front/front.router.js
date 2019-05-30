@@ -6,6 +6,7 @@ Imports
     const jwt = require('jsonwebtoken');
     const { jwtDecoder } = require('../auth/auth.controller');
     const { createItem, listItems, readItem, readOneItem, updateItem, deleteItem } = require('../question/question.controller')
+    const Model = require('../../models/index');
 //
 
 /*
@@ -49,8 +50,29 @@ Routes definition
             });
 
             frontRouter.get( '/category/:slug', (req, res) => {
+
+                Model.question.find({ about: req.params.slug }, (err, questions) => {
+                    if(err){
+                        res.render('category', { isLogged: jwtDecoder(req), data: [], slug: req.params.slug.toUpperCase() })
+                    }
+                    else{
+                        // Set empty collection
+                        let dataArray = [];
+
+                        // Fetch _id collection
+                        ((async function loop() {
+                            for (let i = 0; i < questions.length; ++i) {
+                                const comments = await Model.comment.find( { parentItem: questions[i]._id } )
                 
-                res.render('category', { isLogged: jwtDecoder(req), data: [] })
+                                // return all data
+                                dataArray.push({ question: questions[i], comments: comments })
+                            }
+                            console.log(dataArray)
+                            // return all data
+                            return res.render('category', { isLogged: jwtDecoder(req), data: dataArray, slug: req.params.slug.toUpperCase() })
+                        })());
+                    }
+                })
             });
 
             frontRouter.get( '/register', (req, res) => {
