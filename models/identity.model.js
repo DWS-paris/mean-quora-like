@@ -15,6 +15,7 @@ Declare each property and type needed for the schema
 */
     const identitySchema = new Schema({
         email: String,
+        pseudo: String,
         password: String,
         isValidated: Boolean,
         creationDate: String,
@@ -39,6 +40,7 @@ Generate a user access token
         */
             return jwt.sign({
                 _id: user._id,
+                pseudo: user.pseudo,
                 password: user.password,
                 isValidated: user.password,
                 creationDate: user.creationDate,

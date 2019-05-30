@@ -4,16 +4,45 @@ Layout
     header, main, footer{
         padding: 0 4rem;
     }
+
+    main {
+        margin: 11rem auto;
+    }
 /**/
 
 
 /* 
 Header
 */
-    header{
+    #logoKora {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 0 2rem 1rem #eaf2f8;
+        padding: .8rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+    }
+
+    #logoKora span {
+        padding-left: 2rem;
+        font-size: 3rem;
+        font-family: 'Pacifico', cursive;
+        color: #ffffff;
+        text-shadow: 0 0 1rem #0f76bb66;
+    }
+
+    header {
         margin: 0 auto 2rem auto;
-        padding: 2rem 4rem;
-        border-bottom: .1rem dotted var(--main-color);
+        padding: 2rem 4rem 0 4rem;
+        background-color: white;
+        box-shadow: 0 0 2rem 1rem white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
 
     header h1 {
@@ -23,13 +52,51 @@ Header
         color: var(--main-color);
         margin-bottom: .5rem;
     }
+    
+    #askQuestionBtn {
+        position: fixed;
+        z-index: 900;
+        bottom: 3.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 4rem;
+        display: flex;
+        height: 8rem;
+        width: 8rem;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 0 2rem 1rem white;
+        border: 0.1rem solid #b2b4b6;
+    }
+
+    #askQuestionBtn i{
+        margin: auto;
+    }
+
     nav ul{
         margin: 0;
+        position: relative;
     }
 
     nav li{
         display: inline-block;
         padding: 0;
+    }
+
+    nav li:last-child a {
+        border: none;
+        color: var(--main-color-light);
+        font-size: 3rem;
+    }
+
+    nav li:last-child a:hover {
+        color: var(--main-color);
+    }
+
+    nav li:last-child {
+        position: absolute;
+        right: 0;
+        top: .5rem;
     }
 
     nav li:first-child{
@@ -53,18 +120,19 @@ Footer
 */
     footer{
         font-size: 1.1rem;
-        color: white;
+        text-align: center;
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 1rem 4rem;
-        background-color: var(--main-color)
+        padding-bottom: 1rem;
+        background-color: white;
+        box-shadow: 0 0 2rem 1rem white;
     }
 
-    footer a{
-        font-weight: 900;
-        color: white;
+    footer p{
+        position: relative;
+        z-index: 910;
     }
 /**/
 
@@ -77,6 +145,7 @@ Questions
     .userQuestion {
         background: var(--main-color-alpha);
         padding: 2rem;
+        word-break: break-all;
         border-radius: .5rem;
         -webkit-border-radius: .5rem;
         -moz-border-radius: .5rem;
@@ -194,6 +263,7 @@ Response
         line-height: 1;
         padding-right: 5rem;
         margin: 0 0 1.5rem 0;
+        word-break: break-all;
     }
 /**/
 

@@ -14,7 +14,7 @@ Methods
         return new Promise( (resolve, reject) => {
             console.log(req.user._id)
             /* Define server data */
-                req.body.author = req.user._id;
+                req.body.author = req.user.pseudo;
                 req.body.datePublished = new Date();
             //
             console.log(req.body)
