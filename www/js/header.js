@@ -9,20 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerForm = document.querySelector('#headerForm');
     const headerResponse = document.querySelector('#headerResponse');
     const closeButtons = document.querySelectorAll('.closeButtonFormButton');
+    const hrefLink = document.querySelectorAll('.rightLink a')
 
     // Methods
     const toggleAskQuestionForm = () => {
-        
-        askQuestionBtn.addEventListener('click', () => {
-            if(askQuestionFormIsOpen){
-                closePopinUX(headerForm)
-                askQuestionFormIsOpen = false;
-            }
-            else{
-                openPopinUX(headerForm)
-                askQuestionFormIsOpen = true
-            }
-        })
+
+        if(askQuestionBtn){
+            askQuestionBtn.addEventListener('click', () => {
+                if(askQuestionFormIsOpen){
+                    closePopinUX(headerForm)
+                    askQuestionFormIsOpen = false;
+                }
+                else{
+                    openPopinUX(headerForm)
+                    askQuestionFormIsOpen = true
+                }
+            })
+        }
     }
 
     const closePopIn = () => {
@@ -45,9 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     }
+
+    const changeHrefLocation = () => {
+        for( let item of hrefLink ){
+            item.addEventListener('click', event => {
+                event.preventDefault();
+
+                // Change loader
+                openLoaderUX(
+                    '#loaderMessage', 
+                    '#loader', 
+                    'Redirection...',
+                    item.getAttribute('href')
+                )
+            })
+        }
+    }
     
     
     // Start interface
     toggleAskQuestionForm();
     closePopIn();
+    changeHrefLocation();
 })

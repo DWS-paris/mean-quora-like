@@ -2,7 +2,6 @@
 Methode to use fetch reequests
 */
     const asyncFetch =  ( url, type = 'GET', data = undefined ) => {
-        console.log('asyncFetch')
         return new Promise( async (resolve, reject) => {
             if( type === 'GET' ){
                 // Define request
@@ -109,7 +108,6 @@ const changeLoaderUX = (theMessage = '#loaderMessage', theLoader = '#loader', ms
             }, 300 )
         }
         else{
-            console.log('no path')
             // Wait .5s
             setTimeout( () => {
                 // Wait .3s

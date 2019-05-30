@@ -26,26 +26,32 @@
 
                 // Check form values
                 if( userEmail.value.length > 4 && userPassword.value.length > 4){
+                    // Display loader
+                    openLoaderUX(
+                        '#loaderMessage', 
+                        '#loader', 
+                        'Connexion...'
+                    )
 
                     // Use asyncFetch method to save data
                     asyncFetch('http://localhost:7659/api/auth/login', 'POST', { email: userEmail.value, password:  userPassword.value})
                     .then( data => {
-                        // Display message
-                        formResponse.innerHTML = 'Connnexion réussie, vous allez être redirigé...'
-                        setTimeout( () => {
-                            location = '/'  
-                        }, 3000 )
-                        
-                        // Reset form
-                        userEmail.value = '';
-                        userPassword.value = '';
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Connexion réussi !',
+                            '/'
+                        )
                     })
                     .catch( err => {
-                        // Display message
-                        formResponse.innerHTML = err.error
-                        setTimeout( () => {
-                            formResponse.innerHTML = ''
-                        }, 3000 )
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Identifiants inconnus...',
+                            null
+                        )
                     } )
                 }
             })

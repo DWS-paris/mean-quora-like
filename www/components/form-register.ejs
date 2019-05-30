@@ -30,26 +30,32 @@
 
                 // Check form values
                 if( userEmail.value.length > 4 && userPassword.value.length > 4 && userPseudo.value.length > 4){
+                    // Display loader
+                    openLoaderUX(
+                        '#loaderMessage', 
+                        '#loader', 
+                        'Inscription...'
+                    )
 
                     // Use asyncFetch method to save data
                     asyncFetch('http://localhost:7659/api/auth/register', 'POST', { email: userEmail.value, password: userPassword.value, pseudo: userPseudo.value})
                     .then( data => {
-                        // Display message
-                        formResponse.innerHTML = 'Inscription réussie, vous allez être redirigé...'
-                        setTimeout( () => {
-                            location = '/login'  
-                        }, 3000 )
-                        
-                        // Reset form
-                        userEmail.value = '';
-                        userPassword.value = '';
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Inscription réussie ! Vous devez à présent vous connecter.',
+                            '/login'
+                        )
                     })
                     .catch( err => {
-                        // Display message
-                        formResponse.innerHTML = err.error
-                        setTimeout( () => {
-                            formResponse.innerHTML = ''
-                        }, 3000 )
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            err.status === 500 ? 'Adresse mail déjà utilisée' : 'Problème réseeau merci de recommencer',
+                            null
+                        )
                     } )
                 }
             })
