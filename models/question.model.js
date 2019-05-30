@@ -17,10 +17,10 @@ Declare each property and type needed for the schema
         // Schema.org
         '@context' : { type: String, default: 'http://schema.org' },
         '@type' : { type: [ String ], default: ['ScholarlyArticle'] },
-        'image' : { type: [ String ], default: 'http://lorempixel.com/600/300/abstract/' },
 
         // Object data
         headline: String,
+        image: String,
         about: String,
         author: String,
         isValidated: Boolean,

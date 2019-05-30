@@ -16,6 +16,7 @@ Methods
             console.log(req.user._id)
             /* Define server data */
                 req.body.author = req.user.pseudo;
+                req.body.image = 'http://lorempixel.com/600/300/abstract/' + Math.floor(Math.random() * 10 + 1);
                 req.body.datePublished = new Date();
             //
             console.log(req.body)

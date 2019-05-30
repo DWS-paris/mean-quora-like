@@ -152,7 +152,9 @@ Questions
     }
     .userQuestion {
         background: var(--main-color-alpha);
-        padding: 2rem;
+        background-attachment: fixed;
+        background-size: auto 100%;
+        padding: 0;
         word-break: break-all;
         border-radius: .5rem;
         -webkit-border-radius: .5rem;
@@ -165,6 +167,8 @@ Questions
         margin: 0;
         font-size: 1.2rem;
         text-transform: uppercase;
+        background: rgba(255, 255, 255, .7);
+        padding: 2rem 2rem 0 2rem;
     }
 
     .userResponse h3{
@@ -172,8 +176,10 @@ Questions
         margin-bottom: 1rem;
     }
 
-    .userQuestion h2{
+    .userQuestion h2 {
         margin: 0;
+        background: rgba(255, 255, 255, .7);
+        padding: 2rem;
     }
 
     .userResponse{
