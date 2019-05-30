@@ -36,6 +36,9 @@
                     // Use asyncFetch method to save data
                     asyncFetch('/api/auth/login', 'POST', { email: userEmail.value, password:  userPassword.value})
                     .then( data => {
+                        // Set user item
+                        localStorage.setItem('agora-ristote', data.data._id)
+
                         // Change loader
                         changeLoaderUX(
                             '#loaderMessage', 

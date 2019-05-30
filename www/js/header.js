@@ -56,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', event => {
                 event.preventDefault();
 
+                // Remode user token if logout
+                if(item.getAttribute('href') === '/logout'){
+                    localStorage.removeItem('agora-ristote');
+                };
+
                 // Change loader
                 openLoaderUX(
                     '#loaderMessage', 

@@ -23,6 +23,17 @@ Layout
         padding: 2rem;
         margin: 0;
     }
+
+    a.editButton img {
+        width: 4rem;
+        background: white;
+        float: left;
+        margin: 0 1rem 0 0;
+    }
+
+    a.editButton {
+        float: left;
+    }
 /**/
 
 
@@ -309,7 +320,7 @@ Questions
     .userQuestion h2 {
         margin: 0;
         background: rgba(255, 255, 255, .7);
-        padding: 0 2rem 2rem 2rem;
+        padding: .5rem 2rem 2rem 2rem;
     }
 
     .userResponse {
