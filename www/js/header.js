@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleAskQuestionForm = () => {
 
         if(askQuestionBtn){
-            askQuestionBtn.addEventListener('click', () => {
+            askQuestionBtn.addEventListener('click', event => {
+                event.preventDefault()
                 if(askQuestionFormIsOpen){
                     closePopinUX(headerForm)
                     askQuestionFormIsOpen = false;
