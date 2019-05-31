@@ -14,7 +14,7 @@ class MarkdownEditor {
             this.newSimpleMDE = new SimpleMDE({ 
                 element: document.querySelector(this.tag),
                 status: false,
-                toolbar: ['bold', 'italic', 'link', 'preview', 'unordered-list', 'ordered-list', 'side-by-side']
+                toolbar: ['bold', 'italic', 'link', 'preview', 'unordered-list', 'ordered-list']
             });
         }
         else{

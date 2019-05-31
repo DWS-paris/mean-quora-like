@@ -3,21 +3,14 @@
     <!-- <h2><%= data.question.headline %></h2> -->
     <textarea class="headlineQuestionPublic" required minlength="20"><%= data.question.headline %></textarea>
 </div>
-
-
-<div class="userResponse">
-    <% if(data.comments.length > 0) { %>
-        <ul class="commentList">
-            <% data.comments.map(item => { %>
-                <li comment-id="<%= item._id %>"><%- include('./card-comment.ejs', { item: item }); %></li>
-            <% }) %>
-        </ul>
-    <% } %>
+<div>
+    <button class="showQuestionBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">
+        <img src="./img/show-question.png" alt="Proposer une réponse">
+    </button>
 
     <% if(isLogged) { %>
         <button class="addResponseBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">
-            <span>Tu t'y connais en <b><%= data.question.about %></b> ?</span>
-            Propose une réponse
+            <img src="./img/response.png" alt="Proposer une réponse">
         </button>
     <% } %>
 </div>
