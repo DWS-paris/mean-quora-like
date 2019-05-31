@@ -4,9 +4,10 @@
         <div id="questionInHtmlTag"></div>
     
         <p class="formTitle">Propose une réponse</p>
+        
         <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
         
-        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button> <span id="responseFormResponse"></span>
+        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
         <button type="button" class="closeButtonFormButton" id="closeFromResponse"><img src="./img/close.png" alt="Ferme"></button>
     </form>
 
@@ -25,8 +26,7 @@
 
         const headlineResponse = new SimpleMDE({ 
             element: document.querySelector("#headlineResponse"),
-            codeSyntaxHighlighting: true,
-            status: false
+            codeSyntaxHighlighting: true
         });
 
         // Methods

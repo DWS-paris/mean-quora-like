@@ -14,12 +14,11 @@
                 <option value="technique">Bonnes pratiques</option>
             </select>
         </div>
-
-        <input type="text" id="parentItem" name="headline" id="headlineQuestion" required hidden minlength="5">
+        <input type="text" id="parentItem" name="headline" id="headlineQuestionAbout" required hidden minlength="5">
 
         <textarea name="headlineQuestion" id="headlineQuestion" required minlength="20"></textarea>
 
-        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button> <span id="formResponse"></span>
+        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
         <button type="button" class="closeButtonFormButton" id="closeFromQuestion"><img src="./img/close.png" alt="Ferme"></button>
     </form>
 </section>
@@ -28,16 +27,14 @@
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
-        // Definition
-        const headlineQuestion = new SimpleMDE({ 
-            element: document.querySelector("#headlineQuestion"),
-            codeSyntaxHighlighting: true
-        });
-        // const headlineQuestion = document.querySelector('#headlineQuestion');
-
         const myFormQuestion = document.querySelector('#questionForm');
+        const questionCodeMirror = document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap');
         const questionCategory = document.querySelector('#questionCategory');
-        const formResponse = document.querySelector('#formResponse');
+
+        const questionFormMarkdown = new MarkdownEditor('#headlineQuestion', true);
+        questionFormMarkdown.setMarkdownEditor()
+        
+        
 
         // Methods
         const getFormSubmitREsponse = () => {
@@ -45,12 +42,22 @@
                 // Stop default to use Javascript
                 event.preventDefault();
 
-                console.log(headlineQuestion.value())
-                console.log(headlineQuestion.value().length)
+                let formError = 0;
+                
+                console.log(questionFormMarkdown.checkLenght(20))
+                console.log(questionFormMarkdown.getValue())
 
-                // Check form values
-                if( headlineQuestion.value().length > 19 && questionCategory.value !== 'NULL'){
+                if(questionCategory.value === 'NULL'){
+                    questionCategory.classList.add('errorBackground');
+                    formError++;
+                }
 
+                if(questionFormMarkdown.checkLenght(20) === false){
+                    document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').classList.add('errorBorder');
+                    formError++;
+                }
+
+                if( formError === 0 ){
                     // Display loader
                     openLoaderUX(
                         '#loaderMessage', 
@@ -59,7 +66,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('/api/question', 'POST', { headline:  headlineQuestion.value(), about: questionCategory.value })
+                    asyncFetch('/api/question', 'POST', { headline:  questionFormMarkdown.getValue(), about: questionCategory.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(
@@ -79,6 +86,52 @@
                         )
                     } )
                 }
+
+                // Check form values
+                /* if( questionFormMarkdown.checkLenght(20) && questionCategory.value !== 'NULL'){
+
+                    // Display loader
+                    openLoaderUX(
+                        '#loaderMessage', 
+                        '#loader', 
+                        'Enregistrement du message...'
+                    )
+
+                    // Use asyncFetch method to save data
+                    asyncFetch('/api/question', 'POST', { headline:  questionFormMarkdown.getValue(), about: questionCategory.value })
+                    .then( data => {
+                        // Change loader
+                        openLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Question enregistrée !',
+                            '/'
+                        )
+                    })
+                    .catch( err => {
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            err.status === 500 ? 'La question à déjà été posée...' : 'Problème réseeau merci de recommencer',
+                            null
+                        )
+                    } )
+                } */
+            })
+
+            hideError()
+        }
+
+        const hideError = (type) => {
+            // Delete textarea error
+            document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').addEventListener('click', () => {
+                document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').classList.remove('errorBorder');
+            })
+
+            // Delete select error
+            questionCategory.addEventListener('click', () => {
+                questionCategory.classList.remove('errorBackground');
             })
         }
 

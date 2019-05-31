@@ -142,6 +142,17 @@ const closePopinUX =  ( htmlTag ) => {
 }
 //
 
+/* 
+Method to set SimpleMDE
+*/
+    const setSimpleMDE = (tag) => {
+        var newSimpleMDE = new SimpleMDE({ 
+            element: document.querySelector(tag),
+            codeSyntaxHighlighting: true
+        });
+    }
+//
+
 
 /* 
 Loader
@@ -179,20 +190,14 @@ Loader
             const addResponseBtn = document.querySelectorAll('.addResponseBtn');
             const questionInHtmlTag = document.querySelector('#questionInHtmlTag');
 
-            // Set new SimpleMDE
-            const headlineUnicQuestion = new SimpleMDE({ 
-                toolbar: false,
-                status: false
-            })
-
             // Define methods
             const getOpenResponseForm = () => {
 
                 for( let item of addResponseBtn ){
                     item.addEventListener('click', () => {
                         // Set form header
-                        document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
-                        questionInHtmlTag.innerHTML = headlineUnicQuestion.options.previewRender(item.getAttribute('id-question'));
+                        /* document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
+                        questionInHtmlTag.innerHTML = headlineUnicQuestion.options.previewRender(item.getAttribute('id-question')); */
 
                         // Open popin
                         openPopinUX(document.querySelector('#headerResponse'))

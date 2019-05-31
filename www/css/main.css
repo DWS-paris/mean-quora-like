@@ -31,6 +31,7 @@ SimpleMDE
 */
     .CodeMirror, .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar, .CodeMirror-scroll, .editor-preview{
         z-index: 0;
+        margin-bottom: 2rem;
     }
 
     .userQuestion .CodeMirror-scroll {
@@ -478,6 +479,14 @@ Questions
         -webkit-appearance: button;
         appearance: button;
         outline: none;
+    }
+
+    .errorBackground{
+        background-color: var(--error-color) !important;
+    }
+
+    .errorBorder{
+        border-color:  var(--error-color) !important;
     }
     
     
