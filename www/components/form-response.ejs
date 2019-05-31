@@ -1,23 +1,32 @@
 <section id="headerResponse">
-    <form action="#" id="reponseForm">
-        <p type="text" id="questionHeadlineInput"></p>
-        <input type="text" id="parentItem" name="parentItem" required hidden minlength="5">
-        <textarea name="headlineResponse" id="headlineResponse" required minlength="20" placeholder="C'est quoi ta réponse ?"></textarea>
-        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button> <span id="responseFormResponse"></span>
+    <form action="#" id="reponseForm" novalidate>
+        <p class="formTitle">Question</p>
+        <div id="questionInHtmlTag"></div>
+    
+        <p class="formTitle">Propose une réponse</p>
+        
+        <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
+        <input type="text" id="parentItem" name="parentItem" required  minlength="5" hidden>
+        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
         <button type="button" class="closeButtonFormButton" id="closeFromResponse"><img src="./img/close.png" alt="Ferme"></button>
     </form>
+
+    
 </section>
 
 <script>
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
-        // Definition
+        // Declarations
         let responseFormIsOpen = false;
         const reponseForm = document.querySelector('#reponseForm');
-        const headline = document.querySelector('#headlineResponse');
         const parentItem = document.querySelector('#parentItem');
         const responseFormResponse = document.querySelector('#responseFormResponse');
+
+        // SimpleMDE
+        const responseFormMarkdown = new MarkdownEditor('#headlineResponse', true, null);
+        responseFormMarkdown.setMarkdownEditor()
 
         // Methods
         const getFormSubmitResponse = () => {
@@ -25,9 +34,17 @@
                 // Stop default to use Javascript
                 event.preventDefault();
 
-                // Check form values
-                if( headline.value.length > 19){
+                // Set form value
+                let responseMarkdown = new FormValue(responseFormMarkdown.getValue(), 'input')
 
+                // Set error checker
+                let formError = 0;
+
+                // Check mandatories
+                responseMarkdown.checkLength(20) ? formError++ : undefined;
+
+                // Check form error
+                if( formError === 0 ){
                     // Display loader
                     openLoaderUX(
                         '#loaderMessage', 
@@ -36,7 +53,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('/api/comment', 'POST', { headline:  headline.value, parentItem: parentItem.value })
+                    asyncFetch('/api/comment', 'POST', { headline:  responseFormMarkdown.getValue(), parentItem: parentItem.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(
@@ -59,6 +76,7 @@
                 }
             })
         }
+        
         // Start interface
         getFormSubmitResponse();
     })

@@ -1,5 +1,5 @@
 <section id="headerForm">
-    <form action="#" id="questionForm">
+    <form action="#" id="questionForm" novalidate>
         <div class="box">
             <select name="questionCategory" id="questionCategory" required>
                 <option value="NULL">Selectonner une catégorie</option>
@@ -14,8 +14,10 @@
                 <option value="technique">Bonnes pratiques</option>
             </select>
         </div>
-        <textarea name="headline" id="headline" required minlength="20" placeholder="C'est quoi ta question ?"></textarea>
-        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button> <span id="formResponse"></span>
+
+        <textarea name="headlineQuestion" id="headlineQuestion" required minlength="20"></textarea>
+
+        <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
         <button type="button" class="closeButtonFormButton" id="closeFromQuestion"><img src="./img/close.png" alt="Ferme"></button>
     </form>
 </section>
@@ -23,22 +25,34 @@
 <script>
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
-
-        // Definition
+        // Declarations
         const myFormQuestion = document.querySelector('#questionForm');
-        const headline = document.querySelector('#headline');
+        const questionCodeMirror = document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap');
         const questionCategory = document.querySelector('#questionCategory');
-        const formResponse = document.querySelector('#formResponse');
 
-        // Methods
+        // SimpleMDE
+        const questionFormMarkdown = new MarkdownEditor('#headlineQuestion', true, null);
+        questionFormMarkdown.setMarkdownEditor()
+        
+        // Methods to get form submition
         const getFormSubmitREsponse = () => {
             myFormQuestion.addEventListener('submit', event => {
                 // Stop default to use Javascript
                 event.preventDefault();
 
-                // Check form values
-                if( headline.value.length > 19 && questionCategory.value !== 'NULL'){
+                // Set error checker
+                let formError = 0;
 
+                // Set form value
+                let categorySelect = new FormValue(document.querySelector('#questionCategory'), 'select')
+                let questionMarkdown = new FormValue(questionFormMarkdown.getValue(), 'input')
+
+                // Check mandatories
+                categorySelect.checkString('NULL') ? formError++ : undefined;
+                questionMarkdown.checkLength(20) ? formError++ : undefined;
+
+                // Check form error
+                if( formError === 0 ){
                     // Display loader
                     openLoaderUX(
                         '#loaderMessage', 
@@ -47,7 +61,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('/api/question', 'POST', { headline:  headline.value, about: questionCategory.value })
+                    asyncFetch('/api/question', 'POST', { headline:  questionFormMarkdown.getValue(), about: questionCategory.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(
@@ -64,9 +78,25 @@
                             '#loader', 
                             err.status === 500 ? 'La question à déjà été posée...' : 'Problème réseeau merci de recommencer',
                             null
-                        )
+                        ) 
                     } )
                 }
+            })
+
+            // Launch hide error method
+            hideError()
+        }
+
+        // Method to hide error
+        const hideError = (type) => {
+            // Delete textarea error
+            document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').addEventListener('click', () => {
+                document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').classList.remove('errorBorder');
+            })
+
+            // Delete select error
+            questionCategory.addEventListener('click', () => {
+                questionCategory.classList.remove('errorBackground');
             })
         }
 

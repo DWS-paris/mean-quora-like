@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(askQuestionBtn){
             askQuestionBtn.addEventListener('click', event => {
                 event.preventDefault()
+
                 if(askQuestionFormIsOpen){
                     closePopinUX(headerForm)
                     askQuestionFormIsOpen = false;
