@@ -25,11 +25,6 @@ class MarkdownEditor {
             this.newSimpleMDE.togglePreview();
         }
     }
-    
-    // Method to check value length
-    checkLenght(size){
-        return this.newSimpleMDE.value().length >= size ? true : false;
-    }
 
     // Methode to get SimpleMDE value
     getValue(){

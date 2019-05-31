@@ -26,37 +26,33 @@
 <script>
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
-
+        // Declarations
         const myFormQuestion = document.querySelector('#questionForm');
         const questionCodeMirror = document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap');
         const questionCategory = document.querySelector('#questionCategory');
 
+        // SimpleMDE
         const questionFormMarkdown = new MarkdownEditor('#headlineQuestion', true);
         questionFormMarkdown.setMarkdownEditor()
         
-        
-
-        // Methods
+        // Methods to get form submition
         const getFormSubmitREsponse = () => {
             myFormQuestion.addEventListener('submit', event => {
                 // Stop default to use Javascript
                 event.preventDefault();
 
+                // Set error checker
                 let formError = 0;
-                
-                console.log(questionFormMarkdown.checkLenght(20))
-                console.log(questionFormMarkdown.getValue())
 
-                if(questionCategory.value === 'NULL'){
-                    questionCategory.classList.add('errorBackground');
-                    formError++;
-                }
+                // Set form value
+                let categorySelect = new FormValue(document.querySelector('#questionCategory'), 'select')
+                let questionMarrkdown = new FormValue(questionFormMarkdown.getValue(), 'input')
 
-                if(questionFormMarkdown.checkLenght(20) === false){
-                    document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').classList.add('errorBorder');
-                    formError++;
-                }
+                // Check mandatories
+                categorySelect.checkString('NULL') ? formError++ : undefined;
+                questionMarrkdown.checkLength(20) ? formError++ : undefined;
 
+                // Check form error
                 if( formError === 0 ){
                     // Display loader
                     openLoaderUX(
@@ -83,46 +79,16 @@
                             '#loader', 
                             err.status === 500 ? 'La question à déjà été posée...' : 'Problème réseeau merci de recommencer',
                             null
-                        )
+                        ) 
                     } )
                 }
-
-                // Check form values
-                /* if( questionFormMarkdown.checkLenght(20) && questionCategory.value !== 'NULL'){
-
-                    // Display loader
-                    openLoaderUX(
-                        '#loaderMessage', 
-                        '#loader', 
-                        'Enregistrement du message...'
-                    )
-
-                    // Use asyncFetch method to save data
-                    asyncFetch('/api/question', 'POST', { headline:  questionFormMarkdown.getValue(), about: questionCategory.value })
-                    .then( data => {
-                        // Change loader
-                        openLoaderUX(
-                            '#loaderMessage', 
-                            '#loader', 
-                            'Question enregistrée !',
-                            '/'
-                        )
-                    })
-                    .catch( err => {
-                        // Change loader
-                        changeLoaderUX(
-                            '#loaderMessage', 
-                            '#loader', 
-                            err.status === 500 ? 'La question à déjà été posée...' : 'Problème réseeau merci de recommencer',
-                            null
-                        )
-                    } )
-                } */
             })
 
+            // Launch hide error method
             hideError()
         }
 
+        // Method to hide error
         const hideError = (type) => {
             // Delete textarea error
             document.querySelector('#questionForm .CodeMirror.cm-s-paper.CodeMirror-wrap').addEventListener('click', () => {

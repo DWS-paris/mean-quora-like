@@ -18,16 +18,15 @@
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
-        // Definition
+        // Declarations
         let responseFormIsOpen = false;
         const reponseForm = document.querySelector('#reponseForm');
         const parentItem = document.querySelector('#parentItem');
         const responseFormResponse = document.querySelector('#responseFormResponse');
 
-        const headlineResponse = new SimpleMDE({ 
-            element: document.querySelector("#headlineResponse"),
-            codeSyntaxHighlighting: true
-        });
+        // SimpleMDE
+        const responseFormMarkdown = new MarkdownEditor('#headlineResponse', true);
+        responseFormMarkdown.setMarkdownEditor()
 
         // Methods
         const getFormSubmitResponse = () => {
@@ -35,10 +34,12 @@
                 // Stop default to use Javascript
                 event.preventDefault();
 
-                console.log(headlineResponse.value())
+                console.log(responseFormMarkdown.getValue())
+                console.log(responseFormMarkdown.checkLenght(20))
+
 
                 // Check form values
-                if( headlineResponse.value().length > 19){
+                /* if( headlineResponse.value().length > 19){
 
                     // Display loader
                     openLoaderUX(
@@ -68,7 +69,7 @@
                             null
                         )
                     } )
-                }
+                } */
             })
         }
         
