@@ -1,8 +1,9 @@
 class MarkdownEditor {
     // Instanciate
-    constructor(tag, edit){
+    constructor(tag, edit, i){
         this.tag = tag;
         this.edit = edit;
+        this.i = i;
         this.newSimpleMDE = undefined
     }
     
@@ -18,7 +19,7 @@ class MarkdownEditor {
         }
         else{
             this.newSimpleMDE = new SimpleMDE({ 
-                element: document.querySelector(this.tag),
+                element: document.querySelectorAll(this.tag)[this.i],
                 status: false,
                 toolbar: false
             });

@@ -40,8 +40,6 @@ Methode to use fetch reequests
     }
 //
 
-
-
 /* 
 Method to open loader
 */
@@ -143,14 +141,62 @@ const closePopinUX =  ( htmlTag ) => {
 //
 
 /* 
-Method to set SimpleMDE
+Method to set HeadlineQuestion
 */
-    const setSimpleMDE = (tag) => {
-        var newSimpleMDE = new SimpleMDE({ 
-            element: document.querySelector(tag),
-            codeSyntaxHighlighting: true
-        });
+const setHeadlineQuestion = (tag) => {
+    // Loop on all {{tag}} to activate SimpleMDE
+    for( let i = 0; i <  document.querySelectorAll(tag).length; i++ ){
+        let newSimpleMDE = new MarkdownEditor(tag, false, i).setMarkdownEditor();
     }
+}
+//
+
+/* 
+Method to set AddResponseBtn
+*/
+const setAddResponseBtn = (buttons, parentItem) => {
+    // Loop on all {{tag}} to activate response button
+    for( let item of document.querySelectorAll(buttons) ){
+        item.addEventListener('click', () => {
+            // Set form header
+            document.querySelector(parentItem).setAttribute('value', item.getAttribute('id-data'))
+
+            // Open popin
+            openPopinUX(document.querySelector('#headerResponse'))
+        })
+    }
+}
+//
+
+/* 
+Method to set Loader
+*/
+const setLoader = (loader, loaderMessage) => {
+    // Display message
+    loaderMessage.textContent = 'Chargement...';
+
+    // Wait .3s
+    setTimeout( () => {
+        // Show loader GIF
+        loader.classList.add('open');
+        // Wait 1s
+        setTimeout( () => {
+            // Close loader
+            loader.classList.add('close');
+            // Wait .3s
+            setTimeout( () => {
+                // Hide loader
+                loader.classList.add('hide');
+                // Wait .3s
+                setTimeout( () => {
+                    // Remove class
+                    loader.classList.remove('open');
+                    loader.classList.remove('close');
+                }, 300 )
+            }, 300 )
+        }, 1000 )
+    }, 300 )
+}
 //
 
 
@@ -160,85 +206,9 @@ Loader
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
-        /* 
-        SimpleMDE
-        */
-            // Declaration
-            const simpleMDEquestions = [];
-            const headlineQuestionPublic = document.querySelectorAll('.headlineQuestionPublic');
-            
-            // Loop on all .headlineQuestionPublic to activate SimpleMDE
-            for( let item of headlineQuestionPublic ){
-                simpleMDEquestions.push( new SimpleMDE({ 
-                    element: item,
-                    toolbar: false,
-                    status: false
-                }))
-            }
-
-            // Loop on SimpleMDE array
-            for( let item of simpleMDEquestions){
-                // Change to preview mode
-                item.togglePreview()
-            }
-        //
-
-        /* 
-        Display reponse popin
-        */
-            // Definition
-            const addResponseBtn = document.querySelectorAll('.addResponseBtn');
-
-            // Define methods
-            const getOpenResponseForm = () => {
-                for( let item of addResponseBtn ){
-                    item.addEventListener('click', () => {
-                        // Set form header
-                        document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
-
-                        // Open popin
-                        openPopinUX(document.querySelector('#headerResponse'))
-                    })
-                }
-            }
-
-            // Launch method
-            getOpenResponseForm();
-        //
-
-        /* 
-        Loader
-        */
-            // Define method
-            const showLoader = (loader = document.querySelector('#loader'), loaderMessage = document.querySelector('#loaderMessage')) => {
-                // Display message
-                loaderMessage.textContent = 'Chargement...';
-
-                // Wait .3s
-                setTimeout( () => {
-                    // Show loader GIF
-                    loader.classList.add('open');
-                    // Wait 1s
-                    setTimeout( () => {
-                        // Close loader
-                        loader.classList.add('close');
-                        // Wait .3s
-                        setTimeout( () => {
-                            // Hide loader
-                            loader.classList.add('hide');
-                            // Wait .3s
-                            setTimeout( () => {
-                                // Remove class
-                                loader.classList.remove('open');
-                                loader.classList.remove('close');
-                            }, 300 )
-                        }, 300 )
-                    }, 1000 )
-                }, 300 )
-            }
-
-            // Launch method
-            showLoader();
-        //
+        // Display question card
+        setHeadlineQuestion('.headlineQuestionPublic');
+        setAddResponseBtn('.addResponseBtn', '#parentItem');
+        setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
     })
 //
