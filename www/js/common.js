@@ -146,7 +146,7 @@ Method to set HeadlineQuestion
 const setHeadlineQuestion = (tag) => {
     // Loop on all {{tag}} to activate SimpleMDE
     for( let i = 0; i <  document.querySelectorAll(tag).length; i++ ){
-        let newSimpleMDE = new MarkdownEditor(tag, false, i).setMarkdownEditor();
+        new MarkdownEditor(tag, false, i).setMarkdownEditor();
     }
 }
 //
@@ -205,10 +205,9 @@ Loader
 */
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
-
-        // Display question card
-        setHeadlineQuestion('.headlineQuestionPublic');
-        setAddResponseBtn('.addResponseBtn', '#parentItem');
         setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
+        setHeadlineQuestion('.headlineQuestionPublic');
+        setHeadlineQuestion('.headlineResponsePublic');
+        setAddResponseBtn('.addResponseBtn', '#parentItem');
     })
 //

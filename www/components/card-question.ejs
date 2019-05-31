@@ -9,7 +9,7 @@
     <% if(data.comments.length > 0) { %>
         <ul class="commentList">
             <% data.comments.map(item => { %>
-                <li><%- include('./card-comment.ejs', { item: item }); %></li>
+                <li comment-id="<%= item._id %>"><%- include('./card-comment.ejs', { item: item }); %></li>
             <% }) %>
         </ul>
     <% } %>
