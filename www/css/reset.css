@@ -17,3 +17,7 @@ textarea:focus{
 a {
     color: var(--main-color);
 }
+
+pre {
+    border: none;
+}

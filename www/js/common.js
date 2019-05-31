@@ -173,6 +173,38 @@ Loader
         //
 
         /* 
+        Display reponse popin
+        */
+            // Definition
+            const addResponseBtn = document.querySelectorAll('.addResponseBtn');
+            const questionInHtmlTag = document.querySelector('#questionInHtmlTag');
+
+            // Set new SimpleMDE
+            const headlineUnicQuestion = new SimpleMDE({ 
+                toolbar: false,
+                status: false
+            })
+
+            // Define methods
+            const getOpenResponseForm = () => {
+
+                for( let item of addResponseBtn ){
+                    item.addEventListener('click', () => {
+                        // Set form header
+                        document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
+                        questionInHtmlTag.innerHTML = headlineUnicQuestion.options.previewRender(item.getAttribute('id-question'));
+
+                        // Open popin
+                        openPopinUX(document.querySelector('#headerResponse'))
+                    })
+                }
+            }
+
+            // Launch method
+            getOpenResponseForm();
+        //
+
+        /* 
         Loader
         */
             // Define method
@@ -205,28 +237,6 @@ Loader
 
             // Launch method
             showLoader();
-        //
-
-        /* 
-        Display reponse popin
-        */
-            // Definition
-            const addResponseBtn = document.querySelectorAll('.addResponseBtn');
-
-            // Define methods
-            const getOpenResponseForm = () => {
-
-                for( let item of addResponseBtn ){
-                    item.addEventListener('click', () => {
-                        document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
-                        document.querySelector('#questionHeadlineInput').textContent = item.getAttribute('id-question')
-                        openPopinUX(document.querySelector('#headerResponse'))
-                    })
-                }
-            }
-
-            // Launch method
-            getOpenResponseForm();
         //
     })
 //

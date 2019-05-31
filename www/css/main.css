@@ -37,7 +37,12 @@ SimpleMDE
         display: none;
     }
 
-    .userQuestion .editor-preview, .userQuestion .CodeMirror {
+    #reponseForm .CodeMirror-scroll {
+        background: white;
+        padding: 2rem;
+    }
+
+    .userQuestion .editor-preview, .userQuestion .CodeMirror, #reponseForm .editor-preview, #reponseForm .CodeMirror {
         background: transparent;
     }
 
@@ -45,19 +50,23 @@ SimpleMDE
         background: rgba(255, 255, 255, .7);
     }
 
-    .userQuestion .CodeMirror {
+    .userQuestion .CodeMirror, #reponseForm  .CodeMirror {
         background: rgba(255, 255, 255, .7);
         border: none;
         padding: 0;
     }
 
-    .userQuestion .editor-preview {
+    #reponseForm .CodeMirror {
+        background: transparent;
+    }
+
+    .userQuestion .editor-preview, #reponseForm .editor-preview {
         padding: 2rem 2rem 0 2rem;
         font-size: 2.5rem;
         line-height: 1.2;
     }
 
-    .userQuestion .editor-preview pre {
+    .userQuestion .editor-preview pre, #reponseForm .editor-preview pre {
         font-size: 1.5rem;
         line-height: 1.5;
         background: transparent;
@@ -66,9 +75,31 @@ SimpleMDE
         padding: 0;
     }
 
-    .userQuestion .editor-preview code {
+    .userQuestion .editor-preview code, #reponseForm .editor-preview code {
         background: white;
         border-radius: .5rem;
+    }
+
+    #questionInHtmlTag {
+        font-size: 2.5rem;
+    }
+
+    #questionInHtmlTag pre {
+        font-size: 2rem;
+        background: transparent;
+    }
+
+    #questionInHtmlTag code {
+        background: white;
+    }
+
+    .formTitle {
+        background: var(--main-color);
+        display: inline-block;
+        margin: 0 0 1rem 0;
+        color: white;
+        padding: .5rem 1rem;
+        font-weight: 900;
     }
 /**/
 

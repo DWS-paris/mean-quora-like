@@ -1,9 +1,9 @@
 <section id="headerResponse">
     <form action="#" id="reponseForm" novalidate>
-        <p type="text" id="questionHeadlineInput"></p>
-        <textarea id="headlineUnicQuestion"></textarea>
-        
-        <!-- <input type="text" id="parentItem" name="parentItem"  id="headlineResponse" required hidden minlength="5"> -->
+        <p class="formTitle">Question</p>
+        <div id="questionInHtmlTag"></div>
+    
+        <p class="formTitle">Propose une réponse</p>
         <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
         
         <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button> <span id="responseFormResponse"></span>
@@ -17,22 +17,17 @@
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
-
-        new SimpleMDE({ 
-            element: document.querySelector('#headlineUnicQuestion'),
-            toolbar: false,
-            status: false
-        })
-
         // Definition
-        const headlineResponse = new SimpleMDE({ 
-            element: document.querySelector("#headlineResponse")
-        });
-
         let responseFormIsOpen = false;
         const reponseForm = document.querySelector('#reponseForm');
         const parentItem = document.querySelector('#parentItem');
         const responseFormResponse = document.querySelector('#responseFormResponse');
+
+        const headlineResponse = new SimpleMDE({ 
+            element: document.querySelector("#headlineResponse"),
+            codeSyntaxHighlighting: true,
+            status: false
+        });
 
         // Methods
         const getFormSubmitResponse = () => {
