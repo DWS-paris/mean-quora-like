@@ -14,7 +14,6 @@
                 <option value="technique">Bonnes pratiques</option>
             </select>
         </div>
-        <input type="text" id="parentItem" name="headline" id="headlineQuestionAbout" required hidden minlength="5">
 
         <textarea name="headlineQuestion" id="headlineQuestion" required minlength="20"></textarea>
 
@@ -46,11 +45,11 @@
 
                 // Set form value
                 let categorySelect = new FormValue(document.querySelector('#questionCategory'), 'select')
-                let questionMarrkdown = new FormValue(questionFormMarkdown.getValue(), 'input')
+                let questionMarkdown = new FormValue(questionFormMarkdown.getValue(), 'input')
 
                 // Check mandatories
                 categorySelect.checkString('NULL') ? formError++ : undefined;
-                questionMarrkdown.checkLength(20) ? formError++ : undefined;
+                questionMarkdown.checkLength(20) ? formError++ : undefined;
 
                 // Check form error
                 if( formError === 0 ){

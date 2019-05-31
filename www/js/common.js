@@ -188,16 +188,13 @@ Loader
         */
             // Definition
             const addResponseBtn = document.querySelectorAll('.addResponseBtn');
-            const questionInHtmlTag = document.querySelector('#questionInHtmlTag');
 
             // Define methods
             const getOpenResponseForm = () => {
-
                 for( let item of addResponseBtn ){
                     item.addEventListener('click', () => {
                         // Set form header
-                        /* document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
-                        questionInHtmlTag.innerHTML = headlineUnicQuestion.options.previewRender(item.getAttribute('id-question')); */
+                        document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
 
                         // Open popin
                         openPopinUX(document.querySelector('#headerResponse'))

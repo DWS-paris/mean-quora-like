@@ -6,7 +6,7 @@
         <p class="formTitle">Propose une réponse</p>
         
         <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
-        
+        <input type="text" id="parentItem" name="parentItem" required  minlength="5" hidden>
         <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
         <button type="button" class="closeButtonFormButton" id="closeFromResponse"><img src="./img/close.png" alt="Ferme"></button>
     </form>
@@ -34,13 +34,17 @@
                 // Stop default to use Javascript
                 event.preventDefault();
 
-                console.log(responseFormMarkdown.getValue())
-                console.log(responseFormMarkdown.checkLenght(20))
+                // Set form value
+                let responseMarkdown = new FormValue(responseFormMarkdown.getValue(), 'input')
 
+                // Set error checker
+                let formError = 0;
 
-                // Check form values
-                /* if( headlineResponse.value().length > 19){
+                // Check mandatories
+                responseMarkdown.checkLength(20) ? formError++ : undefined;
 
+                // Check form error
+                if( formError === 0 ){
                     // Display loader
                     openLoaderUX(
                         '#loaderMessage', 
@@ -49,7 +53,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('/api/comment', 'POST', { headline:  headlineResponse.value(), parentItem: parentItem.value })
+                    asyncFetch('/api/comment', 'POST', { headline:  responseFormMarkdown.getValue(), parentItem: parentItem.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(
@@ -69,7 +73,7 @@
                             null
                         )
                     } )
-                } */
+                }
             })
         }
         
