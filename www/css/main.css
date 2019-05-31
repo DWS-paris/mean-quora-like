@@ -88,6 +88,10 @@ SimpleMDE
         border-radius: .5rem;
     }
 
+    .userQuestion .editor-preview code {
+        overflow: hidden;
+    }
+
     #questionInHtmlTag {
         font-size: 2.5rem;
     }
