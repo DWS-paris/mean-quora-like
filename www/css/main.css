@@ -11,9 +11,7 @@ Layout
     }
 
     main {
-        margin: 11rem -2rem 11rem -1rem;
-        position: relative;
-        z-index: -10;
+        margin: 11rem -2rem 11rem -1rem
     }
 
     #titlePage {
@@ -120,6 +118,7 @@ Header
         top: 0;
         left: 0;
         width: 100%;
+        z-index: 1000;
     }
 
     header h1 {

@@ -40,17 +40,7 @@ Methode to use fetch reequests
     }
 //
 
-/* 
-Methode to open a popin
-*/
-const openPopinUX =  ( htmlTag ) => {
-    htmlTag.classList.add('display');
 
-    setTimeout( () => {
-        htmlTag.classList.add('open');
-    }, 10)
-}
-//
 
 /* 
 Method to open loader
@@ -129,6 +119,18 @@ const changeLoaderUX = (theMessage = '#loaderMessage', theLoader = '#loader', ms
 //
 
 /* 
+Methode to open a popin
+*/
+const openPopinUX =  ( htmlTag ) => {
+    htmlTag.classList.add('display');
+
+    setTimeout( () => {
+        htmlTag.classList.add('open');
+    }, 10)
+}
+//
+
+/* 
 Methode to close a popin
 */
 const closePopinUX =  ( htmlTag ) => {
@@ -147,55 +149,84 @@ Loader
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
 
-        // Declaration
-        const simpleMDEquestions = [];
+        /* 
+        SimpleMDE
+        */
+            // Declaration
+            const simpleMDEquestions = [];
+            const headlineQuestionPublic = document.querySelectorAll('.headlineQuestionPublic');
+            
+            // Loop on all .headlineQuestionPublic to activate SimpleMDE
+            for( let item of headlineQuestionPublic ){
+                simpleMDEquestions.push( new SimpleMDE({ 
+                    element: item,
+                    toolbar: false,
+                    status: false
+                }))
+            }
 
-        const headlineQuestionPublic = document.querySelectorAll('.headlineQuestionPublic');
-        for( let item of headlineQuestionPublic ){
-            simpleMDEquestions.push( new SimpleMDE({ 
-                element: item,
-                toolbar: false,
-                status: false
-            }))
-        }
+            // Loop on SimpleMDE array
+            for( let item of simpleMDEquestions){
+                // Change to preview mode
+                item.togglePreview()
+            }
+        //
 
-        for( let item of simpleMDEquestions){
-            console.log(item)
-            // simplemde.toTextArea()
-            // console.log(new SimpleMDE().options.previewRender(item))
-            item.togglePreview()
-        }
+        /* 
+        Loader
+        */
+            // Define method
+            const showLoader = (loader = document.querySelector('#loader'), loaderMessage = document.querySelector('#loaderMessage')) => {
+                // Display message
+                loaderMessage.textContent = 'Chargement...';
 
-
-        // Methods
-        const showLoader = (loader = document.querySelector('#loader'), loaderMessage = document.querySelector('#loaderMessage')) => {
-            // Display message
-            loaderMessage.textContent = 'Chargement...';
-
-            // Wait .3s
-            setTimeout( () => {
-                // Show loader GIF
-                loader.classList.add('open');
-                // Wait 1s
+                // Wait .3s
                 setTimeout( () => {
-                    // Close loader
-                    loader.classList.add('close');
-                    // Wait .3s
+                    // Show loader GIF
+                    loader.classList.add('open');
+                    // Wait 1s
                     setTimeout( () => {
-                        // Hide loader
-                        loader.classList.add('hide');
+                        // Close loader
+                        loader.classList.add('close');
                         // Wait .3s
                         setTimeout( () => {
-                            // Remove class
-                            loader.classList.remove('open');
-                            loader.classList.remove('close');
+                            // Hide loader
+                            loader.classList.add('hide');
+                            // Wait .3s
+                            setTimeout( () => {
+                                // Remove class
+                                loader.classList.remove('open');
+                                loader.classList.remove('close');
+                            }, 300 )
                         }, 300 )
-                    }, 300 )
-                }, 1000 )
-            }, 300 )
-        }
+                    }, 1000 )
+                }, 300 )
+            }
 
-        // Start interface
-        showLoader();
+            // Launch method
+            showLoader();
+        //
+
+        /* 
+        Display reponse popin
+        */
+            // Definition
+            const addResponseBtn = document.querySelectorAll('.addResponseBtn');
+
+            // Define methods
+            const getOpenResponseForm = () => {
+
+                for( let item of addResponseBtn ){
+                    item.addEventListener('click', () => {
+                        document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
+                        document.querySelector('#questionHeadlineInput').textContent = item.getAttribute('id-question')
+                        openPopinUX(document.querySelector('#headerResponse'))
+                    })
+                }
+            }
+
+            // Launch method
+            getOpenResponseForm();
+        //
     })
 //

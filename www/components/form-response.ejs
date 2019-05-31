@@ -1,6 +1,7 @@
 <section id="headerResponse">
     <form action="#" id="reponseForm" novalidate>
         <p type="text" id="questionHeadlineInput"></p>
+        <textarea id="headlineUnicQuestion"></textarea>
         
         <!-- <input type="text" id="parentItem" name="parentItem"  id="headlineResponse" required hidden minlength="5"> -->
         <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
@@ -15,6 +16,13 @@
 <script>
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
+
+
+        new SimpleMDE({ 
+            element: document.querySelector('#headlineUnicQuestion'),
+            toolbar: false,
+            status: false
+        })
 
         // Definition
         const headlineResponse = new SimpleMDE({ 

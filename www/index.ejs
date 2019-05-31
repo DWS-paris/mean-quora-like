@@ -22,28 +22,3 @@
 <% }) %>
 
 <% include ./static/footer.ejs %>
-
-
-<script>
-    // Wait for DOM content
-    document.addEventListener('DOMContentLoaded', () => {
-
-        // Definition
-        const addResponseBtn = document.querySelectorAll('.addResponseBtn');
-
-        // Methods
-        const getOpenResponseForm = () => {
-
-            for( let item of addResponseBtn ){
-                item.addEventListener('click', () => {
-                    document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
-                    document.querySelector('#questionHeadlineInput').textContent = item.getAttribute('id-question')
-                    openPopinUX(document.querySelector('#headerResponse'))
-                })
-            }
-        }
-
-        // Start interface
-        getOpenResponseForm();
-    })
-</script>
