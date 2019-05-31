@@ -11,7 +11,9 @@ Layout
     }
 
     main {
-        margin: 11rem -2rem 11rem -1rem
+        margin: 11rem -2rem 11rem -1rem;
+        position: relative;
+        z-index: -10;
     }
 
     #titlePage {
@@ -22,6 +24,53 @@ Layout
         background: var(--main-color-light);
         padding: 2rem;
         margin: 0;
+    }
+/**/
+
+
+/* 
+SimpleMDE
+*/
+    .CodeMirror, .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar, .CodeMirror-scroll, .editor-preview{
+        z-index: 0;
+    }
+
+    .userQuestion .CodeMirror-scroll {
+        display: none;
+    }
+
+    .userQuestion .editor-preview, .userQuestion .CodeMirror {
+        background: transparent;
+    }
+
+    .userQuestion .CodeMirror {
+        background: rgba(255, 255, 255, .7);
+    }
+
+    .userQuestion .CodeMirror {
+        background: rgba(255, 255, 255, .7);
+        border: none;
+        padding: 0;
+    }
+
+    .userQuestion .editor-preview {
+        padding: 2rem 2rem 0 2rem;
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .userQuestion .editor-preview pre {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        background: transparent;
+        border: 0;
+        margin: 0 0 2rem 0;
+        padding: 0;
+    }
+
+    .userQuestion .editor-preview code {
+        background: white;
+        border-radius: .5rem;
     }
 /**/
 
@@ -286,6 +335,8 @@ Questions
         background-size: auto 100%;
         padding: 0;
         word-break: break-word;
+        position: relative;
+        z-index: 0;
         border-radius: .5rem;
         -webkit-border-radius: .5rem;
         -moz-border-radius: .5rem;

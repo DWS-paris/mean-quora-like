@@ -144,36 +144,58 @@ const closePopinUX =  ( htmlTag ) => {
 /* 
 Loader
 */
-// Wait for DOM content
-document.addEventListener('DOMContentLoaded', () => {
-    // Methods
-    const showLoader = (loader = document.querySelector('#loader'), loaderMessage = document.querySelector('#loaderMessage')) => {
-        // Display message
-        loaderMessage.textContent = 'Chargement...';
+    // Wait for DOM content
+    document.addEventListener('DOMContentLoaded', () => {
 
-        // Wait .3s
-        setTimeout( () => {
-            // Show loader GIF
-            loader.classList.add('open');
-            // Wait 1s
+        // Declaration
+        const simpleMDEquestions = [];
+
+        const headlineQuestionPublic = document.querySelectorAll('.headlineQuestionPublic');
+        for( let item of headlineQuestionPublic ){
+            simpleMDEquestions.push( new SimpleMDE({ 
+                element: item,
+                toolbar: false,
+                status: false
+            }))
+        }
+
+        for( let item of simpleMDEquestions){
+            console.log(item)
+            // simplemde.toTextArea()
+            // console.log(new SimpleMDE().options.previewRender(item))
+            item.togglePreview()
+        }
+
+
+        // Methods
+        const showLoader = (loader = document.querySelector('#loader'), loaderMessage = document.querySelector('#loaderMessage')) => {
+            // Display message
+            loaderMessage.textContent = 'Chargement...';
+
+            // Wait .3s
             setTimeout( () => {
-                // Close loader
-                loader.classList.add('close');
-                // Wait .3s
+                // Show loader GIF
+                loader.classList.add('open');
+                // Wait 1s
                 setTimeout( () => {
-                    // Hide loader
-                    loader.classList.add('hide');
+                    // Close loader
+                    loader.classList.add('close');
                     // Wait .3s
                     setTimeout( () => {
-                        // Remove class
-                        loader.classList.remove('open');
-                        loader.classList.remove('close');
+                        // Hide loader
+                        loader.classList.add('hide');
+                        // Wait .3s
+                        setTimeout( () => {
+                            // Remove class
+                            loader.classList.remove('open');
+                            loader.classList.remove('close');
+                        }, 300 )
                     }, 300 )
-                }, 300 )
-            }, 1000 )
-        }, 300 )
-    }
+                }, 1000 )
+            }, 300 )
+        }
 
-    // Start interface
-    showLoader();
-})
+        // Start interface
+        showLoader();
+    })
+//

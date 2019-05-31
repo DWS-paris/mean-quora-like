@@ -1,6 +1,7 @@
 <div class="userQuestion" style=" background-image: url(<%= data.question.image %>); ">
     <p class="questionAuthor"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
-    <h2><%= data.question.headline %></h2>
+    <!-- <h2><%= data.question.headline %></h2> -->
+    <textarea class="headlineQuestionPublic" required minlength="20"><%= data.question.headline %></textarea>
 </div>
 
 
