@@ -207,7 +207,6 @@ Loader
     document.addEventListener('DOMContentLoaded', () => {
         setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
         setHeadlineQuestion('.headlineQuestionPublic');
-        setHeadlineQuestion('.headlineResponsePublic');
         setAddResponseBtn('.addResponseBtn', '#parentItem');
     })
 //
