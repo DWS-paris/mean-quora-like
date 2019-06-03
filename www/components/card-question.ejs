@@ -13,14 +13,14 @@
     <li>
         <button class="showQuestionBtn" id-data="<%= data.question._id %>">
             <img src="./img/up.png" alt="Voir les réponses">
-            <p>12</p>
+            <p><%= data.question.like %></p>
         </button>
     </li>
     
     <li>
         <button class="showQuestionBtn" id-data="<%= data.question._id %>">
             <img src="./img/down.png" alt="Voir les réponses">
-            <p>24</p>
+            <p><%= data.question.dislike %></p>
         </button>
     </li>
    

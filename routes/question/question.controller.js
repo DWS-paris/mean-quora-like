@@ -4,6 +4,7 @@ Import
     const Vocabulary = require('../../services/vocabulary.service');
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll, getResponseComment } = require('../main.controller');
     const CommentModel = require('../../models/comment.model');
+    const LikeModel = require('../../models/like.model');
 //
 
 /*
@@ -58,10 +59,15 @@ Methods
                 ((async function loop() {
                     for (let i = 0; i < questions.length; ++i) {
                         const comments = await CommentModel.find( { parentItem: questions[i]._id } )
+                        const likesUp = await LikeModel.find( { about: questions[i]._id, value: true } )
+                        const likesDown = await LikeModel.find( { about: questions[i]._id, value: false } )
                         questions[i].comment = comments;
+                        questions[i].like = likesUp.length
+                        questions[i].dislike = likesDown.length
 
                         dataArray.push({ question: questions[i], comments : comments })
                     }
+                    console.log(dataArray)
                     // return all data
                     return resolve(dataArray);
                 })());

@@ -69,8 +69,6 @@ Class definition
                         req.body.datePublished = new Date();
                         req.body.value = true;
 
-                        console.log(req.body)
-
                         // Save item in DB
                         Models.like.create(req.body)
                         .then( response => {
