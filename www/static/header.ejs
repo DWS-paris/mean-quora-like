@@ -44,10 +44,17 @@
                         <li class="rightLink"><a href="/register"><img src="./img/register.png" alt="Inscription"></a></li>
                     <% } %>
                     <% if(isLogged){  %>
-                        <li><a href="#" id="askQuestionBtn"><img src="./img/question.png" alt="Poser une question"></a></li>
                         <li id="logoutButton"  class="rightLink"><a href="/logout"><img src="./img/logout.png" alt="Deconnexion"></a></li>
                     <% } %>
                 </ul>
+                <% if(isLogged){  %>
+                    <% if(slug === '/'){  %>
+                        <a href="#" id="askQuestionBtn" class="bottomButton"><img src="./img/question.png" alt="Poser une question"></a>
+                    <% } %>
+                    <% if(slug === '/question'){  %>
+                        <a href="#" id="sendResponseBtn" class="bottomButton"><img src="./img/response.png" alt="Poser une question"></a>
+                    <% } %>
+                <% } %>
             </nav>
             <% if(isLogged) { %>
                 <% include ../components/form-question.ejs %>

@@ -10,7 +10,7 @@ Layout
     }
 
     main {
-        margin: 11rem -2rem 11rem -1rem
+        margin: 11rem 0 0 0;
     }
 
     #titlePage {
@@ -21,6 +21,42 @@ Layout
         background: var(--main-color-light);
         padding: 2rem;
         margin: 0;
+    }
+/**/
+
+/* 
+Form
+*/
+    .box {
+        position: absolute;
+        top: -5rem;
+        left: 0;
+    }
+
+    .box select {
+        background-color: var(--main-color);
+        color: white;
+        max-width: 35rem;
+        width: 100%;
+        border: none;
+        font-size: 20px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        -webkit-appearance: button;
+        appearance: button;
+        outline: none;
+    }
+
+    .errorBackground{
+        background-color: var(--error-color) !important;
+    }
+
+    .errorBorder{
+        border-color:  var(--error-color) !important;
+    }
+
+
+    .box select option {
+        padding: 30px;
     }
 /**/
 
@@ -111,6 +147,22 @@ Buttons
         width: 6rem;
         padding: 0;
     }
+
+    .bottomButton {
+        position: fixed;
+        z-index: 900;
+        bottom: 4.5rem;
+        left: 50%;
+        padding: 0;
+        transform: translateX(-50%);
+        display: flex;
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 0 2rem 1rem var(--main-color-light);
+        border: .2rem solid #0f76bb30;
+    }
 /**/
 
 
@@ -170,25 +222,7 @@ Header
         margin-bottom: .5rem;
     }
     
-    #askQuestionBtn {
-        position: fixed;
-        z-index: 900;
-        bottom: 4.5rem;
-        left: 50%;
-        padding: 0;
-        transform: translateX(-50%);
-        display: flex;
-        height: 10rem;
-        width: 10rem;
-        border-radius: 50%;
-        background: white;
-        box-shadow: 0 0 2rem 1rem var(--main-color-light);
-        border: .2rem solid #0f76bb30;
-    }
-
-    #askQuestionBtn i{
-        margin: auto;
-    }
+    
 
     nav ul{
         margin: 0;
@@ -460,7 +494,6 @@ Questions
     .headlineQuestionPublic {
         background: rgba(255, 255, 255, .7);
         padding: 2rem;
-        max-height: 40rem;
         overflow: auto;
         box-shadow: 0 0 2rem 1rem #eaf2f8;
         border-radius: .5rem;
@@ -468,6 +501,10 @@ Questions
         -moz-border-radius: .5rem;
         -ms-border-radius: .5rem;
         -o-border-radius: .5rem;
+    }
+
+    #mainQuestion .headlineQuestionPublic {
+        height: calc(100vh - 25rem);
     }
 
     .responseAuthor {
@@ -562,37 +599,7 @@ Questions
         background-color: white;
     }
 
-    .box {
-        position: absolute;
-        top: -5rem;
-        left: 0;
-    }
     
-    .box select {
-        background-color: var(--main-color);
-        color: white;
-        max-width: 35rem;
-        width: 100%;
-        border: none;
-        font-size: 20px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-        -webkit-appearance: button;
-        appearance: button;
-        outline: none;
-    }
-
-    .errorBackground{
-        background-color: var(--error-color) !important;
-    }
-
-    .errorBorder{
-        border-color:  var(--error-color) !important;
-    }
-    
-    
-    .box select option {
-        padding: 30px;
-    }
 
     
 /**/
@@ -681,6 +688,42 @@ Media queries
 
         main > section:not(:last-of-type){
             /* margin-right: 2rem; */
+        }
+    }
+
+    @media screen and (min-width: 650px){
+
+        .questionPage{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            -ms-justify-content: space-between;
+            -mo-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        .questionPage section{
+            width: calc(50% - 1rem)
+        }
+    }
+
+    @media screen and (min-width: 850px){
+
+        #mainQuestion .headlineQuestionPublic {
+            height: calc(100vh - 21rem);
+        }
+
+        .questionPage section{
+            width: calc(30% - 1rem)
+        }
+
+        .questionPage section:last-child{
+            width: calc(60% - 1rem)
         }
     }
 /**/
