@@ -3,8 +3,25 @@
     <div class="headlineQuestionPublic"><%= data.question.headline %></div>
 </article>
 
-<article class="questionFooter">
-    <button class="showQuestionBtn" id-data="<%= data.question._id %>">
-        <img src="./img/show-question.png" alt="Voir les réponses">
-    </button>
-</article>
+<ul class="questionFooter">
+    <li>
+        <button class="showQuestionBtn" id-data="<%= data.question._id %>">
+            <img src="./img/show-question.png" alt="Voir les réponses">
+        </button>
+    </li>
+
+    <li>
+        <button class="showQuestionBtn" id-data="<%= data.question._id %>">
+            <img src="./img/up.png" alt="Voir les réponses">
+            <p>12</p>
+        </button>
+    </li>
+    
+    <li>
+        <button class="showQuestionBtn" id-data="<%= data.question._id %>">
+            <img src="./img/down.png" alt="Voir les réponses">
+            <p>24</p>
+        </button>
+    </li>
+   
+</ul>

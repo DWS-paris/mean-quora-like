@@ -5,15 +5,30 @@
         <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
         <div class="headlineQuestionPublic"><%= data.question.headline %></div>
     </section>
+    <div>
         <section class="grid response">
             <% if( data.comments.length > 0 ) { %>
                 <% for( let item of data.comments ) { %>
                     <article>
                         <div class="userResponseContent">
                             <div class="headlineReponsePublic"><%= item.headline %></div>
-                            <div class="responseFooter">
-                                <p class="responseAuthor"><%= item.author %></p>
-                            </div>
+                            <strong class="responseAuthor"><%= item.author %></strong>
+                            <ul class="responseFooter">
+                                <li>
+                                    <button class="showQuestionBtn" id-data="<%= data.question._id %>">
+                                        <img src="./img/up.png" alt="Voir les réponses">
+                                        <p>12</p>
+                                    </button>
+                                </li>
+                                
+                                <li>
+                                    <button class="showQuestionBtn" id-data="<%= data.question._id %>">
+                                        <img src="./img/down.png" alt="Voir les réponses">
+                                        <p>24</p>
+                                    </button>
+                                </li>
+                            
+                            </ul>
                         </div>
                     </article>
                 <% } %>
@@ -26,6 +41,7 @@
                 <aside></aside>
             <% } %>
         </section>
+    </div>
 </main>
 
 <% include ./static/footer.ejs %>

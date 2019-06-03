@@ -110,11 +110,26 @@ Buttons
     button.addResponseBtn, button.showQuestionBtn {
         padding: 0;
         border: none;
+        margin: 1rem 0 .5rem 0;
+        text-align: center;
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+    }
+
+    button.addResponseBtn img, button.showQuestionBtn img{
         background: white;
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 50%;
-        margin: 1rem .5rem .5rem 1rem;
+    }
+
+    button.addResponseBtn p, button.showQuestionBtn p {
+        color: var(--main-color);
+        font-size: 1.1rem;
+        font-weight: 900;
+        margin: 0 0 0 .5rem;
     }
 
     #logoutButton a:hover {
@@ -464,13 +479,27 @@ Questions
         overflow: hidden;
     }
 
-    article.questionFooter {
+    .questionFooter {
+        padding: 0 1rem .5rem 1rem;
         background: var(--main-color-alpha);
         margin: -1rem 1rem 0 1rem;
+        position: relative;
+        text-align: right;
         -webkit-border-radius: .5rem;
         -moz-border-radius: .5rem;
         -ms-border-radius: .5rem;
         -o-border-radius: .5rem;
+    }
+
+    .questionFooter li, .responseFooter li{
+        display: inline-block;
+        margin: 0 0 0 .5rem;
+    }
+
+    .questionFooter li:first-child{
+        position: absolute;
+        left: 1rem;
+        margin: 0;
     }
 
 
@@ -651,19 +680,18 @@ Response
     }
 
     .responseFooter {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        padding: .5rem 1.5rem;
+        padding: 0 .5rem .5rem .5rem;
         width: 100%;
         background: var(--main-color-light);
         color: var(--main-color);
         font-size: 1.1rem;
         font-weight: 600;
+        margin: 1rem 0 0 0;
     }
 
-    .responseAuthor{
+    .responseAuthor {
         margin: 0;
+        font-size: 1.3rem;
     }
 /**/
 
