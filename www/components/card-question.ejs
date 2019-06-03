@@ -3,14 +3,8 @@
     <div class="headlineQuestionPublic"><%= data.question.headline %></div>
 </article>
 
-<article>
-    <button class="showQuestionBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">
+<article class="questionFooter">
+    <button class="showQuestionBtn" id-data="<%= data.question._id %>">
         <img src="./img/show-question.png" alt="Proposer une réponse">
     </button>
-
-    <% if(isLogged) { %>
-        <button class="addResponseBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">
-            <img src="./img/response.png" alt="Proposer une réponse">
-        </button>
-    <% } %>
 </article>

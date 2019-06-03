@@ -68,6 +68,51 @@ SimpleMDE
     }
 /**/
 
+/* 
+Buttons
+*/
+    button.addResponseBtn, button.showQuestionBtn {
+        padding: 0;
+        border: none;
+        background: white;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        margin: 1rem .5rem .5rem 1rem;
+    }
+
+    #logoutButton a:hover {
+        color: var(--main-color);
+    }
+
+    #logoutButton, .rightLink:not(:first-child) {
+        position: absolute;
+        right: 0;
+        top: .5rem;
+        border: .1rem solid var(--main-color-alpha);
+        background: white;
+    }
+
+    .closeButtonFormButton {
+        background: black;
+        border-color: black;
+        margin-left: .7rem;
+    }
+
+    button.submitFomrButton, .closeButtonFormButton {
+        height: 4rem;
+        width: 4rem;
+        padding: 0;
+        vertical-align: top;
+    }
+
+    button.submitFomrButton {
+        height: 6rem;
+        width: 6rem;
+        padding: 0;
+    }
+/**/
+
 
 /* 
 Header
@@ -156,17 +201,7 @@ Header
         margin: 0;
     }
 
-    #logoutButton a:hover {
-        color: var(--main-color);
-    }
-
-    #logoutButton, .rightLink:not(:first-child) {
-        position: absolute;
-        right: 0;
-        top: .5rem;
-        border: .1rem solid var(--main-color-alpha);
-        background: white;
-    }
+    
 
     .rightLink:not(:first-child) {
         width: 5.5rem;
@@ -391,6 +426,15 @@ Questions
         overflow: hidden;
     }
 
+    article.questionFooter {
+        background: var(--main-color-alpha);
+        margin: -1rem 1rem 0 1rem;
+        -webkit-border-radius: .5rem;
+        -moz-border-radius: .5rem;
+        -ms-border-radius: .5rem;
+        -o-border-radius: .5rem;
+    }
+
 
     .questionSection {
         padding: 0 2rem 0 0;
@@ -512,24 +556,7 @@ Questions
         margin-bottom: .5rem;
     }
 
-    .closeButtonFormButton {
-        background: black;
-        border-color: black;
-        margin-left: .7rem;
-    }
-
-    button.submitFomrButton, .closeButtonFormButton {
-        height: 4rem;
-        width: 4rem;
-        padding: 0;
-        vertical-align: top;
-    }
-
-    button.submitFomrButton {
-        height: 6rem;
-        width: 6rem;
-        padding: 0;
-    }
+    
 
     #questionForm textarea:focus, #headerResponse textarea:focus{
         background-color: white;
@@ -567,25 +594,7 @@ Questions
         padding: 30px;
     }
 
-    button.addResponseBtn, button.showQuestionBtn {
-        padding: 0;
-        position: relative;
-        top: -2rem;
-        box-shadow: 0 0 2rem 1rem #eaf2f8;
-        border: .1rem solid var(--main-color-alpha);
-        background: white;
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-    }
-
-    button.addResponseBtn{        
-        left: -5.5rem;
-    }
-
-    button.showQuestionBtn {
-        left: 6rem;
-    }
+    
 /**/
 
 /* 

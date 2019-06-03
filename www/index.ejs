@@ -3,8 +3,13 @@
 <main class="grid">
 
     <section>
-        <h1>Apporter des réponses de qualité pour développer des idées nouvelles</h1>
-        <p>Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet.</p>
+        <article>
+            <h1>Apporter des réponses de qualité pour développer des idées nouvelles</h1>
+            <p>Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet.</p>
+        </article>
+        <article>
+            <%- include('./static/list-category.ejs'); %>
+        </article>
     </section>
 
 <% data.map(item => { %>
