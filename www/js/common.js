@@ -161,10 +161,15 @@ const setAddResponseBtn = (buttons, parentItem) => {
     for( let item of document.querySelectorAll(buttons) ){
         item.addEventListener('click', () => {
             // Set form header
-            document.querySelector(parentItem).setAttribute('value', item.getAttribute('id-data'))
+            // document.querySelector(parentItem).setAttribute('value', item.getAttribute('id-data'))
 
-            // Open popin
-            openPopinUX(document.querySelector('#headerResponse'))
+            // Change loader
+            openLoaderUX(
+                '#loaderMessage', 
+                '#loader', 
+                'Redirection...',
+                '/question/' + item.getAttribute('id-data')
+            )
         })
     }
 }
@@ -209,6 +214,25 @@ Loader
     document.addEventListener('DOMContentLoaded', () => {
         // Declaration
         const sendResponseBtn = document.querySelector('#sendResponseBtn');
+        const showQuestionBtn = document.querySelectorAll('.showQuestionBtn');
+
+        /* 
+        Home page
+        */
+            if(showQuestionBtn === "2"){
+                for(let item of showQuestionBtn){
+                    item.addEventListener('click', () => {
+                        // Change loader
+                        openLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            'Réponse enregistrée !',
+                            '/question/' + parentItem.value
+                        )
+                    });
+                }
+            };
+        //
 
         /* 
         Question Page
@@ -230,7 +254,7 @@ Loader
         setHeadlineQuestion('.headlineQuestionPublic');
         setHeadlineQuestion('.headlineReponsePublic');
 
-        setAddResponseBtn('.addResponseBtn', '#parentItem');
+        setAddResponseBtn('.showQuestionBtn', '#parentItem');
 
 
         if(document.querySelector('.grid')){
