@@ -1,57 +1,36 @@
-<% if(isLogged) { %>
-    <%- include('./static/header.ejs', { 
-        title: "Dans l'Agora, les experts en " + slug + " sont les bienvenues !", 
-        subTitle: "Mais ici on aime surtout les novices, n'hésites pas à poser une question." 
-    }); %>
-<% } %>
-
-<% if(!isLogged) { %>
-    <%- include('./static/header.ejs', { 
-        title: "Dans l'Agora, les experts en " + slug + " sont les bienvenues !", 
-        subTitle: "N'hésites pas à créer un compte pour répondre ou poser des questions."
-    }); %>
-<% } %>
-
-<% if(data.length > 0) { %>
-    <% data.map(item => { %>
-        <section class="questionSection">
-            <article>
-                <%- include('./components/card-question.ejs', { data: item }); %>
-            </article>
-        </section>
-    <% }) %>
-<% } %>
-<% if(data.length === 0) { %>
-    <section class="questionSection">
+<%- include('./static/header.ejs'); %>
+<main class="grid">
+    <section id="mainTitle">
         <article>
-            <p>Tiens, pas de questions par ici...</p>
+            <h1>Apporter des réponses de qualité pour développer des idées nouvelles</h1>
+            <p>Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet.</p>
+        </article>
+        <article>
+            <%- include('./static/list-category.ejs'); %>
         </article>
     </section>
-<% } %>
+    <% if(data.length > 0) { %>
+        <% data.map(item => { %>
+            <section>
+                <%- include('./components/card-question.ejs', { data: item }); %>
+            </section>
+        <% }) %>
+        <% if(data.length < 2) { %>
+            <aside></aside>
+        <% } %>
+
+        <% if(data.length < 3) { %>
+            <aside></aside>
+        <% } %>
+    <% } %>
+
+    <% if(data.length === 0) { %>
+        <section>
+            <p>Tiens, pas de questions par ici...</p>
+        </section>
+        <aside></aside>
+        <aside></aside>
+    <% } %>
+</main>
 
 <% include ./static/footer.ejs %>
-
-
-<script>
-    // Wait for DOM content
-    document.addEventListener('DOMContentLoaded', () => {
-
-        // Definition
-        const addResponseBtn = document.querySelectorAll('.addResponseBtn');
-
-        // Methods
-        const getOpenResponseForm = () => {
-
-            for( let item of addResponseBtn ){
-                item.addEventListener('click', () => {
-                    document.querySelector('#parentItem').setAttribute('value', item.getAttribute('id-data'))
-                    document.querySelector('#questionHeadlineInput').textContent = item.getAttribute('id-question')
-                    openPopinUX(document.querySelector('#headerResponse'))
-                })
-            }
-        }
-
-        // Start interface
-        getOpenResponseForm();
-    })
-</script>

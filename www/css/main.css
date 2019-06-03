@@ -729,7 +729,7 @@ Media queries
 
     @media screen and (min-width: 850px){
 
-        .questionPage{
+        .contentPage{
             display: -webkit-flex;
             display: -moz-flex;
             display: -ms-flex;
@@ -743,11 +743,11 @@ Media queries
             justify-content: space-between;
         }
 
-        .questionPage section{
+        .contentPage section{
             width: calc(40% - 6rem)
         }
 
-        .questionPage section:last-child{
+        .contentPage section:last-child{
             width: 60%;
         }
 
@@ -766,11 +766,11 @@ Media queries
     }
 
     @media screen and (min-width: 950px){
-        .questionPage section{
+        .contentPage section{
             width: calc(25% - 5rem)
         }
 
-        .questionPage section:last-child{
+        .contentPage section:last-child{
             width: 75%;
         }
         

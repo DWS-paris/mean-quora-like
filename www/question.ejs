@@ -1,11 +1,10 @@
 <%- include('./static/header.ejs') %>
 
-<main class="questionPage">
+<main class="contentPage">
     <section id="mainQuestion">
         <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
         <div class="headlineQuestionPublic"><%= data.question.headline %></div>
     </section>
-    <div>
         <section class="grid response">
             <% if( data.comments.length > 0 ) { %>
                 <% for( let item of data.comments ) { %>
@@ -27,7 +26,6 @@
                 <aside></aside>
             <% } %>
         </section>
-    </div>
 </main>
 
 <% include ./static/footer.ejs %>
