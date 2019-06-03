@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Definition
     const askQuestionBtn = document.querySelector('#askQuestionBtn');
-    const sendResponseBtn = document.querySelector('#sendResponseBtn');
     const headerForm = document.querySelector('#headerForm');
     const headerResponse = document.querySelector('#headerResponse');
     const closeButtons = document.querySelectorAll('.closeButtonFormButton');

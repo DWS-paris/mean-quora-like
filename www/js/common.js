@@ -206,6 +206,24 @@ Loader
 */
     // Wait for DOM content
     document.addEventListener('DOMContentLoaded', () => {
+        // Declaration
+        const sendResponseBtn = document.querySelector('#sendResponseBtn');
+
+        /* 
+        Question Page
+        */
+            if(sendResponseBtn){
+                sendResponseBtn.addEventListener('click', event => {
+                    // Prevent default event
+                    event.preventDefault()
+
+                    // Open popin Add Response
+                    openPopinUX(document.querySelector('#headerResponse'))
+                });
+            };
+        //
+
+
         setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
         setHeadlineQuestion('.headlineQuestionPublic');
         setAddResponseBtn('.addResponseBtn', '#parentItem');

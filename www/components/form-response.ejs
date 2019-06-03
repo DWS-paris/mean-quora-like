@@ -6,7 +6,7 @@
         <p class="formTitle">Propose une réponse</p>
         
         <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
-        <input type="text" id="parentItem" name="parentItem" required  minlength="5" hidden>
+        <input type="text" id="parentItem" name="parentItem" required  minlength="5" hidden value="<%= id %>">
         <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
         <button type="button" class="closeButtonFormButton" id="closeFromResponse"><img src="./img/close.png" alt="Ferme"></button>
     </form>

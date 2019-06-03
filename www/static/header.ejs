@@ -57,8 +57,12 @@
                 <% } %>
             </nav>
             <% if(isLogged) { %>
-                <% include ../components/form-question.ejs %>
-                <% include ../components/form-response.ejs %>
+                <% if(slug === '/'){  %>
+                    <% include ../components/form-question.ejs %>
+                <% } %>
+                <% if(slug === '/question'){  %>
+                    <% include ../components/form-response.ejs %>
+                <% } %>
             <% } %>
             <% include ../components/loader.ejs %>
         </header>
