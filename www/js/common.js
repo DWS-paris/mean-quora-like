@@ -209,5 +209,13 @@ Loader
         setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
         setHeadlineQuestion('.headlineQuestionPublic');
         setAddResponseBtn('.addResponseBtn', '#parentItem');
+
+        FlexMasonry.init('.grid', {
+            breakpointCols: {
+                'min-width: 1000px': 4,
+                'min-width: 850px': 3,
+                'min-width: 650px': 2,
+            }
+        });
     })
 //

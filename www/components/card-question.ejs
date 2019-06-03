@@ -1,8 +1,9 @@
-<div class="userQuestion" style=" background-image: url(<%= data.question.image %>); ">
-    <p class="questionAuthor"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
+<article class="userQuestion">
+    <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
     <div class="headlineQuestionPublic"><%= data.question.headline %></div>
-</div>
-<div>
+</article>
+
+<article>
     <button class="showQuestionBtn" id-data="<%= data.question._id %>" id-question="<%= data.question.headline %>">
         <img src="./img/show-question.png" alt="Proposer une réponse">
     </button>
@@ -12,4 +13,4 @@
             <img src="./img/response.png" alt="Proposer une réponse">
         </button>
     <% } %>
-</div>
+</article>

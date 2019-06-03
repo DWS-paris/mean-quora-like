@@ -1,23 +1,15 @@
-<% if(isLogged) { %>
-    <%- include('./static/header.ejs', { 
-        title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
-        subTitle: "Tu es connecté à Agora, que vas-tu partager aujourd'hui ?" 
-    }); %>
-<% } %>
+<%- include('./static/header.ejs'); %>
 
-<% if(!isLogged) { %>
-    <%- include('./static/header.ejs', { 
-        title: "Apporter des réponses de qualité pour développer des idées nouvelles", 
-        subTitle: "Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet." 
-    }); %>
-<% } %>
+<main class="grid">
 
+    <section>
+        <h1>Apporter des réponses de qualité pour développer des idées nouvelles</h1>
+        <p>Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet.</p>
+    </section>
 
 <% data.map(item => { %>
-    <section class="questionSection">
-        <article>
-            <%- include('./components/card-question.ejs', { data: item }); %>
-        </article>
+    <section>
+        <%- include('./components/card-question.ejs', { data: item }); %>
     </section>
 <% }) %>
 

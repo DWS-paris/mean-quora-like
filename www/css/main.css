@@ -2,8 +2,7 @@
 Layout
 */
     body{
-        width: 100vw;
-        overflow-x: hidden;
+       
     }
 
     header, main, footer{
@@ -34,62 +33,16 @@ SimpleMDE
         margin-bottom: 2rem;
     }
 
-    .userQuestion .CodeMirror-scroll {
-        display: none;
-    }
-
-    .userQuestion::after{
-        content: '';
-        display: block;
-        clear: both;
-    }
 
     #reponseForm .CodeMirror-scroll {
         background: white;
         padding: 2rem;
     }
 
-    .userQuestion .editor-preview, .userQuestion .CodeMirror, #reponseForm .editor-preview, #reponseForm .CodeMirror {
-        background: transparent;
-    }
-
-    .userQuestion .CodeMirror {
-        background: rgba(255, 255, 255, .7);
-    }
-
-    .userQuestion .CodeMirror, #reponseForm  .CodeMirror {
-        background: rgba(255, 255, 255, .7);
-        border: none;
-        padding: 0;
-        margin-bottom: 0;
-    }
+    
 
     #reponseForm .CodeMirror {
         background: transparent;
-    }
-
-    .userQuestion .editor-preview, #reponseForm .editor-preview {
-        padding: 2rem 2rem 0 2rem;
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .userQuestion .editor-preview pre, #reponseForm .editor-preview pre {
-        font-size: 1.5rem;
-        line-height: 1.5;
-        background: transparent;
-        border: 0;
-        margin: 0 0 2rem 0;
-        padding: 0;
-    }
-
-    .userQuestion .editor-preview code, #reponseForm .editor-preview code {
-        background: white;
-        border-radius: .5rem;
-    }
-
-    .userQuestion .editor-preview code {
-        overflow: hidden;
     }
 
     #questionInHtmlTag {
@@ -366,16 +319,11 @@ Footer
 /* 
 Questions
 */
-    .questionSection {
-        margin-bottom: 8rem;
-        padding: 0 2rem 0 0;
-    }
-        
+
     .userQuestion {
-        background: var(--main-color-alpha);
         background-attachment: fixed;
         background-size: auto 100%;
-        padding: 0;
+        padding: 1rem;
         word-break: break-word;
         position: relative;
         z-index: 0;
@@ -386,6 +334,70 @@ Questions
         -o-border-radius: .5rem;
     }
 
+    .userQuestion h1, .userQuestion h2, .userQuestion h3, .userQuestion h4 {
+        font-size: 2.5rem;
+        margin: 0 0 1rem 0;
+    }
+
+    .userQuestion .CodeMirror-scroll {
+        display: none;
+    }
+
+    .userQuestion::after {
+        content: '';
+        display: block;
+        clear: both;
+        background: rgba(255, 255, 255, .7);
+    }
+
+    .userQuestion .editor-preview, .userQuestion .CodeMirror, #reponseForm .editor-preview, #reponseForm .CodeMirror {
+        background: transparent;
+    }
+
+    .userQuestion .CodeMirror {
+        background: rgba(255, 255, 255, .7);
+    }
+
+    .userQuestion .CodeMirror, #reponseForm  .CodeMirror {
+        background: rgba(255, 255, 255, .7);
+        border: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    
+
+    .userQuestion .editor-preview, #reponseForm .editor-preview {
+        padding: 2rem 2rem 0 2rem;
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .userQuestion .editor-preview pre, #reponseForm .editor-preview pre {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        background: transparent;
+        border: 0;
+        margin: 0 0 2rem 0;
+        padding: 0;
+    }
+
+    .userQuestion .editor-preview code, #reponseForm .editor-preview code {
+        background: white;
+        border-radius: .5rem;
+    }
+
+    .userQuestion .editor-preview code {
+        overflow: hidden;
+    }
+
+
+    .questionSection {
+        padding: 0 2rem 0 0;
+    }
+        
+    
+
     .questionAuthor, .responseAuthor, .userResponse h3 {
         margin: 0;
         font-size: 1.2rem;
@@ -394,11 +406,24 @@ Questions
         padding: 2rem 2rem 0 2rem;
     }
 
+    .questionAuthor {
+        position: relative;
+        text-shadow: 0 0 1rem #eaf2f8;
+        padding: 1.5rem 2rem;
+        color: white;
+    }
+
     .headlineQuestionPublic {
         background: rgba(255, 255, 255, .7);
         padding: 2rem;
         max-height: 40rem;
         overflow: auto;
+        box-shadow: 0 0 2rem 1rem #eaf2f8;
+        border-radius: .5rem;
+        -webkit-border-radius: .5rem;
+        -moz-border-radius: .5rem;
+        -ms-border-radius: .5rem;
+        -o-border-radius: .5rem;
     }
 
     .responseAuthor {
@@ -413,10 +438,7 @@ Questions
         margin-bottom: 1rem;
     }
 
-    .userQuestion h1, .userQuestion h2, .userQuestion h3, .userQuestion h4 {
-        font-size: 2.5rem;
-        margin: 0 0 1rem 0;
-    }
+    
 
     .userResponse {
         padding: 2rem 0;
@@ -625,7 +647,7 @@ Animations
 /* 
 Media queries
 */
-    @media screen and (min-width: 700px){
+    /* @media screen and (min-width: 700px){
         main {
             display: flex;
             justify-content: space-between;
@@ -635,18 +657,18 @@ Media queries
         main > section{
             width: 50%
         }
-    }
+    } */
 
     @media screen and (min-width: 950px){
 
-        main {
+        /* main {
             display: flex;
             justify-content: start;
         }
 
         main > section{
             width: 33.333%
-        }
+        } */
 
         main > section:not(:last-of-type){
             /* margin-right: 2rem; */
