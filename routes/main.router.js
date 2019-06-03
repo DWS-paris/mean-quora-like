@@ -14,6 +14,7 @@ Imports
     const FrontRouterClass = require('./front/front.router');
     const QuestionRouterClass = require('./question/question.router');
     const CommentRouterClass = require('./comment/comment.router');
+    const LikeRouterClass = require('./like/like.router');
 //
 
 /*
@@ -30,6 +31,7 @@ Define routers
     const frontRouter = new FrontRouterClass({ passport });
     const questionRouter = new QuestionRouterClass({ passport });
     const commentRouter = new CommentRouterClass({ passport });
+    const likeRouter = new LikeRouterClass({ passport });
 //
 
 /*
@@ -39,6 +41,7 @@ Configure routes
     apiRouter.use('/auth', authRouter.init());
     apiRouter.use('/question', questionRouter.init());
     apiRouter.use('/comment', commentRouter.init());
+    apiRouter.use('/like', likeRouter.init());
 
     // Set front router
     mainRouter.use('/', frontRouter.init());

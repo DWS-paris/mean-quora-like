@@ -39,7 +39,6 @@ Routes definition
                 // Get question list
                 readOneItem(req.params.id)
                 .then( questionData => {
-                    console.log(questionData)
                     // Render view and check if user is logged
                     res.render('question', { isLogged: jwtDecoder(req), data: questionData, slug: '/question', id: req.params.id })
                 })
