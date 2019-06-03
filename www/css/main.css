@@ -394,6 +394,13 @@ Questions
         padding: 2rem 2rem 0 2rem;
     }
 
+    .headlineQuestionPublic {
+        background: rgba(255, 255, 255, .7);
+        padding: 2rem;
+        max-height: 40rem;
+        overflow: auto;
+    }
+
     .responseAuthor {
         color: var(--main-color);
         font-weight: 900;
@@ -638,7 +645,7 @@ Media queries
         }
 
         main > section{
-            width: 25%
+            width: 33.333%
         }
 
         main > section:not(:last-of-type){

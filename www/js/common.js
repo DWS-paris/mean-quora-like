@@ -146,7 +146,8 @@ Method to set HeadlineQuestion
 const setHeadlineQuestion = (tag) => {
     // Loop on all {{tag}} to activate SimpleMDE
     for( let i = 0; i <  document.querySelectorAll(tag).length; i++ ){
-        new MarkdownEditor(tag, false, i).setMarkdownEditor();
+        // new MarkdownEditor(tag, false, i).setMarkdownEditor();
+        new MarkdownViewer(tag, i).convert()
     }
 }
 //
