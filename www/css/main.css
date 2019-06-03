@@ -290,6 +290,10 @@ Header
         color: white;
         background-color: var(--main-color);
     }
+
+    #mainTitle{
+        padding-right: 4rem;
+    }
 /**/
 
 /* 
@@ -476,7 +480,7 @@ Questions
         
     
 
-    .questionAuthor, .responseAuthor, .userResponse h3 {
+    .questionAuthor, .userResponse h3 {
         margin: 0;
         font-size: 1.2rem;
         text-transform: uppercase;
@@ -505,13 +509,6 @@ Questions
 
     #mainQuestion .headlineQuestionPublic {
         height: calc(100vh - 25rem);
-    }
-
-    .responseAuthor {
-        color: var(--main-color);
-        font-weight: 900;
-        padding: 0;
-        margin-bottom: .5rem;
     }
 
     .userResponse h3{
@@ -599,7 +596,9 @@ Questions
         background-color: white;
     }
 
-    
+    section#mainQuestion {
+        margin-bottom: 6rem;
+    }
 
     
 /**/
@@ -633,6 +632,34 @@ Response
         line-height: 1;
         margin: 0 0 1.5rem 0;
         word-break: break-all;
+    }
+
+    .userResponseContent {
+        position: relative;
+        padding: 1.5rem;
+        border: .1rem solid var(--main-color-light);
+        margin: 0 2rem 2rem 0;
+        border-radius: .5rem;
+        -webkit-border-radius: .5rem;
+        -moz-border-radius: .5rem;
+        -ms-border-radius: .5rem;
+        -o-border-radius: .5rem;
+    }
+
+    .responseFooter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: .5rem 1.5rem;
+        width: 100%;
+        background: var(--main-color-light);
+        color: var(--main-color);
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .responseAuthor{
+        margin: 0;
     }
 /**/
 
@@ -693,6 +720,11 @@ Media queries
 
     @media screen and (min-width: 650px){
 
+        
+    }
+
+    @media screen and (min-width: 850px){
+
         .questionPage{
             display: -webkit-flex;
             display: -moz-flex;
@@ -708,22 +740,35 @@ Media queries
         }
 
         .questionPage section{
-            width: calc(50% - 1rem)
+            width: calc(40% - 6rem)
         }
-    }
 
-    @media screen and (min-width: 850px){
+        .questionPage section:last-child{
+            width: 60%;
+        }
 
         #mainQuestion .headlineQuestionPublic {
             height: calc(100vh - 21rem);
         }
 
+        #mainQuestion{
+            position: fixed;
+        }
+
+        .grid.response{
+            float: right;
+            margin-bottom: 15rem;
+        }
+    }
+
+    @media screen and (min-width: 950px){
         .questionPage section{
-            width: calc(30% - 1rem)
+            width: calc(25% - 5rem)
         }
 
         .questionPage section:last-child{
-            width: calc(60% - 1rem)
+            width: 75%;
         }
+        
     }
 /**/

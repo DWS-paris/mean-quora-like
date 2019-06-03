@@ -5,10 +5,29 @@
         <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
         <div class="headlineQuestionPublic"><%= data.question.headline %></div>
     </section>
-    
-    <section class="grid">
-            
-    </section>
+    <div>
+        <section class="grid response">
+            <% if( data.comments.length > 0 ) { %>
+                <% for( let item of data.comments ) { %>
+                    <article>
+                        <div class="userResponseContent">
+                            <div class="headlineReponsePublic"><%= item.headline %></div>
+                            <div class="responseFooter">
+                                <p class="responseAuthor"><%= item.author %></p>
+                            </div>
+                        </div>
+                    </article>
+                <% } %>
+            <% } %>
+        </section>
+        <% if(data.comments.length < 2) { %>
+            <asidee></asidee>
+        <% } %>
+        
+        <% if(data.comments.length < 3) { %>
+            <asidee></asidee>
+        <% } %>
+</div>
 </main>
 
 <% include ./static/footer.ejs %>

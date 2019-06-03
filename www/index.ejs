@@ -2,7 +2,7 @@
 
 <main class="grid">
 
-    <section>
+    <section id="mainTitle">
         <article>
             <h1>Apporter des réponses de qualité pour développer des idées nouvelles</h1>
             <p>Agora est une plateforme d'entre-aide pour aider à la compréhension des technologies de l'Internet.</p>
@@ -17,5 +17,12 @@
         <%- include('./components/card-question.ejs', { data: item }); %>
     </section>
 <% }) %>
+<% if(data.length < 2) { %>
+    <aside></aside>
+<% } %>
+
+<% if(data.length < 3) { %>
+    <aside></aside>
+<% } %>
 
 <% include ./static/footer.ejs %>

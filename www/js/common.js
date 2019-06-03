@@ -152,6 +152,7 @@ const setHeadlineQuestion = (tag) => {
 }
 //
 
+
 /* 
 Method to set AddResponseBtn
 */
@@ -225,7 +226,10 @@ Loader
 
 
         setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
+
         setHeadlineQuestion('.headlineQuestionPublic');
+        setHeadlineQuestion('.headlineReponsePublic');
+
         setAddResponseBtn('.addResponseBtn', '#parentItem');
 
 
@@ -234,6 +238,15 @@ Loader
                 breakpointCols: {
                     'min-width: 1000px': 4,
                     'min-width: 850px': 3,
+                    'min-width: 650px': 2,
+                }
+            });
+        }
+
+        if(document.querySelector('.grid.response')){
+            FlexMasonry.init('.grid.response', {
+                breakpointCols: {
+                    'min-width: 950px': 3,
                     'min-width: 650px': 2,
                 }
             });
