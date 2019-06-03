@@ -1,10 +1,7 @@
 <section id="headerResponse">
     <form action="#" id="reponseForm" novalidate>
-        <p class="formTitle">Question</p>
-        <div id="questionInHtmlTag"></div>
-    
-        <p class="formTitle">Propose une réponse</p>
-        
+        <h3>Proposer une réponse</h3>
+        <p>Le but d'Agorra est de motiver l'entre-aide et le partage dans le bienveillance, pense au poid de tes mots et à la force de tes explications. De plus, chacune de tes réponses validées te rapportent dees points qui te permettrons à ton tour de trouver des réponses à tes questions.</p>
         <textarea name="headlineResponse" id="headlineResponse" required minlength="20"></textarea>
         <input type="text" id="parentItem" name="parentItem" required  minlength="5" hidden value="<%= id %>">
         <button type="submit" class="submitFomrButton"><img src="./img/check.png" alt="Enregistrer"></button>
@@ -60,7 +57,7 @@
                             '#loaderMessage', 
                             '#loader', 
                             'Réponse enregistrée !',
-                            '/'
+                            '/question/' + parentItem.value
                         )
                     })
                     .catch( err => {

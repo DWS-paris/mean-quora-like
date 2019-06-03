@@ -19,15 +19,15 @@
                     </article>
                 <% } %>
             <% } %>
+            <% if(data.comments.length < 2) { %>
+                <aside></aside>
+            <% } %>
+            
+            <% if(data.comments.length < 3) { %>
+                <aside></aside>
+            <% } %>
         </section>
-        <% if(data.comments.length < 2) { %>
-            <asidee></asidee>
-        <% } %>
-        
-        <% if(data.comments.length < 3) { %>
-            <asidee></asidee>
-        <% } %>
-</div>
+    </div>
 </main>
 
 <% include ./static/footer.ejs %>

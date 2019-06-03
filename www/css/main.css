@@ -511,6 +511,10 @@ Questions
         height: calc(100vh - 25rem);
     }
 
+    #mainQuestion + div{
+        width: 100%;
+    }
+
     .userResponse h3{
         color: var(--main-color);
         margin-bottom: 1rem;
