@@ -53,15 +53,10 @@ Class definition
                         item.value = !item.value;
 
                         // Save item in DB
-                        item.save(req.body)
-                        .then( response => {
-                            console.log('updated like')
-                            return sendApiSuccessResponse(res, Vocabulary.request.success, response)
+                        item.save(req.body, (error, editedLike)=> {
+                            if(error)  sendApiErrorResponse(res, Vocabulary.request.error, error)
+                            else sendApiSuccessResponse(res, Vocabulary.request.success, editedLike)
                         })
-                        .catch( response => {
-                            console.log('error updated like')
-                            return sendApiErrorResponse(res, Vocabulary.request.error, response)
-                        });
                     }
                     else {
                         // Set server data
@@ -70,15 +65,10 @@ Class definition
                         req.body.value = true;
 
                         // Save item in DB
-                        Models.like.create(req.body)
-                        .then( response => {
-                            console.log('new like')
-                            return sendApiSuccessResponse(res, Vocabulary.request.success, newLike)
+                        Models.like.create(req.body, (error, newLike)=> {
+                            if(error)  sendApiErrorResponse(res, Vocabulary.request.error, error)
+                            else sendApiSuccessResponse(res, Vocabulary.request.success, newLike)
                         })
-                        .catch( response => {
-                            console.log('error new like')
-                            return sendApiErrorResponse(res, Vocabulary.request.error, response)
-                        });
                     };
                 });
             };

@@ -23,6 +23,9 @@ Declare each property and type needed for the schema
         headline: String,
         parentItem: String,
         author: String,
+        datePublished: Date,
+        like: Number,
+        dislike: Number,
         datePublished: Date
     })
 //

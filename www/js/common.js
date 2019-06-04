@@ -176,17 +176,38 @@ const setAddResponseBtn = (buttons, parentItem) => {
 //
 
 /* 
+Method to set AddUserLikeInteraction
+*/
+const setAddUserLikeInteraction = (buttons) => {
+    // Loop on all {{tag}} to activate response button
+    for( let item of document.querySelectorAll(buttons) ){
+        item.addEventListener('click', event => {
+            event.preventDefault()
+            
+            asyncFetch('/api/like', 'POST', { about: item.getAttribute('id-data') })
+            .then( apiResponse => {
+                console.log(apiResponse)
+            } )
+            .catch( apiResponse => {
+                console.error(apiResponse)
+            } )
+        })
+    }
+}
+//
+
+/* 
 Method to set Loader
 */
 const setLoader = (loader, loaderMessage) => {
     // Display message
     loaderMessage.textContent = 'Chargement...';
 
-    // Wait .3s
+    // Wait .1s
     setTimeout( () => {
         // Show loader GIF
         loader.classList.add('open');
-        // Wait 1s
+        // Wait .3s
         setTimeout( () => {
             // Close loader
             loader.classList.add('close');
@@ -201,8 +222,8 @@ const setLoader = (loader, loaderMessage) => {
                     loader.classList.remove('close');
                 }, 300 )
             }, 300 )
-        }, 1000 )
-    }, 300 )
+        }, 300 )
+    }, 100 )
 }
 //
 
@@ -255,6 +276,7 @@ Loader
         setHeadlineQuestion('.headlineReponsePublic');
 
         setAddResponseBtn('.showQuestionBtn', '#parentItem');
+        setAddUserLikeInteraction('.likeUserInteraction')
 
 
         if(document.querySelector('.grid')){

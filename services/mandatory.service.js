@@ -7,7 +7,7 @@ Definition
         login: ['email', 'password'],
         question: ['headline', 'about'],
         comment: ['headline', 'parentItem'],
-        like: ['about', 'value'],
+        like: ['about'],
         changePassword: ['password', 'newPassword'],
     };
 //

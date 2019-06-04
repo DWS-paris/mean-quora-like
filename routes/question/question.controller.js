@@ -81,9 +81,22 @@ Methods
             fetchSingle(_id, 'question')
             .then( async question => {
                 const comments = await CommentModel.find( { parentItem: _id } )
-                
-                // return all data
-                return resolve({ question, comments });
+                // Set empty collection
+                let dataArray = [];
+
+                // Fetch _id collection
+                ((async function loop() {
+                    for (let i = 0; i < comments.length; ++i) {
+                        const likesUp = await LikeModel.find( { about: comments[i]._id, value: true } )
+                        const likesDown = await LikeModel.find( { about: comments[i]._id, value: false } )
+                        comments[i].like = likesUp.length
+                        comments[i].dislike = likesDown.length
+                        dataArray.push(comments[i])
+                    }
+
+                    // return all data
+                    return resolve({ question: question, comments: dataArray });
+                })());
             })
             .catch( error => reject( error ));
         })

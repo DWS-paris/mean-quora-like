@@ -15,16 +15,16 @@
                             <strong class="responseAuthor"><%= item.author %></strong>
                             <ul class="responseFooter">
                                 <li>
-                                    <button class="showQuestionBtn" id-data="<%= data.question._id %>">
-                                        <img src="./img/up.png" alt="Voir les réponses">
-                                        <p>12</p>
+                                    <button class="likeUserInteraction" id-data="<%= item._id %>">
+                                        <img src="./img/up.png" alt="J'aime">
+                                        <p><%= item.like %></p>
                                     </button>
                                 </li>
                                 
                                 <li>
-                                    <button class="showQuestionBtn" id-data="<%= data.question._id %>">
-                                        <img src="./img/down.png" alt="Voir les réponses">
-                                        <p>24</p>
+                                    <button class="likeUserInteraction" id-data="<%= item._id %>">
+                                        <img src="./img/down.png" alt="Je n'aime pas">
+                                        <p><%= item.dislike %></p>
                                     </button>
                                 </li>
                             

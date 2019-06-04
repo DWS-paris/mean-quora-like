@@ -107,7 +107,7 @@ SimpleMDE
 /* 
 Buttons
 */
-    button.addResponseBtn, button.showQuestionBtn {
+    button.addResponseBtn, button.showQuestionBtn , button.likeUserInteraction{
         padding: 0;
         border: none;
         margin: 1rem 0 .5rem 0;
@@ -118,14 +118,14 @@ Buttons
         background-color: transparent;
     }
 
-    button.addResponseBtn img, button.showQuestionBtn img{
+    button.addResponseBtn img, button.showQuestionBtn img, button.likeUserInteraction img{
         background: white;
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 50%;
     }
 
-    button.addResponseBtn p, button.showQuestionBtn p {
+    button.addResponseBtn p, button.showQuestionBtn p , button.likeUserInteraction p{
         color: var(--main-color);
         font-size: 1.1rem;
         font-weight: 900;
