@@ -24,8 +24,8 @@ Declare each property and type needed for the schema
         about: String,
         author: String,
         isValidated: Boolean,
-        like: Number,
-        dislike: Number,
+        like: [String],
+        dislike: [String],
         datePublished: Date
     })
 //

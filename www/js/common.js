@@ -183,11 +183,38 @@ const setAddUserLikeInteraction = (buttons) => {
     for( let item of document.querySelectorAll(buttons) ){
         item.addEventListener('click', event => {
             event.preventDefault()
+
+            let likeId = item.getAttribute('id-data');
             
-            asyncFetch('/api/like', 'POST', { about: item.getAttribute('id-data') })
-            .then( apiResponse => {
-                console.log(apiResponse)
-            } )
+            asyncFetch('/api/like', 'POST', { about: likeId })
+            .then( () => {
+                
+                let likeValue = item.classList.contains('like' + likeId) ? 'Like' : 'Dislike';
+                
+                switch(likeValue){
+                    case 'Like':
+                        let nLike = parseInt(document.querySelector(`.like${likeId} .quantity`).textContent)
+                        document.querySelector(`.like${likeId} .quantity`).textContent = ++nLike
+
+                        document.querySelector(`.like${likeId}`).classList.remove('likeUserInteraction')
+                        document.querySelector(`.like${likeId}`).classList.add('likeUserNoInteraction')
+
+                        document.querySelector(`.dislike${likeId}`).classList.remove('likeUserNoInteraction')
+                        document.querySelector(`.dislike${likeId}`).classList.add('likeUserInteraction')
+                    break;
+
+                    default:
+                        // document.querySelector(`.dislike${likeId} .quantity`).textContent = parseInt(document.querySelector(`.dislike${likeId} .quantity`).textContent)++
+
+                        document.querySelector(`.dislike${likeId}`).classList.remove('likeUserInteraction')
+                        document.querySelector(`.dislike${likeId}`).classList.add('likeUserNoInteraction')
+
+                        document.querySelector(`.like${likeId}`).classList.remove('likeUserNoInteraction')
+                        document.querySelector(`.like${likeId}`).classList.add('likeUserInteraction')
+                    break;
+                }
+
+            })
             .catch( apiResponse => {
                 console.error(apiResponse)
             } )
@@ -276,7 +303,7 @@ Loader
         setHeadlineQuestion('.headlineReponsePublic');
 
         setAddResponseBtn('.showQuestionBtn', '#parentItem');
-        setAddUserLikeInteraction('.likeUserInteraction')
+        setAddUserLikeInteraction('.interactionBtn')
 
 
         if(document.querySelector('.grid')){

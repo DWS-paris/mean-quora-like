@@ -24,8 +24,8 @@ Declare each property and type needed for the schema
         parentItem: String,
         author: String,
         datePublished: Date,
-        like: Number,
-        dislike: Number,
+        like: [String],
+        dislike: [String],
         datePublished: Date
     })
 //

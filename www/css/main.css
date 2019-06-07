@@ -107,7 +107,11 @@ SimpleMDE
 /* 
 Buttons
 */
-    button.addResponseBtn, button.showQuestionBtn , button.likeUserInteraction{
+    [id-data="5cf5352ea58b99b0ff23d4bf"].likeUserNoInteraction{
+
+    }
+
+    button.addResponseBtn, button.showQuestionBtn , button.interactionBtn{
         padding: 0;
         border: none;
         margin: 1rem 0 .5rem 0;
@@ -118,18 +122,26 @@ Buttons
         background-color: transparent;
     }
 
-    button.addResponseBtn img, button.showQuestionBtn img, button.likeUserInteraction img{
+    button.addResponseBtn img, button.showQuestionBtn img, button.interactionBtn img{
         background: white;
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 50%;
     }
 
-    button.addResponseBtn p, button.showQuestionBtn p , button.likeUserInteraction p{
+    button.addResponseBtn p, button.showQuestionBtn p , button.interactionBtn p{
         color: var(--main-color);
         font-size: 1.1rem;
         font-weight: 900;
         margin: 0 0 0 .5rem;
+    }
+
+    button.interactionBtn.likeUserNoInteraction{
+        cursor: default;
+    }
+
+    button.interactionBtn.likeUserNoInteraction img{
+        border: .1rem solid var(--main-color);
     }
 
     #logoutButton a:hover {

@@ -1,8 +1,18 @@
-<%- include('./static/header.ejs', { 
-    title: "Inscris-toi sur la plateforme pour participer aux discutions", 
-    subTitle: "Les informations de ce formualire sont nécessaire pour t'identifier" 
-}); %>
+<%- include('./static/header.ejs'); %>
 
-<% include ./components/form-register.ejs %>
+<main class="grid">
+    <section id="mainTitle">
+        <article>
+            <h1>Inscris-toi sur la plateforme pour participer aux discutions</h1>
+            <p>Les informations de ce formualire sont nécessaire pour t'identifier</p>
+        </article>
+    </section>
+
+    <section>
+        <% include ./components/form-register.ejs %>
+    </section>
+    <aside></aside>
+    <aside></aside>
+</main>
 
 <% include ./static/footer.ejs %>

@@ -1,3 +1,14 @@
+<% 
+    let activeLikeClass = "likeUserInteraction";
+    let activeDisLikeClass = "likeUserInteraction";
+    for( let item of data.question.like ) { 
+        if(item === isLogged){ activeLikeClass = "likeUserNoInteraction" }
+    }
+    for( let item of data.question.dislike ) { 
+        if(item === isLogged){ activeDisLikeClass = "likeUserNoInteraction" }
+    } 
+%>
+
 <article class="userQuestion">
     <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
     <div class="headlineQuestionPublic"><%= data.question.headline %></div>
@@ -11,16 +22,16 @@
     </li>
 
     <li>
-        <button class="likeUserInteraction" id-data="<%= data.question._id %>">
+        <button class="interactionBtn like<%= data.question._id %> <%= activeLikeClass %>" id-data="<%= data.question._id %>">
             <img src="./img/up.png" alt="J'aime">
-            <p><%= data.question.like %></p>
+            <p class="quantity"><%= data.question.like.length %></p>
         </button>
     </li>
     
     <li>
-        <button class="likeUserInteraction" id-data="<%= data.question._id %>">
+        <button class="interactionBtn dislike<%= data.question._id %> <%= activeDisLikeClass %>" id-data="<%= data.question._id %>">
             <img src="./img/down.png" alt="Je n'aime pas">
-            <p><%= data.question.dislike %></p>
+            <p class="quantity"><%= data.question.dislike.length %></p>
         </button>
     </li>
    

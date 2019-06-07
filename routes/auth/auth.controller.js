@@ -127,7 +127,7 @@ Methods
     const jwtDecoder = (req) => {
             if (req.cookies[process.env.COOKIE_NAME] != undefined){
                 const decoded = jwt.verify(req.cookies[process.env.COOKIE_NAME], process.env.JWT_SECRET)
-                return true
+                return decoded._id
             }
             else {
                 return false

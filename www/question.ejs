@@ -17,14 +17,14 @@
                                 <li>
                                     <button class="likeUserInteraction" id-data="<%= item._id %>">
                                         <img src="./img/up.png" alt="J'aime">
-                                        <p><%= item.like %></p>
+                                        <p><%= item.like.length %></p>
                                     </button>
                                 </li>
                                 
                                 <li>
                                     <button class="likeUserInteraction" id-data="<%= item._id %>">
                                         <img src="./img/down.png" alt="Je n'aime pas">
-                                        <p><%= item.dislike %></p>
+                                        <p><%= item.dislike.length %></p>
                                     </button>
                                 </li>
                             

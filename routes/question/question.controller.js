@@ -62,12 +62,10 @@ Methods
                         const likesUp = await LikeModel.find( { about: questions[i]._id, value: true } )
                         const likesDown = await LikeModel.find( { about: questions[i]._id, value: false } )
                         questions[i].comment = comments;
-                        questions[i].like = likesUp.length
-                        questions[i].dislike = likesDown.length
-
+                        questions[i].like = likesUp.map(item => item.author)
+                        questions[i].dislike = likesDown.map(item => item.author)
                         dataArray.push({ question: questions[i], comments : comments })
                     }
-                    console.log(dataArray)
                     // return all data
                     return resolve(dataArray);
                 })());
@@ -89,8 +87,8 @@ Methods
                     for (let i = 0; i < comments.length; ++i) {
                         const likesUp = await LikeModel.find( { about: comments[i]._id, value: true } )
                         const likesDown = await LikeModel.find( { about: comments[i]._id, value: false } )
-                        comments[i].like = likesUp.length
-                        comments[i].dislike = likesDown.length
+                        comments[i].like = likesUp.map(item => item.author)
+                        comments[i].dislike = likesDown.map(item => item.author)
                         dataArray.push(comments[i])
                     }
 
