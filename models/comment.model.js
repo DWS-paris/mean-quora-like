@@ -25,8 +25,7 @@ Declare each property and type needed for the schema
         author: String,
         datePublished: Date,
         like: [String],
-        dislike: [String],
-        datePublished: Date
+        dislike: [String]
     })
 //
 

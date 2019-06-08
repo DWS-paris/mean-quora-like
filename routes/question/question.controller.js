@@ -5,6 +5,7 @@ Import
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll, getResponseComment } = require('../main.controller');
     const CommentModel = require('../../models/comment.model');
     const LikeModel = require('../../models/like.model');
+    const formatDate = require('../../services/format.date');
 //
 
 /*
@@ -82,8 +83,11 @@ Methods
                 const comments = await CommentModel.find( { parentItem: _id } );
                 const questionLikes = await LikeModel.find( { about: _id } );
                 
-                // Define question like/dislike
-                questionLikes.map( item => item.value ? question.like.push(item.author) : question.dislike.push(item.author) );
+                // Organize question like/dislike
+                questionLikes.map( item => {
+                    // Define question like/dislike
+                    item.value ? question.like.push(item.author) : question.dislike.push(item.author)
+                });
 
                 // Set empty collection
                 let dataArray = [];

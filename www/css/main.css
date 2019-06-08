@@ -151,6 +151,27 @@ Buttons
         line-height: 1;
     }
 
+    p.commentAuthor {
+        line-height: .7;
+        padding: 0 0 1.3rem 0;
+        border-bottom: .1rem dotted var(--main-color-light);
+        position: relative;
+    }
+
+    p.commentAuthor span {
+        text-align: right;
+        font-weight: 900;
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 1;
+    }
+
+    p.commentAuthor span em {
+        display: block;
+        color: var(--main-color-light);
+    }
+
     .showQuestionBtn span strong, .commentAuthor strong {
         display: block;
         font-size: 1rem;
@@ -158,6 +179,10 @@ Buttons
 
     .commentAuthor strong {
         margin-bottom: .5rem;
+    }
+
+    .commentAuthor strong + em{
+        color: var(--main-color-light);
     }
 
     .commentAuthor span{
@@ -223,7 +248,7 @@ Buttons
         width: 10rem;
         border-radius: 50%;
         background: white;
-        box-shadow: 0 0 2rem 1rem var(--main-color-light);
+        box-shadow: 0 0 2rem 1rem var(--main-color-alpha);
         border: .2rem solid #0f76bb30;
     }
 /**/
@@ -754,7 +779,7 @@ Response
         position: relative;
         padding: 0 1rem .5rem .5rem;
         width: 100%;
-        background: var(--main-color-light);
+        background: var(--main-color-alpha);
         color: var(--main-color);
         font-size: 1.1rem;
         font-weight: 600;
