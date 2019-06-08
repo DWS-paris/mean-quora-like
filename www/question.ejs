@@ -2,7 +2,7 @@
 
 <main class="contentPage">
     <section id="mainQuestion">
-        <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
+        <%- include('./components/header-question.ejs', { data: data }); %>
         <div class="headlineQuestionPublic"><%= data.question.headline %></div>
     </section>
     <div>
