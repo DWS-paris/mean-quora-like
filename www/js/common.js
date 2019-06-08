@@ -182,42 +182,56 @@ const setAddUserLikeInteraction = (buttons) => {
     // Loop on all {{tag}} to activate response button
     for( let item of document.querySelectorAll(buttons) ){
         item.addEventListener('click', event => {
+            // Prevent form event
             event.preventDefault()
 
+            // Set question ID
             let likeId = item.getAttribute('id-data');
             
-            asyncFetch('/api/like', 'POST', { about: likeId })
-            .then( () => {
-                
-                let likeValue = item.classList.contains('like' + likeId) ? 'Like' : 'Dislike';
-                
-                switch(likeValue){
-                    case 'Like':
-                        let nLike = parseInt(document.querySelector(`.like${likeId} .quantity`).textContent)
-                        document.querySelector(`.like${likeId} .quantity`).textContent = ++nLike
+            // Check if user can click
+            if(!item.classList.contains('likeUserNoInteraction')){
+                asyncFetch('/api/like', 'POST', { about: likeId })
+                .then( () => {
+                    // Declaration
+                    let likeValue = item.classList.contains('like' + likeId) ? 'Like' : 'Dislike';
+                    let nLike = parseInt(document.querySelector(`[id-data="like-${likeId}"] span`).textContent)
+                    
+                    // Get interaction type
+                    switch(likeValue){
+                        case 'Like':
+                            // Add one like
+                            document.querySelector(`[id-data="like-${likeId}"] span`).textContent = ++nLike
+    
+                            // Toggle likeUserInteraction class
+                            document.querySelector(`.like${likeId}`).classList.remove('likeUserInteraction')
+                            document.querySelector(`.like${likeId}`).classList.add('likeUserNoInteraction')
+                            // Toggle likeUserNoInteraction class
+                            document.querySelector(`.dislike${likeId}`).classList.remove('likeUserNoInteraction')
+                            document.querySelector(`.dislike${likeId}`).classList.add('likeUserInteraction')
+                        break;
+    
+                        default:
+                            // Delete one like
+                            document.querySelector(`[id-data="like-${likeId}"] span`).textContent = --nLike
+    
+                            // Toggle likeUserInteraction class
+                            document.querySelector(`.dislike${likeId}`).classList.remove('likeUserInteraction')
+                            document.querySelector(`.dislike${likeId}`).classList.add('likeUserNoInteraction')
+                            // Toggle likeUserNoInteraction class
+                            document.querySelector(`.like${likeId}`).classList.remove('likeUserNoInteraction')
+                            document.querySelector(`.like${likeId}`).classList.add('likeUserInteraction')
+                        break;
+                    }
+    
+                })
+                .catch( apiResponse => {
+                    console.error(apiResponse)
+                } )
+            }
 
-                        document.querySelector(`.like${likeId}`).classList.remove('likeUserInteraction')
-                        document.querySelector(`.like${likeId}`).classList.add('likeUserNoInteraction')
 
-                        document.querySelector(`.dislike${likeId}`).classList.remove('likeUserNoInteraction')
-                        document.querySelector(`.dislike${likeId}`).classList.add('likeUserInteraction')
-                    break;
-
-                    default:
-                        // document.querySelector(`.dislike${likeId} .quantity`).textContent = parseInt(document.querySelector(`.dislike${likeId} .quantity`).textContent)++
-
-                        document.querySelector(`.dislike${likeId}`).classList.remove('likeUserInteraction')
-                        document.querySelector(`.dislike${likeId}`).classList.add('likeUserNoInteraction')
-
-                        document.querySelector(`.like${likeId}`).classList.remove('likeUserNoInteraction')
-                        document.querySelector(`.like${likeId}`).classList.add('likeUserInteraction')
-                    break;
-                }
-
-            })
-            .catch( apiResponse => {
-                console.error(apiResponse)
-            } )
+            
+            
         })
     }
 }

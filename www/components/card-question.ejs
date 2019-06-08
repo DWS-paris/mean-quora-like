@@ -10,7 +10,12 @@
 %>
 
 <article class="userQuestion">
-    <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)"><b><%= data.question.about %></b> <span><%= data.question.author %></span></p>
+    <p class="questionAuthor" style=" background-image: url(<%= data.question.image %>)">
+        <b><%= data.question.about %></b> 
+        <span><%= data.question.author %></span>
+        <strong id-data="like-<%= data.question._id %>"><em>Score</em> <span><%= data.question.like.length %></span></strong>
+    </p>
+
     <div class="headlineQuestionPublic"><%= data.question.headline %></div>
 </article>
 
@@ -18,21 +23,24 @@
     <li>
         <button class="showQuestionBtn" id-data="<%= data.question._id %>">
             <img src="./img/show-question.png" alt="Voir les réponses">
+            <% if(data.comments.length === 0 || data.comments.length === 1) { %>
+                <span>Fil de discution <strong><%= data.comments.length %>  réponse</strong></span>
+            <% } %>
+            <% if(data.comments.length > 1) { %>
+                <span>Fil de discution <strong><%= data.comments.length %>  réponses</strong></span>
+            <% } %>
         </button>
     </li>
 
     <li>
         <button class="interactionBtn like<%= data.question._id %> <%= activeLikeClass %>" id-data="<%= data.question._id %>">
             <img src="./img/up.png" alt="J'aime">
-            <p class="quantity"><%= data.question.like.length %></p>
         </button>
     </li>
     
     <li>
         <button class="interactionBtn dislike<%= data.question._id %> <%= activeDisLikeClass %>" id-data="<%= data.question._id %>">
             <img src="./img/down.png" alt="Je n'aime pas">
-            <p class="quantity"><%= data.question.dislike.length %></p>
         </button>
     </li>
-   
 </ul>
