@@ -22,11 +22,9 @@ Routes definition
         // Set route fonctions
         routes(){
             frontRouter.get( '/', (req, res) => {
-                console.log(req.user)
                 // Get question list
                 readItem()
                 .then( questionData => {
-                    console.log(questionData)
                     // Render view and check if user is logged
                     res.render('index', { isLogged: jwtDecoder(req), data: questionData, slug: '/' })
                 })
@@ -41,6 +39,7 @@ Routes definition
                 // Get question lists
                 readOneItem(req.params.id)
                 .then( questionData => {
+                    console.log(questionData)
                     // Render view and check if user is logged
                     res.render('question', { isLogged: jwtDecoder(req), data: questionData, slug: '/question', id: req.params.id })
                 })

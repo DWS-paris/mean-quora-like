@@ -78,17 +78,27 @@ Methods
         return new Promise( (resolve, reject) => {
             fetchSingle(_id, 'question')
             .then( async question => {
-                const comments = await CommentModel.find( { parentItem: _id } )
+                // Get question comments and like/dislike
+                const comments = await CommentModel.find( { parentItem: _id } );
+                const questionLikes = await LikeModel.find( { about: _id } );
+                
+                // Define question like/dislike
+                questionLikes.map( item => item.value ? question.like.push(item.author) : question.dislike.push(item.author) );
+
                 // Set empty collection
                 let dataArray = [];
 
                 // Fetch _id collection
                 ((async function loop() {
                     for (let i = 0; i < comments.length; ++i) {
-                        const likesUp = await LikeModel.find( { about: comments[i]._id, value: true } )
-                        const likesDown = await LikeModel.find( { about: comments[i]._id, value: false } )
-                        comments[i].like = likesUp.map(item => item.author)
-                        comments[i].dislike = likesDown.map(item => item.author)
+
+                        // Get comment like/dislike
+                        const commentLikes = await LikeModel.find( { about: comments[i]._id } );
+                        
+                        // Define comment like/dislike
+                        commentLikes.map( item => item.value ? comments[i].like.push(item.author) : comments[i].dislike.push(item.author) );
+
+                        // Return comment data
                         dataArray.push(comments[i])
                     }
 

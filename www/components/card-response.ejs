@@ -1,0 +1,33 @@
+<% 
+    let activeLikeClass = "likeUserInteraction";
+    let activeDisLikeClass = "likeUserInteraction";
+    for( let item of data.like ) { 
+        if(item === isLogged){ activeLikeClass = "likeUserNoInteraction" }
+    }
+    for( let item of data.dislike ) { 
+        if(item === isLogged){ activeDisLikeClass = "likeUserNoInteraction" }
+    } 
+%>
+
+<article>
+    <div class="userResponseContent">
+        <div class="headlineReponsePublic"><%= data.headline %></div>
+        <strong class="responseAuthor"><%= data.author %></strong>
+        <ul class="responseFooter">
+            <li>
+                <button class="interactionBtn like<%= data._id %> <%= activeLikeClass %>" id-data="<%= data._id %>">
+                    <img src="./img/up.png" alt="J'aime">
+                </button>
+            </li>
+            
+            <li>
+                <button class="interactionBtn dislike<%= data._id %> <%= activeDisLikeClass %>" id-data="<%= data._id %>">
+                    <img src="./img/down.png" alt="Je n'aime pas">
+                </button>
+            </li>
+            <li>
+                <em>Score</em> <span><%= data.like.length %></span>
+            </li>
+        </ul>
+    </div>
+</article>

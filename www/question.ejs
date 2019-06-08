@@ -9,27 +9,7 @@
         <section class="grid response">
             <% if( data.comments.length > 0 ) { %>
                 <% for( let item of data.comments ) { %>
-                    <article>
-                        <div class="userResponseContent">
-                            <div class="headlineReponsePublic"><%= item.headline %></div>
-                            <strong class="responseAuthor"><%= item.author %></strong>
-                            <ul class="responseFooter">
-                                <li>
-                                    <button class="likeUserInteraction" id-data="<%= item._id %>">
-                                        <img src="./img/up.png" alt="J'aime">
-                                        <p><%= item.like.length %></p>
-                                    </button>
-                                </li>
-                                
-                                <li>
-                                    <button class="likeUserInteraction" id-data="<%= item._id %>">
-                                        <img src="./img/down.png" alt="Je n'aime pas">
-                                        <p><%= item.dislike.length %></p>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
+                    <%- include('./components/card-response.ejs', { data: item }); %>
                 <% } %>
             <% } %>
             <% if(data.comments.length < 2) { %>
