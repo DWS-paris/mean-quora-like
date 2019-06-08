@@ -12,8 +12,12 @@
 <article>
     <div class="userResponseContent">
         <div class="headlineReponsePublic"><%= data.headline %></div>
-        <strong class="responseAuthor"><%= data.author %></strong>
         <ul class="responseFooter">
+            <li class="commentAuthor">
+                Réponse de 
+                <strong class="responseAuthor"><%= data.author %></strong>
+                <span>Score : <%= data.like.length %></span>
+            </li>
             <li>
                 <button class="interactionBtn like<%= data._id %> <%= activeLikeClass %>" id-data="<%= data._id %>">
                     <img src="./img/up.png" alt="J'aime">
@@ -24,9 +28,6 @@
                 <button class="interactionBtn dislike<%= data._id %> <%= activeDisLikeClass %>" id-data="<%= data._id %>">
                     <img src="./img/down.png" alt="Je n'aime pas">
                 </button>
-            </li>
-            <li>
-                <em>Score</em> <span><%= data.like.length %></span>
             </li>
         </ul>
     </div>

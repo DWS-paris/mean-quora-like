@@ -140,7 +140,8 @@ Buttons
         margin: 0 0 0 .5rem;
     }
 
-    .showQuestionBtn span {
+    .showQuestionBtn span, .commentAuthor {
+        text-transform: uppercase;
         text-align: left;
         padding-left: 1rem;
         font-size: 1rem;
@@ -150,8 +151,25 @@ Buttons
         line-height: 1;
     }
 
-    .showQuestionBtn span strong {
+    .showQuestionBtn span strong, .commentAuthor strong {
         display: block;
+        font-size: 1rem;
+    }
+
+    .commentAuthor strong {
+        margin-bottom: .5rem;
+    }
+
+    .commentAuthor span{
+        font-weight: 900;
+    }
+
+    .responseFooter li.commentAuthor {
+        padding: 0;
+        margin: 0 0 0 .5rem;
+        position: absolute;
+        left: .5rem;
+        top: 1.2rem;
     }
 
     button.interactionBtn.likeUserNoInteraction{
@@ -523,6 +541,7 @@ Questions
 
     .questionFooter li, .responseFooter li{
         display: inline-block;
+        vertical-align: middle;
         margin: 0 0 0 .5rem;
     }
 
@@ -732,13 +751,15 @@ Response
     }
 
     .responseFooter {
-        padding: 0 .5rem .5rem .5rem;
+        position: relative;
+        padding: 0 1rem .5rem .5rem;
         width: 100%;
         background: var(--main-color-light);
         color: var(--main-color);
         font-size: 1.1rem;
         font-weight: 600;
         margin: 1rem 0 0 0;
+        text-align: right;
     }
 
     .responseAuthor {
