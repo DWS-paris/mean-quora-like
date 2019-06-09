@@ -114,9 +114,28 @@ Methods
         })
     };
 
-    const updateItem = () => {
+    const updateItem = (req) => {
         return new Promise( (resolve, reject) => {
-            
+            Models.question.findById(req.params._id, (err, item) => {
+                // Check reequest
+                if(err){ return reject(err) }
+                else{
+                    // Check if user is allowed
+                    if(item.author.identifier != req.user._id){
+                        return reject('Not Allowed')
+                    }
+                    else{
+                        // Edit item data
+                        item.headline = req.body.headline;
+
+                        // Save item
+                        item.save((err, editedItem) => {
+                            if(err){ return reject(err) }
+                            else{ return resolve(editedItem) }
+                        })
+                    }
+                }
+            })
         })
     };
 

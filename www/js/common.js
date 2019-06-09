@@ -36,6 +36,26 @@ Methode to use fetch reequests
                     return reject(response)
                 }
             }
+
+            else if( type === 'PUT' ){
+                // Define request
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+
+                // Check response
+                if( response.ok ) {
+                    const jsonResponse = await response.json();
+                    return resolve(jsonResponse)
+                }
+                else {
+                    return reject(response)
+                }
+            }
         })
     }
 //
@@ -339,8 +359,9 @@ Method to set edit question form
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch(`/api/question/${questionMarkdownId}`, 'PUT', { headline:  editFormMarkdown.getValue() })
+                    asyncFetch(`/api/question/${_questionId}`, 'PUT', { headline:  editFormMarkdown.getValue() })
                     .then( data => {
+                        console.log(data)
                         // Change loader
                         openLoaderUX(
                             '#loaderMessage', 
@@ -350,11 +371,12 @@ Method to set edit question form
                         )
                     })
                     .catch( err => {
+                        console.log(err)
                         // Change loader
                         changeLoaderUX(
                             '#loaderMessage', 
                             '#loader', 
-                            err.status === 500 ? 'La question à déjà été posée...' : 'Problème réseeau merci de recommencer',
+                            'Problème réseeau merci de recommencer',
                             null
                         ) 
                     } )

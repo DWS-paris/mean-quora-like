@@ -6,6 +6,7 @@ Definition
         idValidation: ['_id', 'password'],
         login: ['email', 'password'],
         question: ['headline', 'about'],
+        questionEdit: ['headline'],
         comment: ['headline', 'parentItem'],
         like: ['about'],
         changePassword: ['password', 'newPassword'],
