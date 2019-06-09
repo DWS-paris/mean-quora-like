@@ -50,7 +50,7 @@
                     )
 
                     // Use asyncFetch method to save data
-                    asyncFetch('/api/comment', 'POST', { headline:  responseFormMarkdown.getValue(), parentItem: parentItem.value })
+                    asyncFetch('/api/response', 'POST', { headline:  responseFormMarkdown.getValue(), parentItem: parentItem.value })
                     .then( data => {
                         // Change loader
                         openLoaderUX(

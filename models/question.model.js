@@ -22,11 +22,20 @@ Declare each property and type needed for the schema
         headline: String,
         image: String,
         about: String,
-        author: String,
         isValidated: Boolean,
-        like: [String],
-        dislike: [String],
-        datePublished: Date
+        like: [{
+            additionalName: String,
+            identifier: String
+        }],
+        dislike: [{
+            additionalName: String,
+            identifier: String
+        }],
+        datePublished: Date,
+        author: {
+            additionalName: String,
+            identifier: String
+        }
     })
 //
 

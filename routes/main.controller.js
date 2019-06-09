@@ -23,7 +23,7 @@ Methods
                 else if(item) { return reject( Vocabulary.errors.notNew ) }
                 else {
                     // Save item in DB
-                    Models[model].create(req.body)
+                    Models[model].create(req.body) 
                     .then( response => resolve(response))
                     .catch( response => reject(response));
                 };

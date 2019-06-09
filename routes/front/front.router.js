@@ -39,8 +39,8 @@ Routes definition
                 // Get question lists
                 readOneItem(req.params.id)
                 .then( questionData => {
-                    console.log(questionData)
                     // Render view and check if user is logged
+                    console.log(questionData)
                     res.render('question', { isLogged: jwtDecoder(req), data: questionData, slug: '/question', id: req.params.id })
                 })
                 .catch( error => {
@@ -61,10 +61,10 @@ Routes definition
                         // Fetch _id collection
                         ((async function loop() {
                             for (let i = 0; i < questions.length; ++i) {
-                                const comments = await Model.comment.find( { parentItem: questions[i]._id } )
+                                const response = await Model.response.find( { parentItem: questions[i]._id } )
                 
                                 // return all data
-                                dataArray.push({ question: questions[i], comments: comments })
+                                dataArray.push({ question: questions[i], response: response })
                             }
                             console.log(dataArray)
                             // return all data

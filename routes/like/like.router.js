@@ -44,8 +44,8 @@ Class definition
                 
 
                 // Check if item already exist
-                Models.like.findOne({ about: req.body.about, author: req.user._id }, (error, item) => {
-                    console.log(req.body)
+                Models.like.findOne({ about: req.body.about, "author.identifier": req.user._id }, (error, item) => {
+                    
                     // Request error
                     if(error) { return sendApiErrorResponse(res, Vocabulary.request.error, error) }
                     else if(item) { 
@@ -60,7 +60,7 @@ Class definition
                     }
                     else {
                         // Set server data
-                        req.body.author = req.user._id; 
+                        req.body.author = { additionalName: req.user.pseudo, identifier: req.user._id };
                         req.body.datePublished = new Date();
                         req.body.value = true;
 

@@ -3,8 +3,7 @@ Import
 */
     const Vocabulary = require('../../services/vocabulary.service');
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll, getResponseComment } = require('../main.controller');
-    const CommentModel = require('../../models/comment.model');
-    const LikeModel = require('../../models/like.model');
+    const Models = require('../../models/index');
     const formatDate = require('../../services/format.date');
 //
 
@@ -15,13 +14,12 @@ Methods
     const createItem = (req) => {
         
         return new Promise( (resolve, reject) => {
-            console.log(req.user._id)
             /* Define server data */
-                req.body.author = req.user.pseudo;
+                req.body.author = { additionalName: req.user.pseudo, identifier: req.user._id };
                 req.body.image = 'http://lorempixel.com/600/300/abstract/' + Math.floor(Math.random() * 10 + 1);
                 req.body.datePublished = new Date();
             //
-            console.log(req.body)
+
             /**
              * Call findOneRejectOrCreate method
              * @param req: Request => The client request
@@ -59,15 +57,17 @@ Methods
                 // Fetch _id collection
                 ((async function loop() {
                     for (let i = 0; i < questions.length; ++i) {
-                        const comments = await CommentModel.find( { parentItem: questions[i]._id } )
-                        const likesUp = await LikeModel.find( { about: questions[i]._id, value: true } )
-                        const likesDown = await LikeModel.find( { about: questions[i]._id, value: false } )
-                        questions[i].comment = comments;
+                        const responses = await Models.response.find( { parentItem: questions[i]._id } )
+                        const likesUp = await Models.like.find( { about: questions[i]._id, value: true } )
+                        const likesDown = await Models.like.find( { about: questions[i]._id, value: false } )
+
+                        questions[i].responses = responses;
                         questions[i].like = likesUp.map(item => item.author)
                         questions[i].dislike = likesDown.map(item => item.author)
-                        dataArray.push({ question: questions[i], comments : comments })
+                        dataArray.push({ question: questions[i], responses : responses })
                     }
-                    // return all data
+
+                    // Return all data
                     return resolve(dataArray);
                 })());
             })
@@ -80,8 +80,8 @@ Methods
             fetchSingle(_id, 'question')
             .then( async question => {
                 // Get question comments and like/dislike
-                const comments = await CommentModel.find( { parentItem: _id } );
-                const questionLikes = await LikeModel.find( { about: _id } );
+                const comments = await Models.response.find( { parentItem: _id } );
+                const questionLikes = await Models.like.find( { about: _id } );
                 
                 // Organize question like/dislike
                 questionLikes.map( item => {
@@ -97,7 +97,7 @@ Methods
                     for (let i = 0; i < comments.length; ++i) {
 
                         // Get comment like/dislike
-                        const commentLikes = await LikeModel.find( { about: comments[i]._id } );
+                        const commentLikes = await Models.like.find( { about: comments[i]._id } );
                         
                         // Define comment like/dislike
                         commentLikes.map( item => item.value ? comments[i].like.push(item.author) : comments[i].dislike.push(item.author) );
@@ -107,7 +107,7 @@ Methods
                     }
 
                     // return all data
-                    return resolve({ question: question, comments: dataArray });
+                    return resolve({ question: question, responses: dataArray });
                 })());
             })
             .catch( error => reject( error ));

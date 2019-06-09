@@ -13,7 +13,7 @@ Import
 Mongoose schema deefinition
 Declare each property and type needed for the schema
 */
-    const commentSchema = new Schema({
+    const responseSchema = new Schema({
         // Schema.org
         '@context' : { type: String, default: 'http://schema.org' },
         '@type' : { type: [ String ], default: ['Comment'] },
@@ -22,10 +22,20 @@ Declare each property and type needed for the schema
         // Object data
         headline: String,
         parentItem: String,
-        author: String,
         datePublished: Date,
-        like: [String],
-        dislike: [String]
+        like: [{
+            additionalName: String,
+            identifier: String
+        }],
+        dislike: [{
+            additionalName: String,
+            identifier: String
+        }],
+        datePublished: Date,
+        author: {
+            additionalName: String,
+            identifier: String
+        }
     })
 //
 
@@ -33,6 +43,6 @@ Declare each property and type needed for the schema
 Export
 Create a const that use the Mongoose schema to declare an objet model
 */
-    const CommentModel = mongoose.model('comment', commentSchema);
-    module.exports = CommentModel;
+    const ResponseModel = mongoose.model('response', responseSchema);
+    module.exports = ResponseModel;
 //

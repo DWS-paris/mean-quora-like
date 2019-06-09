@@ -13,7 +13,10 @@ Declare each property and type needed for the schema
     const likeSchema = new Schema({
         about: String,
         value: Boolean,
-        author: String,
+        author: {
+            additionalName: String,
+            identifier: String
+        },
         datePublished: Date
     })
 //

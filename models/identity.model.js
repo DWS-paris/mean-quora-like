@@ -14,7 +14,7 @@ Mongoose schema deefinition
 Declare each property and type needed for the schema
 */
     const identitySchema = new Schema({
-        email: String,
+        email: { type: String, unique: true },
         pseudo: String,
         password: String,
         isValidated: Boolean,

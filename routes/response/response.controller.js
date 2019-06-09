@@ -1,7 +1,7 @@
 /*
 Import
 */
-    const Model = require('../../models/comment.model')
+    const Model = require('../../models/response.model')
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll } = require('../main.controller');
 //
 
@@ -12,19 +12,18 @@ Methods
     const createItem = (req) => {
         
         return new Promise( (resolve, reject) => {
-            console.log(req.user._id)
             /* Define server data */
-                req.body.author = req.user.pseudo;
+                req.body.author = { additionalName: req.user.pseudo, identifier: req.user._id };
                 req.body.datePublished = new Date();
             //
-            console.log(req.body)
+            
             /**
              * Call findOneRejectOrCreate method
              * @param req: Request => The client request
              * @param model: String => The document model
              * @param requestOptions: Object => The option to check if exist
              */
-                findOneRejectOrCreate(req, 'comment', { headline: req.body.headline } )
+                findOneRejectOrCreate(req, 'response', { headline: req.body.headline } )
                 .then( item => resolve( item ))
                 .catch( error => reject( error ));
             //

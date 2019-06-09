@@ -8,7 +8,7 @@ Import and configuration
     // Modules
     const Vocabulary = require('../../services/vocabulary.service');
     const Mandatories = require('../../services/mandatory.service');
-    const { createItem, listItems, readItem, updateItem, deleteItem } = require('./comment.controller');
+    const { createItem, listItems, readItem, updateItem, deleteItem } = require('./response.controller');
     const { sendBodyError, sendFieldsError, sendApiSuccessResponse, sendApiErrorResponse } = require('../../services/response.service');
     const { checkFields } = require('../../services/request.service');
 // 

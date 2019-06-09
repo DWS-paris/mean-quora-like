@@ -6,15 +6,15 @@
     </section>
     <div>
         <section class="grid response">
-            <% if( data.comments.length > 0 ) { %>
-                <% for( let item of data.comments ) { %>
+            <% if( data.responses.length > 0 ) { %>
+                <% for( let item of data.responses ) { %>
                     <%- include('./components/card-response.ejs', { data: item }); %>
                 <% } %>
             <% } %>
-            <% if(data.comments.length < 2) { %>
+            <% if(data.responses.length < 2) { %>
                 <aside></aside>
             <% } %>
-            <% if(data.comments.length < 3) { %>
+            <% if(data.responses.length < 3) { %>
                 <aside></aside>
             <% } %>
         </section>

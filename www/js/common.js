@@ -196,13 +196,13 @@ const setAddUserLikeInteraction = (buttons) => {
                 .then( () => {
                     // Declaration
                     let likeValue = item.classList.contains('like' + likeId) ? 'Like' : 'Dislike';
-                    let nLike = parseInt(document.querySelector(`[id-data="like-${likeId}"] span`).textContent)
+                    let nLike = parseInt(document.querySelector(`[id-data="like-${likeId}"] b`).textContent)
                     
                     // Get interaction type
                     switch(likeValue){
                         case 'Like':
                             // Add one like
-                            document.querySelector(`[id-data="like-${likeId}"] span`).textContent = ++nLike
+                            document.querySelector(`[id-data="like-${likeId}"] b`).textContent = ++nLike
     
                             // Toggle likeUserInteraction class
                             document.querySelector(`.like${likeId}`).classList.remove('likeUserInteraction')
@@ -214,7 +214,7 @@ const setAddUserLikeInteraction = (buttons) => {
     
                         default:
                             // Delete one like
-                            document.querySelector(`[id-data="like-${likeId}"] span`).textContent = --nLike
+                            document.querySelector(`[id-data="like-${likeId}"] b`).textContent = --nLike
     
                             // Toggle likeUserInteraction class
                             document.querySelector(`.dislike${likeId}`).classList.remove('likeUserInteraction')
