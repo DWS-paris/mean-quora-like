@@ -553,9 +553,9 @@ Questions
     }
 
     .questionFooter {
-        padding: 0 1rem .5rem 1rem;
+        padding: 0 1rem;
         background: var(--main-color-alpha);
-        margin: -1rem 1rem 0 1rem;
+        margin: 1rem 0;
         position: relative;
         text-align: right;
         -webkit-border-radius: .5rem;
@@ -574,6 +574,22 @@ Questions
         position: absolute;
         left: 1rem;
         margin: 0;
+    }
+
+    ul.questionFooterEdit {
+        margin: .5rem 0 0 0;
+    }
+
+    ul.questionFooterEdit li {
+        display: inline-block;
+        margin: 0;
+    }
+
+    ul.questionFooterEdit button {
+        font-size: 1rem;
+        padding: .5rem 1rem;
+        line-height: 1;
+        height: auto;
     }
 
 
@@ -728,6 +744,7 @@ Questions
     section#mainQuestion {
         margin-bottom: 6rem;
     }
+
 
     
 /**/

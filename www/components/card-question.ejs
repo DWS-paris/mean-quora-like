@@ -12,38 +12,31 @@
 
 <article class="userQuestion">
     <%- include('./header-question.ejs', { data: data }); %>
-</article>
+    <%- include('./footer-question.ejs', { data: data }); %>
+    <div class="headlineQuestionPublic"><%= data.question.headline %></div>
+    <ul class="questionFooter">
+        <li>
+            <button class="showQuestionBtn" id-data="<%= data.question._id %>">
+                <img src="./img/show-question.png" alt="Voir les réponses">
+                <% if(data.responses.length === 0 || data.responses.length === 1) { %>
+                    <span>Fil de discution <strong><%= data.responses.length %>  réponse</strong></span>
+                <% } %>
+                <% if(data.responses.length > 1) { %>
+                    <span>Fil de discution <strong><%= data.responses.length %>  réponses</strong></span>
+                <% } %>
+            </button>
+        </li>
 
-<ul class="questionFooter">
-    <li>
-        <button class="showQuestionBtn" id-data="<%= data.question._id %>">
-            <img src="./img/show-question.png" alt="Voir les réponses">
-            <% if(data.responses.length === 0 || data.responses.length === 1) { %>
-                <span>Fil de discution <strong><%= data.responses.length %>  réponse</strong></span>
-            <% } %>
-            <% if(data.responses.length > 1) { %>
-                <span>Fil de discution <strong><%= data.responses.length %>  réponses</strong></span>
-            <% } %>
-        </button>
-    </li>
-
-    <% if(data.question.author === isLogged) { %>
         <li>
             <button class="interactionBtn like<%= data.question._id %> <%= activeLikeClass %>" id-data="<%= data.question._id %>">
                 <img src="./img/up.png" alt="J'aime">
             </button>
         </li>
-    <% } %>
-
-    <li>
-        <button class="interactionBtn like<%= data.question._id %> <%= activeLikeClass %>" id-data="<%= data.question._id %>">
-            <img src="./img/up.png" alt="J'aime">
-        </button>
-    </li>
-    
-    <li>
-        <button class="interactionBtn dislike<%= data.question._id %> <%= activeDisLikeClass %>" id-data="<%= data.question._id %>">
-            <img src="./img/down.png" alt="Je n'aime pas">
-        </button>
-    </li>
-</ul>
+        
+        <li>
+            <button class="interactionBtn dislike<%= data.question._id %> <%= activeDisLikeClass %>" id-data="<%= data.question._id %>">
+                <img src="./img/down.png" alt="Je n'aime pas">
+            </button>
+        </li>
+    </ul>
+</article>
