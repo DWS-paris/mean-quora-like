@@ -52,7 +52,7 @@ Routes definition
             frontRouter.get( '/category/:slug', (req, res) => {
                 Model.question.find({ about: req.params.slug }, (err, questions) => {
                     if(err){
-                        res.render('category', { isLogged: jwtDecoder(req), data: [], slug: req.params.slug.toUpperCase() })
+                        return res.render('category', { isLogged: jwtDecoder(req), data: [], slug: req.params.slug.toUpperCase() })
                     }
                     else{
                         // Set empty collection
@@ -76,12 +76,12 @@ Routes definition
 
             frontRouter.get( '/register', (req, res) => {
                 // Render view, user is unlogged
-                res.render('register', { isLogged: false, slug: 'register' })
+                res.render('register', { isLogged: false, data: [], slug: 'register' })
             });
 
             frontRouter.get( '/login', (req, res) => {
                 // Render view, user is unlogged
-                res.render('login', { isLogged: false, slug: 'login' })
+                res.render('login', { isLogged: false, data: [], slug: 'login' })
             });
 
             frontRouter.get( '/logout', (req, res) => {

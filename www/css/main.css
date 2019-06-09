@@ -70,14 +70,14 @@ SimpleMDE
     }
 
 
-    #reponseForm .CodeMirror-scroll {
+    #reponseForm .CodeMirror-scroll, #editForm .CodeMirror-scroll {
         background: white;
         padding: 2rem;
     }
 
     
 
-    #reponseForm .CodeMirror {
+    #reponseForm .CodeMirror, #editForm .CodeMirror {
         background: transparent;
     }
 
@@ -511,7 +511,9 @@ Questions
         background: rgba(255, 255, 255, .7);
     }
 
-    .userQuestion .editor-preview, .userQuestion .CodeMirror, #reponseForm .editor-preview, #reponseForm .CodeMirror {
+    .userQuestion .editor-preview, .userQuestion .CodeMirror, #reponseForm .editor-preview, #reponseForm .CodeMirror
+    , #editForm .CodeMirror, #editForm .editor-preview
+    {
         background: transparent;
     }
 
@@ -519,7 +521,7 @@ Questions
         background: rgba(255, 255, 255, .7);
     }
 
-    .userQuestion .CodeMirror, #reponseForm  .CodeMirror {
+    .userQuestion .CodeMirror, #reponseForm  .CodeMirror, #editForm .CodeMirror {
         background: rgba(255, 255, 255, .7);
         border: none;
         padding: 0;
@@ -528,13 +530,13 @@ Questions
 
     
 
-    .userQuestion .editor-preview, #reponseForm .editor-preview {
+    .userQuestion .editor-preview, #reponseForm .editor-preview, #editForm.editor-preview {
         padding: 2rem 2rem 0 2rem;
         font-size: 2rem;
         line-height: 1.2;
     }
 
-    .userQuestion .editor-preview pre, #reponseForm .editor-preview pre {
+    .userQuestion .editor-preview pre, #reponseForm .editor-preview pre, #editForm .editor-preview pre {
         font-size: 1.5rem;
         line-height: 1.5;
         background: transparent;
@@ -543,7 +545,7 @@ Questions
         padding: 0;
     }
 
-    .userQuestion .editor-preview code, #reponseForm .editor-preview code {
+    .userQuestion .editor-preview code, #reponseForm .editor-preview code, #editForm .editor-preview code {
         background: white;
         border-radius: .5rem;
     }
@@ -712,7 +714,7 @@ Questions
         font-size: .7em;
     }
 
-    #headerForm, #headerResponse {
+    #headerForm, #headerResponse, #headerEditForm {
         position: fixed;
         top: 0;
         left: 0;
@@ -722,13 +724,13 @@ Questions
         z-index: 1000;
     }
 
-    #questionForm, #reponseForm {
+    #questionForm, #reponseForm, #editForm {
         margin: auto;
         width: 70%;
         position: relative;
     }
 
-    #questionForm textarea, #reponseForm textarea {
+    #questionForm textarea, #reponseForm textarea, #editForm textarea {
         font-size: 3rem;
         min-height: 25rem;
         padding: 2rem;
@@ -737,7 +739,7 @@ Questions
 
     
 
-    #questionForm textarea:focus, #headerResponse textarea:focus{
+    #questionForm textarea:focus, #headerResponse textarea:focus, #headerEditForm textarea:focus{
         background-color: white;
     }
 
@@ -766,7 +768,7 @@ Response
         margin: 0 0 2rem 0;
     }
 
-    #reponseForm.open{
+    #reponseForm.open, #editForm.open{
         display: block;
     }
 
@@ -814,7 +816,7 @@ Response
 /* 
 Animations
 */
-    #headerForm, #headerResponse {
+    #headerForm, #headerResponse, #headerEditForm  {
         display: none;
         opacity: 0;
 
@@ -825,11 +827,11 @@ Animations
         -o-transition:  opacity .3s   ;
     }
 
-    #headerForm.display, #headerResponse.display{
+    #headerForm.display, #headerResponse.display, #headerEditForm.display{
         display: flex;
     }
 
-    #headerForm.open, #headerResponse.open{
+    #headerForm.open, #headerResponse.open, #headerEditForm.open{
         opacity: 1;
     }
 /**/

@@ -272,75 +272,94 @@ const setLoader = (loader, loaderMessage) => {
 
 
 /* 
-Loader
+Method to set edit question btn
 */
-    // Wait for DOM content
-    document.addEventListener('DOMContentLoaded', () => {
-        // Declaration
-        const sendResponseBtn = document.querySelector('#sendResponseBtn');
-        const showQuestionBtn = document.querySelectorAll('.showQuestionBtn');
+    const setEditQuestionBtn = (btnTag) => {
+        // Get HTML tags
+        const editQuestionBtns = document.querySelectorAll(btnTag);
+
+        // Set event
+        for( let item of editQuestionBtns) {
+            item.addEventListener('click', event => {
+                // Prevent default event
+                event.preventDefault();
+
+                // Set question data
+                const questionId = item.getAttribute('data-id');
+                const quectionMarkdown =  document.querySelector(`#question-${questionId}`).value;
+                
+                // Set edit form
+                setEditQuestionForm(questionId, quectionMarkdown)
+            })
+        }
+    }
+//
+
+/* 
+Method to set edit question form
+*/
+    const setEditQuestionForm = (_questionId, _quectionMarkdown) => {
+        // Add _id in the form
+        document.querySelector('#idEditForm').value = _questionId;
+        document.querySelector('#hiddenHeadlineEditForm').value = _quectionMarkdown;
+
+        // Add content in the form
+        const editFormMarkdown = new MarkdownEditor('#headlineEditForm', true, null);
+        editFormMarkdown.setMarkdownEditor();
+        editFormMarkdown.newSimpleMDE.value(_quectionMarkdown);
+
+        // Open popin form
+        openPopinUX(document.querySelector('#headerEditForm'));
 
         /* 
-        Home page
+        Get form submit
         */
-            if(showQuestionBtn === "2"){
-                for(let item of showQuestionBtn){
-                    item.addEventListener('click', () => {
+            document.querySelector('#headerEditForm').addEventListener('submit', event => {
+                // Prevent default event
+                event.preventDefault();
+
+                // Set error checker
+                let formError = 0;
+
+                // Set form value
+                let questionMarkdownId = new FormValue(_questionId, 'input');
+                let questionMarkdownEdited = new FormValue(editFormMarkdown.getValue(), 'input');
+
+                // Check mandatories
+                questionMarkdownId.checkLength(20) ? formError++ : undefined;
+                questionMarkdownEdited.checkLength(20) ? formError++ : undefined;
+
+                // Check form error
+                if( formError === 0 ){
+                    // Display loader
+                    openLoaderUX(
+                        '#loaderMessage', 
+                        '#loader', 
+                        'Enregistrement de la modification...'
+                    )
+
+                    // Use asyncFetch method to save data
+                    asyncFetch(`/api/question/${questionMarkdownId}`, 'PUT', { headline:  editFormMarkdown.getValue() })
+                    .then( data => {
                         // Change loader
                         openLoaderUX(
                             '#loaderMessage', 
                             '#loader', 
-                            'Réponse enregistrée !',
-                            '/question/' + parentItem.value
+                            'Modification enregistrée !',
+                            '/'
                         )
-                    });
+                    })
+                    .catch( err => {
+                        // Change loader
+                        changeLoaderUX(
+                            '#loaderMessage', 
+                            '#loader', 
+                            err.status === 500 ? 'La question à déjà été posée...' : 'Problème réseeau merci de recommencer',
+                            null
+                        ) 
+                    } )
                 }
-            };
+            })
         //
-
-        /* 
-        Question Page
-        */
-            if(sendResponseBtn){
-                sendResponseBtn.addEventListener('click', event => {
-                    // Prevent default event
-                    event.preventDefault()
-
-                    // Open popin Add Response
-                    openPopinUX(document.querySelector('#headerResponse'))
-                });
-            };
-        //
-
-
-        setLoader(document.querySelector('#loader'), document.querySelector('#loaderMessage'));
-
-        setHeadlineQuestion('.headlineQuestionPublic');
-        setHeadlineQuestion('.headlineReponsePublic');
-
-        setAddResponseBtn('.showQuestionBtn', '#parentItem');
-        setAddUserLikeInteraction('.interactionBtn')
-
-
-        if(document.querySelector('.grid')){
-            FlexMasonry.init('.grid', {
-                breakpointCols: {
-                    'min-width: 1000px': 4,
-                    'min-width: 850px': 3,
-                    'min-width: 650px': 2,
-                }
-            });
-        }
-
-        if(document.querySelector('.grid.response')){
-            FlexMasonry.init('.grid.response', {
-                breakpointCols: {
-                    'min-width: 950px': 3,
-                    'min-width: 650px': 2,
-                }
-            });
-        }
-
-        
-    })
+    }
 //
