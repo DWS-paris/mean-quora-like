@@ -1,9 +1,16 @@
 <% if(data.author.identifier === isLogged) { %>
     <ul class="footerEdit">
         <li>
-            <button type="button" class="editBtn" data-type="<%= type %>" data-id="<%= data._id %>">
-                Editer
-            </button>
+            <% if(type === 'question') { %>
+                <button type="button" class="editBtn" data-type="<%= type %>" data-id="<%= data._id %>">
+                    Editer
+                </button>
+            <% } %>
+            <% if(type === 'response') { %>
+                <button type="button" class="editBtn" data-type="<%= type %>" data-id="<%= data._id %>" data-parent="<%= parent %>">
+                    Editer
+                </button>
+            <% } %>
         </li>
     </ul>
 <% } %>

@@ -12,7 +12,7 @@
     <div class="userResponseContent">
         <div class="commentAuthor">
             <%- include('./header-response.ejs', { data: data }); %>
-            <%- include('./footer-card.ejs', { data: data, type: 'response' }) %>
+            <%- include('./footer-card.ejs', { data: data, type: 'response', parent: parent }) %>
         </div>
         <textarea id="response-<%= data._id %>" hidden><%= data.headline %></textarea>
         <div class="headlineReponsePublic"><%= data.headline %></div>

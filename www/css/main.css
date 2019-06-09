@@ -153,7 +153,7 @@ Buttons
 
     .commentAuthor {
         line-height: .7;
-        padding: 0 0 1.3rem 0;
+        padding: 0;
         border-bottom: .1rem dotted var(--main-color-light);
         position: relative;
         margin-bottom: 1.5rem
@@ -584,7 +584,7 @@ Questions
     }
 
     ul.footerEdit {
-        margin: .5rem 0 0 0;
+        margin: .5rem 0 1rem 0;
     }
 
     ul.footerEdit li {

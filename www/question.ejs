@@ -9,7 +9,7 @@
         <section class="grid response">
             <% if( data.responses.length > 0 ) { %>
                 <% for( let item of data.responses ) { %>
-                    <%- include('./components/card-response.ejs', { data: item }); %>
+                    <%- include('./components/card-response.ejs', { data: item, parent: data.question._id }); %>
                 <% } %>
             <% } %>
             <% if(data.responses.length < 2) { %>

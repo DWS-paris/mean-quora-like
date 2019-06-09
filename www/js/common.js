@@ -306,12 +306,13 @@ Method to set edit btn
 
                 // Set data
                 const _id = item.getAttribute('data-id');
+                const parent = item.getAttribute('data-parent');
                 const type = item.getAttribute('data-type');
                 
                 const contentMarkdown =  document.querySelector(`#${type}-${_id}`).value;
                 
                 // Set edit form
-                setEditForm(type, _id, contentMarkdown);
+                setEditForm(type, _id, contentMarkdown, parent);
             })
         }
     }
@@ -320,7 +321,7 @@ Method to set edit btn
 /* 
 Method to set edit question form
 */
-    const setEditForm = (_type, _idValue, _markdownValue) => {
+    const setEditForm = (_type, _idValue, _markdownValue, _parent) => {
         // Add _id in the form
         document.querySelector('#idEditForm').value = _idValue;
         document.querySelector('#hiddenHeadlineEditForm').value = _markdownValue;
@@ -361,7 +362,7 @@ Method to set edit question form
                     )
 
                     // Set path
-                    let path = _type === 'question' ? '/' : `/`
+                    let path = _type === 'question' ? '/' : `/question/${_parent}`
 
                     // Use asyncFetch method to save data
                     asyncFetch(`/api/${_type}/${_idValue}`, 'PUT', { headline:  editFormMarkdown.getValue() })
