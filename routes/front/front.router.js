@@ -40,7 +40,6 @@ Routes definition
                 readOneItem(req.params.id)
                 .then( questionData => {
                     // Render view and check if user is logged
-                    console.log(questionData)
                     res.render('question', { isLogged: jwtDecoder(req), data: questionData, slug: '/question', id: req.params.id })
                 })
                 .catch( error => {

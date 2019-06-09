@@ -1,7 +1,7 @@
 /*
 Import
 */
-    const Model = require('../../models/response.model')
+    const Models = require('../../models/index')
     const { findOneRejectOrCreate, findOneAndPushId, findOneAndAddId, findOneAndDelete, fetchSingle, fetchAll, findAll } = require('../main.controller');
 //
 
@@ -52,9 +52,33 @@ Methods
         })
     };
 
-    const updateItem = () => {
+    const updateItem = (req) => {
+        console.log(req.body)
+        console.log(req.params._id)
         return new Promise( (resolve, reject) => {
-            
+            Models.response.findById(req.params._id, (err, item) => {
+                // Check reequest
+                if(err){ 
+                    console.log(err)
+                    return reject(err) }
+                else{
+                    console.log(item)
+                    // Check if user is allowed
+                    if(item.author.identifier != req.user._id){
+                        return reject('Not Allowed')
+                    }
+                    else{
+                        // Edit item data
+                        item.headline = req.body.headline;
+
+                        // Save item
+                        item.save((err, editedItem) => {
+                            if(err){ return reject(err) }
+                            else{ return resolve(editedItem) }
+                        })
+                    }
+                }
+            })
         })
     };
 
@@ -66,7 +90,7 @@ Methods
 
     const getResponseComment = (parentItem) => {
         return new Promise( (resolve, reject) => {
-            Model.find({parentItem: parentItem}, (error, items) => {
+            Model.response.find({parentItem: parentItem}, (error, items) => {
                 // Request check
                 if(error) { return reject(error) }
                 else { return resolve(items) };

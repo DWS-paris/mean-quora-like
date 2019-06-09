@@ -1,8 +1,8 @@
-<p class="commentAuthor">
+<p>
     <strong><%= data.author.additionalName %></strong> 
     <em>
         Le <%= data.datePublished.getDate() %>/<%= data.datePublished.getMonth() %>/<%= data.datePublished.getFullYear() %> 
         à <%= data.datePublished.getHours() %>h<%= data.datePublished.getHours() %> 
     </em>
     <span id-data="like-<%= data._id %>"><em>Score</em> <b><%= data.like.length %></b></span>
-    
+</p>

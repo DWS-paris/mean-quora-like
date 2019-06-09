@@ -10,8 +10,11 @@
 %>
 <article>
     <div class="userResponseContent">
-        <%- include('./header-response.ejs', { data: data }); %>
-
+        <div class="commentAuthor">
+            <%- include('./header-response.ejs', { data: data }); %>
+            <%- include('./footer-card.ejs', { data: data, type: 'response' }) %>
+        </div>
+        <textarea id="response-<%= data._id %>" hidden><%= data.headline %></textarea>
         <div class="headlineReponsePublic"><%= data.headline %></div>
         <ul class="responseFooter">
             <li>

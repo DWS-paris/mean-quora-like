@@ -1,0 +1,9 @@
+<% if(data.author.identifier === isLogged) { %>
+    <ul class="footerEdit">
+        <li>
+            <button type="button" class="editBtn" data-type="<%= type %>" data-id="<%= data._id %>">
+                Editer
+            </button>
+        </li>
+    </ul>
+<% } %>

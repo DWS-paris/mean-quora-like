@@ -49,7 +49,7 @@ Router definition
                 .catch( apiErr => sendApiErrorResponse(res, Vocabulary.request.error, apiErr));
             })
 
-            // Route GET item
+            // Route PUT/:id item
             MyRouter.put('/:_id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
                 // Error: no body present
                 if (typeof req.body === 'undefined' || req.body === null) { sendBodyError(res, Vocabulary.errors.noBody) }

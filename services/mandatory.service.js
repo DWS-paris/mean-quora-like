@@ -8,6 +8,7 @@ Definition
         question: ['headline', 'about'],
         questionEdit: ['headline'],
         comment: ['headline', 'parentItem'],
+        responseEdit: ['headline'],
         like: ['about'],
         changePassword: ['password', 'newPassword'],
     };

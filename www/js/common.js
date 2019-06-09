@@ -292,9 +292,9 @@ const setLoader = (loader, loaderMessage) => {
 
 
 /* 
-Method to set edit question btn
+Method to set edit btn
 */
-    const setEditQuestionBtn = (btnTag) => {
+    const setEditBtn = (btnTag) => {
         // Get HTML tags
         const editQuestionBtns = document.querySelectorAll(btnTag);
 
@@ -304,12 +304,14 @@ Method to set edit question btn
                 // Prevent default event
                 event.preventDefault();
 
-                // Set question data
-                const questionId = item.getAttribute('data-id');
-                const quectionMarkdown =  document.querySelector(`#question-${questionId}`).value;
+                // Set data
+                const _id = item.getAttribute('data-id');
+                const type = item.getAttribute('data-type');
+                
+                const contentMarkdown =  document.querySelector(`#${type}-${_id}`).value;
                 
                 // Set edit form
-                setEditQuestionForm(questionId, quectionMarkdown)
+                setEditForm(type, _id, contentMarkdown);
             })
         }
     }
@@ -318,15 +320,15 @@ Method to set edit question btn
 /* 
 Method to set edit question form
 */
-    const setEditQuestionForm = (_questionId, _quectionMarkdown) => {
+    const setEditForm = (_type, _idValue, _markdownValue) => {
         // Add _id in the form
-        document.querySelector('#idEditForm').value = _questionId;
-        document.querySelector('#hiddenHeadlineEditForm').value = _quectionMarkdown;
+        document.querySelector('#idEditForm').value = _idValue;
+        document.querySelector('#hiddenHeadlineEditForm').value = _markdownValue;
 
         // Add content in the form
         const editFormMarkdown = new MarkdownEditor('#headlineEditForm', true, null);
         editFormMarkdown.setMarkdownEditor();
-        editFormMarkdown.newSimpleMDE.value(_quectionMarkdown);
+        editFormMarkdown.newSimpleMDE.value(_markdownValue);
 
         // Open popin form
         openPopinUX(document.querySelector('#headerEditForm'));
@@ -342,12 +344,12 @@ Method to set edit question form
                 let formError = 0;
 
                 // Set form value
-                let questionMarkdownId = new FormValue(_questionId, 'input');
-                let questionMarkdownEdited = new FormValue(editFormMarkdown.getValue(), 'input');
+                let editedId = new FormValue(_idValue, 'input');
+                let editedMarkdown = new FormValue(editFormMarkdown.getValue(), 'input');
 
                 // Check mandatories
-                questionMarkdownId.checkLength(20) ? formError++ : undefined;
-                questionMarkdownEdited.checkLength(20) ? formError++ : undefined;
+                editedId.checkLength(20) ? formError++ : undefined;
+                editedMarkdown.checkLength(20) ? formError++ : undefined;
 
                 // Check form error
                 if( formError === 0 ){
@@ -358,20 +360,22 @@ Method to set edit question form
                         'Enregistrement de la modification...'
                     )
 
+                    // Set path
+                    let path = _type === 'question' ? '/' : `/`
+
                     // Use asyncFetch method to save data
-                    asyncFetch(`/api/question/${_questionId}`, 'PUT', { headline:  editFormMarkdown.getValue() })
+                    asyncFetch(`/api/${_type}/${_idValue}`, 'PUT', { headline:  editFormMarkdown.getValue() })
                     .then( data => {
-                        console.log(data)
                         // Change loader
                         openLoaderUX(
                             '#loaderMessage', 
                             '#loader', 
                             'Modification enregistrée !',
-                            '/'
+                            path
                         )
                     })
                     .catch( err => {
-                        console.log(err)
+                        err.json().then(data => console.log(data))
                         // Change loader
                         changeLoaderUX(
                             '#loaderMessage', 

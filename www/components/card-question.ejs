@@ -12,7 +12,7 @@
 
 <article class="userQuestion">
     <%- include('./header-question.ejs', { data: data }); %>
-    <%- include('./footer-question.ejs', { data: data }); %>
+    <%- include('./footer-card.ejs', { data: data.question, type: 'question' }) %>
     <textarea id="question-<%= data.question._id %>" hidden><%= data.question.headline %></textarea>
     <div class="headlineQuestionPublic"><%= data.question.headline %></div>
     <ul class="questionFooter">

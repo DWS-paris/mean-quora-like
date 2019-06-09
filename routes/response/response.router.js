@@ -48,6 +48,25 @@ Router definition
                 .then( apiRes =>  sendApiSuccessResponse(res, Vocabulary.request.success, apiRes))
                 .catch( apiErr => sendApiErrorResponse(res, Vocabulary.request.error, apiErr));
             })
+
+            // Route PUT/:id item
+            MyRouter.put('/:_id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+                // Error: no body present
+                if (typeof req.body === 'undefined' || req.body === null) { sendBodyError(res, Vocabulary.errors.noBody) }
+                
+                // Check fields in the body
+                const { miss, extra, ok } = checkFields( Mandatories.responseEdit, req.body);
+                
+                //=> Error: bad fields
+                if (!ok) { sendFieldsError(res, Vocabulary.errors.badFields, miss, extra) }
+                
+                //=> Request is validateed
+                else{
+                    updateItem(req)
+                    .then( apiRes =>  sendApiSuccessResponse(res, Vocabulary.request.success, apiRes))
+                    .catch( apiErr => sendApiErrorResponse(res, Vocabulary.request.error, apiErr));
+                }
+            })
         };
 
         // Init method

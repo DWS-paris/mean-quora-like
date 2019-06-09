@@ -16,8 +16,8 @@ Loader
         /* 
         Activate button interactions
         */
-            // Set edit question btn
-            setEditQuestionBtn('.editQuestionBtn');
+            // Set edit btn
+            setEditBtn('.editBtn');
         //
 
         

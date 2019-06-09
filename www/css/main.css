@@ -151,14 +151,15 @@ Buttons
         line-height: 1;
     }
 
-    p.commentAuthor {
+    .commentAuthor {
         line-height: .7;
         padding: 0 0 1.3rem 0;
         border-bottom: .1rem dotted var(--main-color-light);
         position: relative;
+        margin-bottom: 1.5rem
     }
 
-    p.commentAuthor span {
+    .commentAuthor span {
         text-align: right;
         font-weight: 900;
         position: absolute;
@@ -167,9 +168,13 @@ Buttons
         line-height: 1;
     }
 
-    p.commentAuthor span em {
+    .commentAuthor span em {
         display: block;
         color: var(--main-color-light);
+    }
+
+    .commentAuthor p {
+        margin: 0 0 1rem 0;
     }
 
     .showQuestionBtn span strong, .commentAuthor strong {
@@ -578,20 +583,21 @@ Questions
         margin: 0;
     }
 
-    ul.questionFooterEdit {
+    ul.footerEdit {
         margin: .5rem 0 0 0;
     }
 
-    ul.questionFooterEdit li {
+    ul.footerEdit li {
         display: inline-block;
         margin: 0;
     }
 
-    ul.questionFooterEdit button {
+    ul.footerEdit button {
         font-size: 1rem;
         padding: .5rem 1rem;
         line-height: 1;
         height: auto;
+        margin: 0;
     }
 
 
