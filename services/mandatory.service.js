@@ -9,7 +9,7 @@ Definition
         questionEdit: ['headline'],
         comment: ['headline', 'parentItem'],
         responseEdit: ['headline'],
-        like: ['about'],
+        like: ['about', 'type'],
         changePassword: ['password', 'newPassword'],
     };
 //

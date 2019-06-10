@@ -4,7 +4,7 @@ Imports
     const express = require('express');
     const frontRouter = express.Router();
     const jwt = require('jsonwebtoken');
-    const { jwtDecoder } = require('../auth/auth.controller');
+    const { jwtDecoder, getUserDataFromToken } = require('../auth/auth.controller');
     const { createItem, listItems, readItem, readOneItem, updateItem, deleteItem } = require('../question/question.controller')
     const Model = require('../../models/index');
 //
@@ -35,7 +35,6 @@ Routes definition
             });
 
             frontRouter.get( '/question/:id', (req, res) => {
-                
                 // Get question lists
                 readOneItem(req.params.id)
                 .then( questionData => {
@@ -89,6 +88,21 @@ Routes definition
                 
                 // Redirection to homepage view
                 res.redirect('/')
+            });
+
+            frontRouter.get( '/me', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+
+                getUserDataFromToken(req)
+                .then( userData => {
+                    console.log(userData)
+                    res.render('me', { isLogged: true, data: userData, slug: 'me' })
+                })
+                .catch( err => {
+                    res.render('me', { isLogged: true, data: err, slug: 'me' })
+                })
+
+                // Render view, user is unlogged
+                
             });
         };
 

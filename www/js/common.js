@@ -225,7 +225,7 @@ const setAddUserLikeInteraction = (buttons) => {
             
             // Check if user can click
             if(!item.classList.contains('likeUserNoInteraction')){
-                asyncFetch('/api/like', 'POST', { about: likeId })
+                asyncFetch('/api/like', 'POST', { about: likeId, type: item.getAttribute('id-type') })
                 .then( () => {
                     // Declaration
                     let likeValue = item.classList.contains('like' + likeId) ? 'Like' : 'Dislike';

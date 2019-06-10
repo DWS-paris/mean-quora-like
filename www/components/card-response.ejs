@@ -18,12 +18,12 @@
         <div class="headlineReponsePublic"><%= data.headline %></div>
         <ul class="responseFooter">
             <li>
-                <button class="interactionBtn like<%= data._id %> <%= activeLikeClass %>" id-data="<%= data._id %>">
+                <button class="interactionBtn like<%= data._id %> <%= activeLikeClass %>" id-data="<%= data._id %>" id-type="response">
                     <img src="./img/up.png" alt="J'aime">
                 </button>
             </li>
             <li>
-                <button class="interactionBtn dislike<%= data._id %> <%= activeDisLikeClass %>" id-data="<%= data._id %>">
+                <button class="interactionBtn dislike<%= data._id %> <%= activeDisLikeClass %>" id-data="<%= data._id %>" id-type="response">
                     <img src="./img/down.png" alt="Je n'aime pas">
                 </button>
             </li>

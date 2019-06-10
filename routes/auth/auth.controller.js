@@ -2,6 +2,7 @@
 Import
 */
     const IdentityModel = require('../../models/identity.model')
+    const Models = require('../../models/index')
     const bcrypt = require('bcryptjs');
     const jwt = require('jsonwebtoken');
 //
@@ -135,6 +136,60 @@ Methods
     };
 
     /**
+     * Login user
+     * @param body: Object => email: String, password: String
+    */
+    const getUserDataFromToken = (req) => {
+        return new Promise( async (resolve, reject) => {
+            
+            const questions = await Models.question.find({ "author.identifier": req.user._id })
+            const responses = await Models.response.find({ "author.identifier": req.user._id })
+            const likes = await Models.like.find({ "author.identifier": req.user._id })
+
+            // Set empty collection
+            let userQuestions = [];
+            let userResponses = [];
+            let userLikes = [];
+
+            // Fetch _id collection
+            ((async function loop() {
+                for (let i = 0; i < questions.length; ++i) {
+                    questions[i].like = await Models.like.find( { about: questions[i]._id, value: true } )
+                    questions[i].dislike = await Models.like.find( { about: questions[i]._id, value: false } )
+    
+                    // return all data
+                    userQuestions.push(questions[i])
+                }
+
+                for (let i = 0; i < responses.length; ++i) {
+                    responses[i].like = await Models.like.find( { about: responses[i]._id, value: true } )
+                    responses[i].dislike = await Models.like.find( { about: responses[i]._id, value: false } )
+    
+                    // return all data
+                    userResponses.push(responses[i])
+                }
+
+                for (let i = 0; i < likes.length; ++i) {
+                    let likeAbout = null
+                    if(likes[i].type === 'question'){
+                        likeAbout = await Models.question.find({ _id: likes[i].about })
+                    }
+                    if(likes[i].type === 'response'){
+                        likeAbout = await Models.response.find({ _id: likes[i].about })
+                    }
+                    
+                    // return all data
+                    userLikes.push({ like: likes[i], about: likeAbout })
+                }
+
+                return resolve({ userQuestions, userResponses, userLikes })
+            })());
+
+        })
+        
+    };
+
+    /**
      * Set user password
      * @param body: Object => password: String, newPassword: String
     */
@@ -184,6 +239,7 @@ Export
         confirmIdentity,
         login,
         setPassword,
-        jwtDecoder
+        jwtDecoder,
+        getUserDataFromToken
     }
 //
