@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const askQuestionBtn = document.querySelector('#askQuestionBtn');
     const headerForm = document.querySelector('#headerForm');
     const headerResponse = document.querySelector('#headerResponse');
+    const headerEdit = document.querySelector('#headerEditForm');
     const closeButtons = document.querySelectorAll('.closeButtonFormButton');
     const hrefLink = document.querySelectorAll('.rightLink a')
     const categoryLink = document.querySelectorAll('ul#categoryList li')
@@ -43,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     case 'closeFromResponse':
                     closePopinUX(headerResponse)
+                    break;
+
+                    case 'closeFromEdit':
+                    closePopinUX(headerEdit)
                     break;
 
                     default:

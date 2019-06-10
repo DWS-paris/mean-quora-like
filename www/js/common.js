@@ -322,12 +322,13 @@ Method to set edit btn
 Method to set edit question form
 */
     const setEditForm = (_type, _idValue, _markdownValue, _parent) => {
+        console.log(_type)
         // Add _id in the form
         document.querySelector('#idEditForm').value = _idValue;
         document.querySelector('#hiddenHeadlineEditForm').value = _markdownValue;
 
         // Add content in the form
-        const editFormMarkdown = new MarkdownEditor('#headlineEditForm', true, null);
+        let editFormMarkdown = new MarkdownEditor('#headlineEditForm', true, null);
         editFormMarkdown.setMarkdownEditor();
         editFormMarkdown.newSimpleMDE.value(_markdownValue);
 
@@ -388,5 +389,5 @@ Method to set edit question form
                 }
             })
         //
-    }
+    };
 //

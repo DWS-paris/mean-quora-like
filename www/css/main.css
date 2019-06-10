@@ -527,7 +527,6 @@ Questions
     }
 
     .userQuestion .CodeMirror, #reponseForm  .CodeMirror, #editForm .CodeMirror {
-        background: rgba(255, 255, 255, .7);
         border: none;
         padding: 0;
         margin-bottom: 0;
