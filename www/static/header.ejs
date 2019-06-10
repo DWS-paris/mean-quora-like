@@ -24,6 +24,7 @@
         <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="/js/simpleMDEClass.js"></script>
         <script src="/js/MarkdownViewer.js"></script>
         <script src="/js/formValueClass.js"></script>
@@ -47,6 +48,7 @@
                         <li class="rightLink"><a href="/register"><img src="./img/register.png" alt="Inscription"></a></li>
                     <% } %>
                     <% if(isLogged){  %>
+                        <li class="rightLink login"><a href="/me"><img src="./img/me.png" alt="Mon compte"></a></li>
                         <li id="logoutButton"  class="rightLink"><a href="/logout"><img src="./img/logout.png" alt="Deconnexion"></a></li>
                     <% } %>
                 </ul>

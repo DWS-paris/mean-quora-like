@@ -142,6 +142,7 @@ Methods
     const getUserDataFromToken = (req) => {
         return new Promise( async (resolve, reject) => {
             
+            const identity = await Models.identity.find({ _id: req.user._id })
             const questions = await Models.question.find({ "author.identifier": req.user._id })
             const responses = await Models.response.find({ "author.identifier": req.user._id })
             const likes = await Models.like.find({ "author.identifier": req.user._id })
@@ -156,17 +157,19 @@ Methods
                 for (let i = 0; i < questions.length; ++i) {
                     questions[i].like = await Models.like.find( { about: questions[i]._id, value: true } )
                     questions[i].dislike = await Models.like.find( { about: questions[i]._id, value: false } )
+                    let responses = await Models.response.find( { parentItem: questions[i]._id } )
     
                     // return all data
-                    userQuestions.push(questions[i])
+                    userQuestions.push({ question: questions[i], responses: responses })
                 }
 
                 for (let i = 0; i < responses.length; ++i) {
                     responses[i].like = await Models.like.find( { about: responses[i]._id, value: true } )
                     responses[i].dislike = await Models.like.find( { about: responses[i]._id, value: false } )
+                    let question = await Models.question.findById( responses[i].parentItem )
     
                     // return all data
-                    userResponses.push(responses[i])
+                    userResponses.push({ response: responses[i], question: question })
                 }
 
                 for (let i = 0; i < likes.length; ++i) {
@@ -182,7 +185,7 @@ Methods
                     userLikes.push({ like: likes[i], about: likeAbout })
                 }
 
-                return resolve({ userQuestions, userResponses, userLikes })
+                return resolve({ identity, userQuestions, userResponses, userLikes })
             })());
 
         })

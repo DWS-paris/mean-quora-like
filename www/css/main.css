@@ -817,6 +817,34 @@ Response
     }
 /**/
 
+/* 
+User page
+*/
+    canvas#myChart {
+        max-width: 30rem;
+        max-height: 30rem;
+        margin: auto;
+    }
+
+    .userScore {
+        position: relative;
+        background: var(--main-color-alpha);
+        padding: 4rem 2rem 2rem 2rem;
+        margin-right: 2rem;
+    }
+
+    .userScore h2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 1.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: .05rem;
+        color: var(--main-color);
+        padding: 2rem;
+    }
+/**/
 
 /* 
 Animations

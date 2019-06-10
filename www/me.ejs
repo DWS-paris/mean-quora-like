@@ -3,16 +3,103 @@
 <main class="grid">
     <section id="mainTitle">
         <article>
-            <h1>Optio culpa dolorem omnis tenetur obcaecati nostrum nemo doloribus.</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+            <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, temporibus earum!</p>
         </article>
     </section>
 
-    <section>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam mollitia, labore autem tempora repellendus fugiat temporibus? Voluptates consequatur dolorum adipisci odio! Ullam reiciendis eaque libero repellendus ipsum totam ratione officia!</p>
+    <section class="userScore">
+        <h2>Intérations</h2>
+        <canvas id="myChart"  width="100" height="100"></canvas>
+        <input type="text" id="toalLikes" value="<%= data.userLikes.length %>" hidden>
+        <h3>Vos scores</h3>
+        <ul>
+            <li>Questions : <strong id="questionScore"></strong></li>
+            <li>Réponses : <strong id="responseScore"></strong></li>
+        </ul>
     </section>
-    <aside></aside>
-    <aside></aside>
+
+    <section>
+        <h3>Liste de tes questions</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, temporibus earum!</p>
+        <ul>
+            <% for( let item of data.userQuestions ) { %>
+                <li class="listItem questionItem">
+                    <strong>Question : <%= item.question.about %> <span>Publiée le <%= item.question.datePublished.getDate() %>/<%= item.question.datePublished.getMonth() %>/<%= item.question.datePublished.getFullYear() %> à <%= item.question.datePublished.getHours() %>h<%= item.question.datePublished.getHours() %> </span></strong>
+                    <ul>
+                        <li><b>Réponse(s)</b> <%= item.responses.length %></li>
+                        <li><b>Score</b> <span class="questionScore"><%= item.question.like.length %></span></li>
+                        <li><a href="/question/<%= item.question._id %>">Voir la question</a></li>
+                    </ul>
+                </li>
+            <% } %>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Liste de tes réponses</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, temporibus earum!</p>
+        <ul>
+            <% for( let item of data.userResponses ) { %>
+                <li class="listItem responseItem">
+                    <strong>Réponse : <%= item.question.about %> <span>Publiée le <%= item.response.datePublished.getDate() %>/<%= item.response.datePublished.getMonth() %>/<%= item.response.datePublished.getFullYear() %> à <%= item.response.datePublished.getHours() %>h<%= item.response.datePublished.getHours() %> </span></strong>
+                    <ul>
+                        <li><b>Score</b> <span class="responseScore"><%= item.response.like.length %></span></li>
+                        <li><a href="/question/<%= item.question._id %>">Voir la question</a></li>
+                    </ul>
+                </li>
+            <% } %>
+        </ul>
+    </section>
 </main>
 
 <% include ./static/footer.ejs %>
+
+<script>
+document.addEventListener('DOMContentLoaded', ()=> {
+    let questionScoreTag = document.querySelectorAll('.questionScore');
+    let responseScoreTag = document.querySelectorAll('.responseScore');
+    let questionScore = 0;
+    let responseScore = 0;
+    for( let item of questionScoreTag ) questionScore += parseInt(item.textContent);
+    for( let item of responseScoreTag ) responseScore += parseInt(item.textContent);
+
+    document.querySelector('#questionScore').textContent = `${questionScore} likes`;
+    document.querySelector('#responseScore').textContent = `${responseScore} likes`;
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'doughnut',
+
+        // The data for our dataset
+        data: {
+            datasets: [{
+                data: [questionScoreTag.length, responseScoreTag.length, document.querySelector('#toalLikes').value],
+                backgroundColor: [
+                    'rgb(197, 10, 10)',
+                    'rgb(33, 183, 54)',
+                    'rgb(77, 150, 202)'
+                ]
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Questions ',
+                'Réponses ',
+                'Likes/Dislikes '
+            ]
+        },
+
+        // Configuration options go here
+        options: {
+            devicePixelRatio: 1,
+            legend: {
+                display: false
+            }
+        }
+    });
+
+})
+</script>
