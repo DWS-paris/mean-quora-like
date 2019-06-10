@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
 
                     case 'closeFromEdit':
-                    closePopinUX(headerEdit)
+                    closePopinUX(headerEdit, true)
                     break;
 
                     default:

@@ -151,12 +151,25 @@ const openPopinUX =  ( htmlTag ) => {
 /* 
 Methode to close a popin
 */
-const closePopinUX =  ( htmlTag ) => {
-    htmlTag.classList.remove('open');
-
-    setTimeout( () => {
-        htmlTag.classList.remove('display');
-    }, 300)
+const closePopinUX =  ( _htmlTag, _reload = null ) => {
+    if( _reload ){
+        openLoaderUX(
+            '#loaderMessage', 
+            '#loader', 
+            '',
+            null
+        );
+        setTimeout( () => {
+            location.reload(true);
+        }, 500)
+        
+    }
+    else{
+        _htmlTag.classList.remove('open');
+        setTimeout( () => {
+            _htmlTag.classList.remove('display');
+        }, 300)
+    }
 }
 //
 
